@@ -258,24 +258,24 @@
 # ##################################
 # System - Device Deletion
 # ##################################
-- alias: system_device_entity_deletion
-  id: system_device_entity_deletion
-  initial_state: true
-  mode: queued
-  max: 20
-  max_exceeded: silent
-  trigger:
-    - platform: event
-      event_type: device_registry_updated
-  action:
-    - service: python_script.exec
-      data:
-        device_id: "{{ trigger.event.data.device_id }}"
-        source: |
-          registry = hass.data['device_registry']
-          device = registry.async_get(data['device_id'])
-          if device and device.name_by_user == 'delete':
-              registry.async_remove_device(data['device_id'])
+# - alias: system_device_entity_deletion
+#   id: system_device_entity_deletion
+#   initial_state: true
+#   mode: queued
+#   max: 20
+#   max_exceeded: silent
+#   trigger:
+#     - platform: event
+#       event_type: device_registry_updated
+#   action:
+#     - service: python_script.exec
+#       data:
+#         device_id: "{{ trigger.event.data.device_id }}"
+#         source: |
+#           registry = hass.data['device_registry']
+#           device = registry.async_get(data['device_id'])
+#           if device and device.name_by_user == 'delete':
+#               registry.async_remove_device(data['device_id'])
 
 # ##################################
 # System - NEW DAY
