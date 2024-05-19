@@ -647,8 +647,8 @@
 # # sensor.voltage:
 # #   device_class: voltage
 
-# sensor.start_time:
-#   unit_of_measurement: "s"
+sensor.start_time:
+  unit_of_measurement: "s"
 
 # # sensor.magnetic_storm:
 # #   icon: mdi:magnet
@@ -771,9 +771,9 @@
 #   device_class: safety
 #   icon: mdi:alert
 
-# person.dima:
+# person.khabarovru:
 #   entity_picture: /local/dima.png
-# person.sandra:
+# person.zhenyash:
 #   entity_picture: /local/sandra.png
 # person.vova:
 #   entity_picture: /local/vova.png

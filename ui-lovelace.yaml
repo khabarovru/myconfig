@@ -72,8 +72,8 @@
 #                 state_color: true
 #                 columns: 4
 #                 entities:
-#                   - person.dima
-#                   - person.sandra
+#                   - person.khabarovru
+#                   - person.zhenyash
 #                   - person.vova
 #                   - entity: person.sasha
 #                     name: Sasha
@@ -118,8 +118,8 @@
 #             default_zoom: 16
 #             hours_to_show: 24
 #             entities:
-#               - person.dima
-#               - person.sandra
+#               - person.khabarovru
+#               - person.zhenyash
 #               - person.vova
 #               - person.sasha #device_tracker.note_9_sasha
 #           - type: custom:weather-chart-card
@@ -2802,13 +2802,13 @@
 #             default_zoom: 16
 #             hours_to_show: 24
 #             entities:
-#               - person.dima
+#               - person.khabarovru
 #           - type: map
 #             aspect_ratio: "16x9"
 #             default_zoom: 16
 #             hours_to_show: 24
 #             entities:
-#               - person.sandra
+#               - person.zhenyash
 #       - type: vertical-stack
 #         cards:
 #           - type: map

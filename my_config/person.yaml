@@ -1,15 +1,15 @@
-  # - name: Dima
-  #   id: Dima001
-  #   user_id: !secret dima_user_id
-  #   device_trackers:
-  #     - device_tracker.iphone_14_pro_dtsymbal
+  - name: Denis
+    id: Dima001
+    user_id: !secret dima_user_id
+    device_trackers:
+      - device_tracker.denis_presence
 
-  # - name: Sandra
-  #   id: Sandra001
-  #   user_id: !secret sandra_user_id
-  #   device_trackers:
-  #     - device_tracker.iphone_12_mini_sandra
-  #     - device_tracker.iphone_14_pro_sandra
+  - name: Zhenyash
+    id: Sandra001
+    user_id: !secret sandra_user_id
+    device_trackers:
+      - device_tracker.eugenia
+      # - device_tracker.iphone_14_pro_sandra
 
   # - name: Vova
   #   id: Vova001

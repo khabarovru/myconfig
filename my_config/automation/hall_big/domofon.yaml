@@ -31,7 +31,7 @@
 #                 photo:
 #                 - url: !secret window_snap
 #                   caption: "\U0001f4e3 Звонок в домофон {{states('sensor.time')}} {{states('sensor.date')}}"  
-#           - service: notify.mobile_app_iphone_14_pro_dtsymbal
+#           - service: notify.mobile_app_denis_phone
 #             data:
 #               message: "Звонок в домофон!"
 #               title: Домофон
@@ -94,7 +94,7 @@
 # #   initial_state: true
 # #   trigger:
 # #     - platform: state
-# #       entity_id: person.dima, person.sandra, person.vova
+# #       entity_id: person.khabarovru, person.zhenyash, person.vova
 # #       to: 'home'
 # #   condition:
 # #     - condition: template

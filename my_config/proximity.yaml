@@ -2,14 +2,14 @@
   # dima_home: 
   #   zone: home
   #   devices:
-  #     - person.dima
+  #     - person.khabarovru
   #   tolerance: 5
   #   unit_of_measurement: m
   
   # sandra_home: 
   #   zone: home
   #   devices:
-  #     - person.sandra
+  #     - person.zhenyash
   #   tolerance: 5
   #   unit_of_measurement: m
   
@@ -30,8 +30,8 @@
   # home:
   #   zone: home
   #   devices:
-  #     - person.dima
-  #     - person.sandra
+  #     - person.khabarovru
+  #     - person.zhenyash
   #     - person.vova
   #   tolerance: 5
   #   unit_of_measurement: m

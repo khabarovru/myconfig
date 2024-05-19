@@ -1,102 +1,102 @@
-# homeassistant:
-#   name: Dima's Home_Main Server
-#   external_url: !secret main_external_url
-#   internal_url: !secret main_internal_url
-#   latitude: !secret lat
-#   longitude: !secret long
-#   elevation: 172
-#   unit_system: metric
-#   temperature_unit: C
-#   currency: RUB
-#   country: RU
-#   time_zone: Europe/Moscow
-#   customize: !include my_config/customize.yaml
-#   customize_glob: !include my_config/customize_glob.yaml
-#   auth_providers:
-#     - type: trusted_networks
-#       trusted_networks:
-#         - 192.168.1.0/24
-#       allow_bypass_login: true
-#     - type: homeassistant
-#   allowlist_external_dirs:
-#     - /config
-#     - /tmp
-#     - /share
-#   debug: true
+homeassistant:
+  name: Denis Home Main Server
+  external_url: !secret main_external_url
+  internal_url: !secret main_internal_url
+  latitude: !secret lat
+  longitude: !secret long
+  elevation: 172
+  unit_system: metric
+  temperature_unit: C
+  currency: RUB
+  country: RU
+  time_zone: Europe/Moscow
+  customize: !include my_config/customize.yaml
+  customize_glob: !include my_config/customize_glob.yaml
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+      allow_bypass_login: true
+    - type: homeassistant
+  allowlist_external_dirs:
+    - /config
+    - /tmp
+    - /share
+  debug: true
 
-# api:
+api:
 
-# stream:
-#   ll_hls: true
-#   part_duration: 0.75
-#   segment_duration: 6
+stream:
+  ll_hls: true
+  part_duration: 0.75
+  segment_duration: 6
   
-# energy:
+energy:
 
 # usb:
 
-# assist_pipeline:
-# media_source:
-# conversation:
+assist_pipeline:
+media_source:
+conversation:
 
-# http: !include my_config/http.yaml
+http: !include my_config/http.yaml
 
-# automation: !include_dir_merge_list my_config/automation
-# sensor: !include_dir_merge_list my_config/sensor
-# switch: !include_dir_merge_list my_config/switch
-# binary_sensor: !include_dir_merge_list my_config/bi-sensor
-# command_line: !include_dir_merge_list my_config/command_line
+automation: !include_dir_merge_list my_config/automation
+sensor: !include_dir_merge_list my_config/sensor
+switch: !include_dir_merge_list my_config/switch
+binary_sensor: !include_dir_merge_list my_config/bi-sensor
+command_line: !include_dir_merge_list my_config/command_line
 
-# script: !include_dir_merge_named my_config/script
-# group: !include_dir_merge_named my_config/group
-# input_boolean: !include_dir_merge_named my_config/input_boolean
+script: !include_dir_merge_named my_config/script
+group: !include_dir_merge_named my_config/group
+input_boolean: !include_dir_merge_named my_config/input_boolean
 
-# lovelace: !include my_config/lovelace.yaml
-# timer: !include my_config/timer.yaml
-# device_tracker: !include my_config/device_tracker.yaml
-# input_number: !include my_config/input_number.yaml
-# input_text: !include my_config/input_text.yaml
-# zone: !include my_config/zone.yaml
-# counter: !include my_config/counter.yaml
-# light: !include my_config/light.yaml
-# yeelight: !include my_config/yeelight.yaml
-# fan: !include my_config/fan.yaml
-# person: !include my_config/person.yaml
-# notify: !include my_config/notify.yaml
-# #scene: !include my_config/scene.yaml
-# shell_command: !include my_config/shell_command.yaml
+lovelace: !include my_config/lovelace.yaml
+timer: !include my_config/timer.yaml
+device_tracker: !include my_config/device_tracker.yaml
+input_number: !include my_config/input_number.yaml
+input_text: !include my_config/input_text.yaml
+zone: !include my_config/zone.yaml
+counter: !include my_config/counter.yaml
+light: !include my_config/light.yaml
+yeelight: !include my_config/yeelight.yaml
+fan: !include my_config/fan.yaml
+person: !include my_config/person.yaml
+notify: !include my_config/notify.yaml
+#scene: !include my_config/scene.yaml
+shell_command: !include my_config/shell_command.yaml
 
-# recorder: !include my_config/recorder.yaml
-# history: #!include my_config/history.yaml
-# logbook: !include my_config/logbook.yaml
-# #climate: !include my_config/climate.yaml
+recorder: !include my_config/recorder.yaml
+history: #!include my_config/history.yaml
+logbook: !include my_config/logbook.yaml
+#climate: !include my_config/climate.yaml
 
-# telegram_bot: !include my_config/telegram_bot.yaml
-# #weather: !include my_config/weather.yaml
-# input_select: !include my_config/input_select.yaml
-# input_datetime: !include my_config/input_datetime.yaml
-# input_button: !include my_config/input_button.yaml
-# tts: !include my_config/tts.yaml
-# #remote: !include my_config/remote.yaml
-# #proximity: !include my_config/proximity.yaml
+telegram_bot: !include my_config/telegram_bot.yaml
+#weather: !include my_config/weather.yaml
+input_select: !include my_config/input_select.yaml
+input_datetime: !include my_config/input_datetime.yaml
+input_button: !include my_config/input_button.yaml
+tts: !include my_config/tts.yaml
+#remote: !include my_config/remote.yaml
+#proximity: !include my_config/proximity.yaml
 
-# #feedreader: !include my_config/feedreader.yaml
+#feedreader: !include my_config/feedreader.yaml
 
-# utility_meter: !include my_config/utility_meter.yaml
+utility_meter: !include my_config/utility_meter.yaml
 
-# #alert: !include my_config/alert.yaml
-# #number: !include my_config/mqtt_number.yaml
+#alert: !include my_config/alert.yaml
+#number: !include my_config/mqtt_number.yaml
 
-# template: !include_dir_merge_list my_config/template
+template: !include_dir_merge_list my_config/template
 
-# rest: !include my_config/rest.yaml
-# #select: !include my_config/select.yaml
+rest: !include my_config/rest.yaml
+#select: !include my_config/select.yaml
 
-# #generic_hygrostat: !include my_config/generic_hygrostat.yaml
+#generic_hygrostat: !include my_config/generic_hygrostat.yaml
 
-# #scrape: !include my_config/scrape.yaml
+#scrape: !include my_config/scrape.yaml
 
-# schedule: !include  my_config/schedule.yaml
+schedule: !include  my_config/schedule.yaml
 
 # zeroconf:
 # ssdp:

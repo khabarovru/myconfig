@@ -1,117 +1,117 @@
-# # #####################################################################################
-# #
-# # SYSTEM - General
-# #
-# # #####################################################################################
-# # System - Errors counter
-# # ##################################
-# - alias: system_error_counter
-#   id: system_error_counter
-#   initial_state: true
-#   mode: parallel
-#   max: 25
-#   max_exceeded: silent
-#   trigger:
-#     - platform: event
-#       event_type: system_log_event
-#       event_data:
-#         level: ERROR
-#   condition:
-#     - condition: template
-#       value_template: "{{ not 'system_error_counter' in (trigger.event.data.message|string) }}"
-#     - condition: template
-#       value_template: "{{ not 'a0d7b954_ide' in (trigger.event.data.message|string) }}"
-#   action:
-#     - service: counter.increment
-#       entity_id: counter.error_counter
+# #####################################################################################
+#
+# SYSTEM - General
+#
+# #####################################################################################
+# System - Errors counter
+# ##################################
+- alias: system_error_counter
+  id: system_error_counter
+  initial_state: true
+  mode: parallel
+  max: 25
+  max_exceeded: silent
+  trigger:
+    - platform: event
+      event_type: system_log_event
+      event_data:
+        level: ERROR
+  condition:
+    - condition: template
+      value_template: "{{ not 'system_error_counter' in (trigger.event.data.message|string) }}"
+    - condition: template
+      value_template: "{{ not 'a0d7b954_ide' in (trigger.event.data.message|string) }}"
+  action:
+    - service: counter.increment
+      entity_id: counter.error_counter
 
-# # ##################################
-# # System - Warning counter
-# # ##################################
-# - alias: system_warning_counter
-#   id: system_warning_counter
-#   mode: parallel
-#   max: 25
-#   max_exceeded: silent
-#   initial_state: true
-#   trigger:
-#     - platform: event
-#       event_type: system_log_event
-#       event_data:
-#         level: WARNING
-#   condition:
-#     - condition: template
-#       value_template: "{{ not 'system_warning_counter' in (trigger.event.data.message|string) }}"
-#     - condition: template
-#       value_template: "{{ not 'a0d7b954_ide' in (trigger.event.data.message|string) }}"
-#   action:
-#     - service: counter.increment
-#       entity_id: counter.warning_counter
+# ##################################
+# System - Warning counter
+# ##################################
+- alias: system_warning_counter
+  id: system_warning_counter
+  mode: parallel
+  max: 25
+  max_exceeded: silent
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: system_log_event
+      event_data:
+        level: WARNING
+  condition:
+    - condition: template
+      value_template: "{{ not 'system_warning_counter' in (trigger.event.data.message|string) }}"
+    - condition: template
+      value_template: "{{ not 'a0d7b954_ide' in (trigger.event.data.message|string) }}"
+  action:
+    - service: counter.increment
+      entity_id: counter.warning_counter
 
-# # ##################################
-# # System - Triggered Automations counter
-# # ##################################
-# - alias: system_triggered_automations_counter
-#   id: system_triggered_automations_counter
-#   mode: parallel
-#   max: 25
-#   max_exceeded: silent
-#   initial_state: true
-#   trigger:
-#     - platform: event
-#       event_type: automation_triggered
-#   condition:
-#     - condition: template
-#       value_template: "{{ not 'system_triggered_automations_counter' in (trigger.event.data.name|string) }}"
-#     - condition: template
-#       value_template: "{{ not 'system_esphome_ble_advert' in (trigger.event.data.name|string) }}"
-#   action:
-#     - service: counter.increment
-#       entity_id: counter.triggered_automations
+# ##################################
+# System - Triggered Automations counter
+# ##################################
+- alias: system_triggered_automations_counter
+  id: system_triggered_automations_counter
+  mode: parallel
+  max: 25
+  max_exceeded: silent
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: automation_triggered
+  condition:
+    - condition: template
+      value_template: "{{ not 'system_triggered_automations_counter' in (trigger.event.data.name|string) }}"
+    - condition: template
+      value_template: "{{ not 'system_esphome_ble_advert' in (trigger.event.data.name|string) }}"
+  action:
+    - service: counter.increment
+      entity_id: counter.triggered_automations
 
-# # ##################################
-# # System - Executed Scripts
-# # ##################################
-# - alias: system_executed_scripts
-#   id: system_executed_scripts
-#   mode: parallel
-#   max: 25
-#   max_exceeded: silent
-#   trigger:
-#     - platform: event
-#       event_type: script_started
-#   action:
-#     - service: counter.increment
-#       entity_id: counter.executed_scripts
+# ##################################
+# System - Executed Scripts
+# ##################################
+- alias: system_executed_scripts
+  id: system_executed_scripts
+  mode: parallel
+  max: 25
+  max_exceeded: silent
+  trigger:
+    - platform: event
+      event_type: script_started
+  action:
+    - service: counter.increment
+      entity_id: counter.executed_scripts
 
-# # ##################################
-# # System - START
-# # ##################################
-# - alias: system_start
-#   id: system_start_message
-#   initial_state: true
-#   trigger:
-#     - platform: homeassistant
-#       event: start
-#   action:
-#     # - service: homeassistant.update_entity
-#     #   entity_id:
-#     #     #- sensor.host_uptime
-#     #     #- sensor.ha_uptime
-#     #     #- sensor.start_time
-#     #     #- sensor.start_time_cmd
-#     #     - sensor.errors_during_boot
-#     #     - sensor.warnings_during_boot
-#     #     #- binary_sensor.bed_led_enable
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001F603 Сервер({{state_attr('update.home_assistant_core_update','installed_version')}}) запущен за {{states('sensor.start_time')|int(0)}}сек! {{states('sensor.errors_during_boot')|int(0) | format(morph='ошибка', as_text=false) }}, {{states('sensor.warnings_during_boot')|int(0)| format(morph='предупреждение', as_text=false) }}"
-#     - service: script.turn_on
-#       entity_id: script.system_start
-#     - service: counter.increment
-#       entity_id: counter.restart_counter
-#     - service: switch.turn_on
-#       entity_id: switch.system_main_lead
+# ##################################
+# System - START
+# ##################################
+- alias: system_start
+  id: system_start_message
+  initial_state: true
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    # - service: homeassistant.update_entity
+    #   entity_id:
+    #     #- sensor.host_uptime
+    #     #- sensor.ha_uptime
+    #     #- sensor.start_time
+    #     #- sensor.start_time_cmd
+    #     - sensor.errors_during_boot
+    #     - sensor.warnings_during_boot
+    #     #- binary_sensor.bed_led_enable
+    - service: notify.telegram
+      data:
+        message: "\U0001F603 Сервер({{state_attr('update.home_assistant_core_update','installed_version')}}) запущен за {{states('sensor.start_time')|int(0)}}сек! {{states('sensor.errors_during_boot')|int(0) | format(morph='ошибка', as_text=false) }}, {{states('sensor.warnings_during_boot')|int(0)| format(morph='предупреждение', as_text=false) }}"
+    # - service: script.turn_on
+    #   entity_id: script.system_start
+    - service: counter.increment
+      entity_id: counter.restart_counter
+# #     - service: switch.turn_on
+# #       entity_id: switch.system_main_lead
 
 # # ##################################
 # # System - STOP
@@ -191,75 +191,56 @@
 #       data:
 #         message: "\U00002b50 GitHub Star -> {{ trigger.to_state.state }}! "
 
-# # ##################################
-# # System - Hass.io NEW Device
-# # ##################################
-# - alias: system_new_device_tracker_found
-#   id: system_new_device_tracker_found
-#   initial_state: true
-#   mode: queued
-#   max: 10
-#   max_exceeded: silent      
-#   trigger:
-#     - platform: event
-#       event_type: device_tracker_new_device
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U00002734 Новое устройство: {{ trigger.event.data.host_name if trigger.event.data.host_name is defined else 'NA' }} - ({{ trigger.event.data.entity_id if trigger.event.data.entity_id is defined else 'NA' }})"
+# ##################################
+# System - Hass.io NEW Device
+# ##################################
+- alias: system_new_device_tracker_found
+  id: system_new_device_tracker_found
+  initial_state: true
+  mode: queued
+  max: 10
+  max_exceeded: silent      
+  trigger:
+    - platform: event
+      event_type: device_tracker_new_device
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U00002734 Новое устройство: {{ trigger.event.data.host_name if trigger.event.data.host_name is defined else 'NA' }} - ({{ trigger.event.data.entity_id if trigger.event.data.entity_id is defined else 'NA' }})"
 
-# # ##################################
-# # System - Entity Change
-# # ##################################
-# - alias: system_entity_change
-#   id: system_entity_change
-#   initial_state: true
-#   mode: queued
-#   max: 20
-#   max_exceeded: silent
-#   trigger:
-#     - platform: event
-#       event_type: entity_registry_updated
-#   condition:
-#     - condition: template
-#       value_template: "{{ 'mi_11' not in trigger.event.data.entity_id }}"
-#     - condition: template
-#       value_template: "{{ 'pova_5' not in trigger.event.data.entity_id }}"
-#     - condition: template
-#       value_template: "{{ 'lower' not in trigger.event.data.action }}"
-#     - condition: template
-#       value_template: "{{ 'update' not in trigger.event.data.action }}"
-#   action:
-#     - service: telegram_bot.send_message
-#       data:
-#         message: "\U00002747 Entity - {{ trigger.event.data.action | capitalize }}: {{ trigger.event.data.old_entity_id+'->' if trigger.event.data.old_entity_id is defined }}{{ trigger.event.data.entity_id if trigger.event.data.entity_id is defined else 'NA' }}"
-#         target: !secret tel_chat_id
-#         timeout: 180
+# ##################################
+# System - Entity Change
+# ##################################
+- alias: system_entity_change
+  id: system_entity_change
+  initial_state: true
+  mode: queued
+  max: 20
+  max_exceeded: silent
+  trigger:
+    - platform: event
+      event_type: entity_registry_updated
+  condition:
+    - condition: template
+      value_template: "{{ 'mi_11' not in trigger.event.data.entity_id }}"
+    - condition: template
+      value_template: "{{ 'pova_5' not in trigger.event.data.entity_id }}"
+    - condition: template
+      value_template: "{{ 'lower' not in trigger.event.data.action }}"
+    - condition: template
+      value_template: "{{ 'update' not in trigger.event.data.action }}"
+  action:
+    - service: telegram_bot.send_message
+      data:
+        message: "\U00002747 Entity - {{ trigger.event.data.action | capitalize }}: {{ trigger.event.data.old_entity_id+'->' if trigger.event.data.old_entity_id is defined }}{{ trigger.event.data.entity_id if trigger.event.data.entity_id is defined else 'NA' }}"
+        target: !secret tel_chat_id
+        timeout: 180
 
-# # ##################################
-# # System - Device registry Change
-# # ##################################
-# # - alias: system_device_regestry_change
-# #   id:  system_device_regestry_change
-# #   initial_state: true
-# #   mode: queued
-# #   max: 20
-# #   max_exceeded: silent
-# #   trigger:
-# #     - platform: event
-# #       event_type: device_registry_updated
-# #   action:
-# #     - service: telegram_bot.send_message
-# #       data:
-# #         message: "\U0001f4a1 Device - {{ trigger.event.data.action | capitalize }}: {{ device_attr(trigger.event.data.device_id, 'name') | capitalize }}"
-# #         target: !secret tel_chat_id
-# #         timeout: 180
-
-# # ##################################
-# # System - Device Deletion
-# # ##################################
-# - alias: system_device_entity_deletion
-#   id: system_device_entity_deletion
+# ##################################
+# System - Device registry Change
+# ##################################
+# - alias: system_device_regestry_change
+#   id:  system_device_regestry_change
 #   initial_state: true
 #   mode: queued
 #   max: 20
@@ -268,47 +249,66 @@
 #     - platform: event
 #       event_type: device_registry_updated
 #   action:
-#     - service: python_script.exec
+#     - service: telegram_bot.send_message
 #       data:
-#         device_id: "{{ trigger.event.data.device_id }}"
-#         source: |
-#           registry = hass.data['device_registry']
-#           device = registry.async_get(data['device_id'])
-#           if device and device.name_by_user == 'delete':
-#               registry.async_remove_device(data['device_id'])
+#         message: "\U0001f4a1 Device - {{ trigger.event.data.action | capitalize }}: {{ device_attr(trigger.event.data.device_id, 'name') | capitalize }}"
+#         target: !secret tel_chat_id
+#         timeout: 180
 
-# # ##################################
-# # System - NEW DAY
-# # ##################################
-# - alias: system_new_day_telegram
-#   id: system_new_day_telegram
-#   initial_state: true
-#   trigger:
-#     - platform: time
-#       at: "00:00:01"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001F305 Начался новый день! За прошедшие сутки перезагрузок - {{states('counter.restart_counter')|int(0) }}, ошибок - {{states('counter.error_counter')|int(0) }}, предупреждений - {{states('counter.warning_counter')|int(0)}}, ошибок входа - {{states('counter.badlogin_counter')|int(0)}},  cработало автоматизаций - {{states('counter.triggered_automations')|int(0)}}, ошибок автоматизаций - {{states('counter.automation_error_counter')|int(0)}}, запущенно скриптов - {{states('counter.executed_scripts')|int(0)}}. Входная дверь открывалась - {{states('counter.main_door_hb')|int(0)}}раз(а). Чайник включали - {{states('counter.kettle_k')|int(0)}}раз(а)"
-#     - service: counter.reset
-#       entity_id:
-#         - counter.warning_counter
-#         - counter.error_counter
-#         - counter.restart_counter
-#         - counter.badlogin_counter
-#         - counter.main_door_hb
-#         - counter.automation_error_counter
-#         - counter.kettle_k
-#         - counter.triggered_automations
-#         - counter.executed_scripts
-#         - counter.toilet_tank
-#     - service: switch.turn_off
-#       entity_id: switch.system_dark_mode
-#     - service: tts.clear_cache
-#     - service: input_select.select_next
-#       entity_id: input_select.dishwasher
-#     - service: automation.turn_on
-#       entity_id: automation.vova_tv_control
+# ##################################
+# System - Device Deletion
+# ##################################
+- alias: system_device_entity_deletion
+  id: system_device_entity_deletion
+  initial_state: true
+  mode: queued
+  max: 20
+  max_exceeded: silent
+  trigger:
+    - platform: event
+      event_type: device_registry_updated
+  action:
+    - service: python_script.exec
+      data:
+        device_id: "{{ trigger.event.data.device_id }}"
+        source: |
+          registry = hass.data['device_registry']
+          device = registry.async_get(data['device_id'])
+          if device and device.name_by_user == 'delete':
+              registry.async_remove_device(data['device_id'])
+
+# ##################################
+# System - NEW DAY
+# ##################################
+- alias: system_new_day_telegram
+  id: system_new_day_telegram
+  initial_state: true
+  trigger:
+    - platform: time
+      at: "00:00:01"
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0001F305 Начался новый день! За прошедшие сутки перезагрузок - {{states('counter.restart_counter')|int(0) }}, ошибок - {{states('counter.error_counter')|int(0) }}, предупреждений - {{states('counter.warning_counter')|int(0)}}, ошибок входа - {{states('counter.badlogin_counter')|int(0)}},  cработало автоматизаций - {{states('counter.triggered_automations')|int(0)}}, ошибок автоматизаций - {{states('counter.automation_error_counter')|int(0)}}, запущенно скриптов - {{states('counter.executed_scripts')|int(0)}}. Входная дверь открывалась - {{states('counter.main_door_hb')|int(0)}}раз(а). Чайник включали - {{states('counter.kettle_k')|int(0)}}раз(а)"
+    - service: counter.reset
+      entity_id:
+        - counter.warning_counter
+        - counter.error_counter
+        - counter.restart_counter
+        - counter.badlogin_counter
+        - counter.main_door_hb
+        - counter.automation_error_counter
+        # - counter.kettle_k
+        - counter.triggered_automations
+        - counter.executed_scripts
+        # - counter.toilet_tank
+    - service: switch.turn_off
+      entity_id: switch.system_dark_mode
+    # - service: tts.clear_cache
+    # - service: input_select.select_next
+    #   entity_id: input_select.dishwasher
+    # - service: automation.turn_on
+    #   entity_id: automation.vova_tv_control
 
 # # ##################################
 # # System - Weather FCST to Telegram
@@ -325,88 +325,88 @@
 #     - service: script.turn_on
 #       entity_id: script.briefing_telegram
 
-# # ##################################
-# # System - login failure message
-# # ##################################
-# - alias: system_login_failure
-#   id: system_login_failure
-#   initial_state: true
-#   trigger:
-#     - platform: persistent_notification
-#       id: 'http-login'
-#       update_type:
-#         - added
-#         - updated
-#       notification_id: http-login
-#     - platform: persistent_notification
-#       id: 'ip-ban'
-#       update_type:
-#         - added
-#         - updated
-#       notification_id: ip-ban
-#   condition:
-#     - condition: template
-#       value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-#   action:
-#     - service: counter.increment
-#       entity_id: counter.badlogin_counter
-#     # - service: notify.telegram
-#     #   data:
-#     #     message: >-
-#     #       {% set ipadress = trigger.to_state.attributes.message.split('Login attempt or request with invalid authentication from ')[1] | replace('. See the log for details.','') %}
-#     #       {{"\U0000274C"}} Неудачная попытка входа с адреса {{ ipadress }}
-#     # - service: persistent_notification.dismiss
-#     #   data:
-#     #     notification_id: http_login
-#     - parallel:
-#         - service: telegram_bot.send_message
-#           data:
-#             target: !secret tel_chat_id
-#             title: >-
-#                 {%- if trigger.id == 'http-login' %}
-#                     {{- '\U0001F6AB' -}}
-#                 {% else %}
-#                     {{- '\U000026D4' -}}
-#                 {% endif %}
-#             message: >
-#                 {% set ipadress = trigger.notification.message | replace('\n', ' ') | regex_replace('.*\((?=\d+\.\d+\.\d+\.\d+)') | regex_replace('\).*')
-#                     | replace('Too many login attempts from ', '') %}
+# ##################################
+# System - login failure message
+# ##################################
+- alias: system_login_failure
+  id: system_login_failure
+  initial_state: true
+  trigger:
+    - platform: persistent_notification
+      id: 'http-login'
+      update_type:
+        - added
+        - updated
+      notification_id: http-login
+    - platform: persistent_notification
+      id: 'ip-ban'
+      update_type:
+        - added
+        - updated
+      notification_id: ip-ban
+  condition:
+    - condition: template
+      value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+  action:
+    - service: counter.increment
+      entity_id: counter.badlogin_counter
+    # - service: notify.telegram
+    #   data:
+    #     message: >-
+    #       {% set ipadress = trigger.to_state.attributes.message.split('Login attempt or request with invalid authentication from ')[1] | replace('. See the log for details.','') %}
+    #       {{"\U0000274C"}} Неудачная попытка входа с адреса {{ ipadress }}
+    # - service: persistent_notification.dismiss
+    #   data:
+    #     notification_id: http_login
+    - parallel:
+        - service: telegram_bot.send_message
+          data:
+            target: !secret tel_chat_id
+            title: >-
+                {%- if trigger.id == 'http-login' %}
+                    {{- '\U0001F6AB' -}}
+                {% else %}
+                    {{- '\U000026D4' -}}
+                {% endif %}
+            message: >
+                {% set ipadress = trigger.notification.message | replace('\n', ' ') | regex_replace('.*\((?=\d+\.\d+\.\d+\.\d+)') | regex_replace('\).*')
+                    | replace('Too many login attempts from ', '') %}
                 
-#                 {% if trigger.id == 'http-login' -%}
-#                     Неудачная попытка входа в систему с адреса {{ ipadress }}
-#                 {%- else -%}
-#                     Заблокирован IP адрес {{ ipadress }} после 5 попыток входа
-#                 {%- endif %}
-#             disable_web_page_preview: true
-#         - service: persistent_notification.dismiss
-#           data:
-#             notification_id: "{{ trigger.id }}"
+                {% if trigger.id == 'http-login' -%}
+                    Неудачная попытка входа в систему с адреса {{ ipadress }}
+                {%- else -%}
+                    Заблокирован IP адрес {{ ipadress }} после 5 попыток входа
+                {%- endif %}
+            disable_web_page_preview: true
+        - service: persistent_notification.dismiss
+          data:
+            notification_id: "{{ trigger.id }}"
 
 
 
 
-# # ##################################
-# # System - IP Blocked
-# # ##################################
-# - alias: system_blocked_ip
-#   id: system_blocked_ip
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: persistent_notification.ip_ban
-#       to:
-#   condition:
-#     - condition: template
-#       value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: >
-#           {% set ipadress = trigger.to_state.attributes.message.split('from ')[1] | regex_replace('\s+.*') %}
-#           {{"\U000026d4"}} Заблокирован IP: {{ ipadress }}
-#     - service: persistent_notification.dismiss
-#       data:
-#         notification_id: ip_ban
+# ##################################
+# System - IP Blocked
+# ##################################
+- alias: system_blocked_ip
+  id: system_blocked_ip
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: persistent_notification.ip_ban
+      to:
+  condition:
+    - condition: template
+      value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+  action:
+    - service: notify.telegram
+      data:
+        message: >
+          {% set ipadress = trigger.to_state.attributes.message.split('from ')[1] | regex_replace('\s+.*') %}
+          {{"\U000026d4"}} Заблокирован IP: {{ ipadress }}
+    - service: persistent_notification.dismiss
+      data:
+        notification_id: ip_ban
 
 # # ##################################
 # # System - Groups Rebuild
@@ -501,23 +501,23 @@
 #           {{"\U0001f50b"}} Батарей с низким уровнем заряда не найдено!
 #           {%- endif %}
 
-# # ##################################
-# # System - Database Purge
-# # ##################################
-# - alias: system_database_purge
-#   id: system_database_purge
-#   initial_state: true
-#   trigger:
-#     - platform: time
-#       at: "02:00:00"
-#   action:
-#     - service: recorder.purge
-#       data:
-#         keep_days: 3
-#         repack: true
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001f4ab Очистка базы"
+# ##################################
+# System - Database Purge
+# ##################################
+- alias: system_database_purge
+  id: system_database_purge
+  initial_state: true
+  trigger:
+    - platform: time
+      at: "02:00:00"
+  action:
+    - service: recorder.purge
+      data:
+        keep_days: 7
+        repack: true
+    # - service: notify.telegram
+    #   data:
+    #     message: "\U0001f4ab Очистка базы"
 
 # # ##################################
 # # System - Transmission completed Torrent
@@ -535,139 +535,139 @@
 #       data:
 #         message: "\U0001F4AF Загрузка завершена {{trigger.event.data.name}}"
 
-# # ##################################
-# # System - Telegram message on Config error
-# # ##################################
-# - alias: system_config_error_notification
-#   id: system_config_error_notification
-#   initial_state: true
-#   mode: single
-#   max_exceeded: silent
-#   trigger:
-#     - platform: state
-#       entity_id:
-#         - persistent_notification.homeassistant_check_config
-#         - persistent_notification.invalid_config
-#       to: "notifying"
-#   condition:
-#     - condition: template
-#       value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0000274C Перезапуск отменён. Конфигурация содержит ошибки {{ trigger.to_state.attributes.message }}"
-#     - service: persistent_notification.dismiss
-#       data:
-#         notification_id: >
-#           {% if 'could not be set up' in trigger.to_state.attributes.message | lower %}
-#               invalid_config
-#           {% else %}
-#               homeassistant_check_config
-#           {% endif %}
+# ##################################
+# System - Telegram message on Config error
+# ##################################
+- alias: system_config_error_notification
+  id: system_config_error_notification
+  initial_state: true
+  mode: single
+  max_exceeded: silent
+  trigger:
+    - platform: state
+      entity_id:
+        - persistent_notification.homeassistant_check_config
+        - persistent_notification.invalid_config
+      to: "notifying"
+  condition:
+    - condition: template
+      value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0000274C Перезапуск отменён. Конфигурация содержит ошибки {{ trigger.to_state.attributes.message }}"
+    - service: persistent_notification.dismiss
+      data:
+        notification_id: >
+          {% if 'could not be set up' in trigger.to_state.attributes.message | lower %}
+              invalid_config
+          {% else %}
+              homeassistant_check_config
+          {% endif %}
 
-# # ##################################
-# # System - System Automation Errors
-# # ##################################
-# - alias: system_automation_error
-#   id: system_automation_error
-#   initial_state: true
-#   mode: queued
-#   max: 10
-#   max_exceeded: silent
-#   trigger:
-#     - platform: event
-#       event_type: system_log_event
-#       event_data:
-#         level: ERROR
-#   condition:
-#     # - condition: template
-#     #   value_template: >-
-#     #     {{ not
-#     #       trigger.event.data.message | regex_search('websocket_api_script')
-#     #     }}
-#     - condition: template
-#       value_template: >-
-#         {{ 
-#           trigger.event.data.message | regex_search('Error while executing automation') or
-#           trigger.event.data.message | regex_search('Error executing script')
-#         }}
-#     - condition: template
-#       value_template: "{{ trigger.event.data.name is not search(this.entity_id, ignorecase=True) }}"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: |
-#           {{ '\U0000274C' }} Ошибка выполнения автоматизации: {{ trigger.event.data.message | e }}
-#     - service: counter.increment
-#       data:
-#         entity_id: counter.automation_error_counter
+# ##################################
+# System - System Automation Errors
+# ##################################
+- alias: system_automation_error
+  id: system_automation_error
+  initial_state: true
+  mode: queued
+  max: 10
+  max_exceeded: silent
+  trigger:
+    - platform: event
+      event_type: system_log_event
+      event_data:
+        level: ERROR
+  condition:
+    # - condition: template
+    #   value_template: >-
+    #     {{ not
+    #       trigger.event.data.message | regex_search('websocket_api_script')
+    #     }}
+    - condition: template
+      value_template: >-
+        {{ 
+          trigger.event.data.message | regex_search('Error while executing automation') or
+          trigger.event.data.message | regex_search('Error executing script')
+        }}
+    - condition: template
+      value_template: "{{ trigger.event.data.name is not search(this.entity_id, ignorecase=True) }}"
+  action:
+    - service: notify.telegram
+      data:
+        message: |
+          {{ '\U0000274C' }} Ошибка выполнения автоматизации: {{ trigger.event.data.message | e }}
+    - service: counter.increment
+      data:
+        entity_id: counter.automation_error_counter
 
-# # ##################################
-# # System - System Errors per hour
-# # ##################################
-# - alias: system_error_per_hour
-#   id: system_error_per_hour
-#   initial_state: true
-#   mode: single
-#   max_exceeded: silent
-#   trigger:
-#     - platform: numeric_state
-#       entity_id: sensor.error_counter_hourly
-#       above: 100
-#   condition:
-#     - condition: template
-#       value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_error_per_hour', 'last_triggered'), 0)|int(0) ,0) > 15 }}"
-#     - condition: template
-#       value_template: "{{ (states('sensor.error_counter_hourly')|int(0) % 50) == 0 }}"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U000026a0 Внимание! Количество ошибок в час выросло до {{states('sensor.error_counter_hourly')|int(0)}}"
+# ##################################
+# System - System Errors per hour
+# ##################################
+- alias: system_error_per_hour
+  id: system_error_per_hour
+  initial_state: true
+  mode: single
+  max_exceeded: silent
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.error_counter_hourly
+      above: 100
+  condition:
+    - condition: template
+      value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_error_per_hour', 'last_triggered'), 0)|int(0) ,0) > 15 }}"
+    - condition: template
+      value_template: "{{ (states('sensor.error_counter_hourly')|int(0) % 50) == 0 }}"
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U000026a0 Внимание! Количество ошибок в час выросло до {{states('sensor.error_counter_hourly')|int(0)}}"
 
-# # ##################################
-# # System - System Warinings per hour
-# # ##################################
-# - alias: system_warning_per_hour
-#   id: system_warning_per_hour
-#   initial_state: true
-#   mode: single
-#   max_exceeded: silent
-#   trigger:
-#     - platform: numeric_state
-#       entity_id: sensor.warning_counter_hourly
-#       above: 100
-#   condition:
-#     - condition: template
-#       value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_warning_per_hour', 'last_triggered'), 0)|int(0) ,0) > 15 }}"
-#     - condition: template
-#       value_template: "{{ (states('sensor.warning_counter_hourly')|int(0) % 50) == 0 }}"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U000026a0 Внимание! Количество предупреждений в час выросло до {{states('sensor.warning_counter_hourly')|int(0)}}"
+# ##################################
+# System - System Warinings per hour
+# ##################################
+- alias: system_warning_per_hour
+  id: system_warning_per_hour
+  initial_state: true
+  mode: single
+  max_exceeded: silent
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.warning_counter_hourly
+      above: 100
+  condition:
+    - condition: template
+      value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_warning_per_hour', 'last_triggered'), 0)|int(0) ,0) > 15 }}"
+    - condition: template
+      value_template: "{{ (states('sensor.warning_counter_hourly')|int(0) % 50) == 0 }}"
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U000026a0 Внимание! Количество предупреждений в час выросло до {{states('sensor.warning_counter_hourly')|int(0)}}"
 
-# # ##################################
-# # System - Critical Error notification
-# # ##################################
-# - alias: system_critical_error_notify
-#   id: system_critical_error_notify
-#   initial_state: true
-#   mode: queued
-#   max: 10
-#   max_exceeded: silent    
-#   trigger:
-#     - platform: event
-#       event_type: system_log_event
-#       event_data:
-#         level: FATAL
-#     - platform: event
-#       event_type: system_log_event
-#       event_data:
-#         level: CRITICAL
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001f534 Критическая ошибка системы: {{ trigger.event.data.message | e}}!"
+# ##################################
+# System - Critical Error notification
+# ##################################
+- alias: system_critical_error_notify
+  id: system_critical_error_notify
+  initial_state: true
+  mode: queued
+  max: 10
+  max_exceeded: silent    
+  trigger:
+    - platform: event
+      event_type: system_log_event
+      event_data:
+        level: FATAL
+    - platform: event
+      event_type: system_log_event
+      event_data:
+        level: CRITICAL
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0001f534 Критическая ошибка системы: {{ trigger.event.data.message | e}}!"
 
 # # ##################################
 # # System - Radiation alert
@@ -684,40 +684,40 @@
 # #       data:
 # #         message: "\U00002622 Внимание! Радиоактивный фон превышен {{states('sensor.esp32_ble_hs_dynamic_intensity')|int(0)}}мсв/ч!"
 
-# # ##################################
-# # System - Silent Mode Toggle
-# # ##################################
-# - alias: system_silent_mode_toggle
-#   id: system_silent_mode_toggle
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: switch.system_silent_mode
-#       from: "on"
-#       to: "off"
-#     - platform: state
-#       entity_id: switch.system_silent_mode
-#       from: "off"
-#       to: "on"
-#   action:
-#     - service: switch.turn_{{states('switch.system_silent_mode')}}
-#       entity_id: switch.esp32_domofon_mute, switch.sonoff_mini_1_mute
-#     - service: input_number.set_value
-#       data:
-#         entity_id: input_number.main_volume
-#         value: "{% if is_state('switch.system_silent_mode','on') %}0{%else%}0.4{%endif%}"
-#     - service: number.set_value
-#       data:
-#         entity_id: number.up_chime_volume
-#         value: "{% if is_state('switch.system_silent_mode','on') %}0{%else%}80{%endif%}"
-#     - service: notify.telegram
-#       data:
-#         message: >
-#           {% if is_state('switch.system_silent_mode','on') %}
-#             {{'\U0001f515'}} Режим тишины включен!
-#           {%else%}
-#             {{'\U0001f514'}} Режим тишины выключен!
-#           {%endif%}
+# ##################################
+# System - Silent Mode Toggle
+# ##################################
+- alias: system_silent_mode_toggle
+  id: system_silent_mode_toggle
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: switch.system_silent_mode
+      from: "on"
+      to: "off"
+    - platform: state
+      entity_id: switch.system_silent_mode
+      from: "off"
+      to: "on"
+  action:
+    # - service: switch.turn_{{states('switch.system_silent_mode')}}
+    #   entity_id: switch.esp32_domofon_mute, switch.sonoff_mini_1_mute
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.main_volume
+        value: "{% if is_state('switch.system_silent_mode','on') %}0{%else%}0.4{%endif%}"
+    # - service: number.set_value
+    #   data:
+    #     entity_id: number.up_chime_volume
+    #     value: "{% if is_state('switch.system_silent_mode','on') %}0{%else%}80{%endif%}"
+    - service: notify.telegram
+      data:
+        message: >
+          {% if is_state('switch.system_silent_mode','on') %}
+            {{'\U0001f515'}} Режим тишины включен!
+          {%else%}
+            {{'\U0001f514'}} Режим тишины выключен!
+          {%endif%}
 
 # # ##################################
 # # System - GW3 State
@@ -794,29 +794,29 @@
 #           {{'\U0001f318'}} Watchdog: API Disconnected
 #           {%endif%}
 
-# # ##################################
-# # System - Dark Mode
-# # ##################################
-# - alias: system_dark_mode
-#   id: system_dark_mode
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: switch.system_dark_mode
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: >
-#           {% if is_state('switch.system_dark_mode','on') %}
-#             {{'\U0001f318'}} Режим темноты включен
-#           {%else%}
-#             {{'\U00002600'}} Режим темноты выключен
-#           {%endif%}
-#     - condition: state
-#       entity_id: switch.system_dark_mode
-#       state: "off"
-#     - service: switch.turn_off
-#       entity_id: switch.system_silent_mode
+# ##################################
+# System - Dark Mode
+# ##################################
+- alias: system_dark_mode
+  id: system_dark_mode
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: switch.system_dark_mode
+  action:
+    - service: notify.telegram
+      data:
+        message: >
+          {% if is_state('switch.system_dark_mode','on') %}
+            {{'\U0001f318'}} Режим темноты включен
+          {%else%}
+            {{'\U00002600'}} Режим темноты выключен
+          {%endif%}
+    - condition: state
+      entity_id: switch.system_dark_mode
+      state: "off"
+    - service: switch.turn_off
+      entity_id: switch.system_silent_mode
 
 # # ##################################
 # # System - HACS New Repo
@@ -1206,63 +1206,63 @@
 #               data:
 #                 message: "\U00002705 Fully: связь восстановлена!"
 
-# # ##################################
-# # System - Already running log
-# # ##################################
-# - alias: system_already_running_log
-#   id: system_already_running_log
-#   initial_state: true
-#   max: 10
-#   max_exceeded: silent
-#   mode: queued
-#   trigger:
-#     - platform: event
-#       event_type: system_log_event
-#       event_data:
-#         level: WARNING
-#   condition:
-#     - condition: template
-#       value_template: '{{ "Already running" in (trigger.event.data.message|string) }}'
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U000026d4 Warning! {{ trigger.event.data.message | join | e }}"
+# ##################################
+# System - Already running log
+# ##################################
+- alias: system_already_running_log
+  id: system_already_running_log
+  initial_state: true
+  max: 10
+  max_exceeded: silent
+  mode: queued
+  trigger:
+    - platform: event
+      event_type: system_log_event
+      event_data:
+        level: WARNING
+  condition:
+    - condition: template
+      value_template: '{{ "Already running" in (trigger.event.data.message|string) }}'
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U000026d4 Warning! {{ trigger.event.data.message | join | e }}"
 
-# # ##################################
-# # System - Automation Reload
-# # ##################################
-# - alias: system_automation_reload
-#   id: system_automation_reload
-#   initial_state: true
-#   trigger:
-#     # - platform: event
-#     #   event_type: call_service
-#     #   event_data:
-#     #     domain: automation
-#     #     service: reload
-#     - platform: event
-#       event_type: automation_reloaded
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001f4ac Автоматизации перезагружены!"
+# ##################################
+# System - Automation Reload
+# ##################################
+- alias: system_automation_reload
+  id: system_automation_reload
+  initial_state: true
+  trigger:
+    # - platform: event
+    #   event_type: call_service
+    #   event_data:
+    #     domain: automation
+    #     service: reload
+    - platform: event
+      event_type: automation_reloaded
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0001f4ac Автоматизации перезагружены!"
 
-# # ##################################
-# # System - Scripts Reload
-# # ##################################
-# - alias: system_scripts_reload
-#   id: system_scripts_reload
-#   initial_state: true
-#   trigger:
-#     - platform: event
-#       event_type: call_service
-#       event_data:
-#         domain: script
-#         service: reload
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001f4ac Скрипты перезагружены!"
+# ##################################
+# System - Scripts Reload
+# ##################################
+- alias: system_scripts_reload
+  id: system_scripts_reload
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: script
+        service: reload
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0001f4ac Скрипты перезагружены!"
 
 # # ##################################
 # # System - GW3 Devices Group Renewal
@@ -1675,27 +1675,28 @@
 #     - service: input_boolean.turn_{{states('binary_sensor.central_heating')}}
 #       entity_id: input_boolean.central_heating
 
-# # ##################################
-# # System - Dark Mode ON action
-# # ##################################
-# - alias: system_light_dark_mode_on_action
-#   id: system_light_dark_mode_on_action
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: switch.system_dark_mode
-#       from: "off"
-#       to: "on"
-#   action:
-#     - service: homeassistant.turn_off
-#       entity_id:
-#         - light.esp32_node_k_light
-#         - light.mono_strip_1_light
-#         - switch.0x54ef441000680083_channel_2
-#         - switch.0x54ef441000680083_channel_1
-#         - light.led_strip_hb
-#         - light.led_strip_entrance_hb
-#         - switch.0x54ef441000680083_channel_1
+# ##################################
+# System - Dark Mode ON action
+# ##################################
+- alias: system_light_dark_mode_on_action
+  id: system_light_dark_mode_on_action
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: switch.system_dark_mode
+      from: "off"
+      to: "on"
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        - light.livingroom_girland
+        # - light.esp32_node_k_light
+        # - light.mono_strip_1_light
+        # - switch.0x54ef441000680083_channel_2
+        # - switch.0x54ef441000680083_channel_1
+        # - light.led_strip_hb
+        # - light.led_strip_entrance_hb
+        # - switch.0x54ef441000680083_channel_1
 
 # # ##################################
 # # System - Wallpanel charge
@@ -1887,28 +1888,28 @@
 # #         topic: "wallpanel/digma801/command"
 # #         payload: '{"clearCache": true,"relaunch": true,"reload": true,"brightness": 200}'
 
-# # ##################################
-# # System - New Device Found
-# # ##################################
-# - alias: system_config_entry_discovery
-#   id: system_config_entry_discovery
-#   mode: single
-#   max_exceeded: silent
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: persistent_notification.config_entry_discovery
-#       to: "notifying"
-#   condition:
-#     - condition: template
-#       value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001F4DF Найдено новое устройство!"
-#     # - service: persistent_notification.dismiss
-#     #   data:
-#     #     notification_id: 'config_entry_discovery'
+# ##################################
+# System - New Device Found
+# ##################################
+- alias: system_config_entry_discovery
+  id: system_config_entry_discovery
+  mode: single
+  max_exceeded: silent
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: persistent_notification.config_entry_discovery
+      to: "notifying"
+  condition:
+    - condition: template
+      value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0001F4DF Найдено новое устройство!"
+    # - service: persistent_notification.dismiss
+    #   data:
+    #     notification_id: 'config_entry_discovery'
 
 # # ##################################
 # # System - Cert Validity Check
@@ -2487,42 +2488,42 @@
 #     - service: timer.start
 #       entity_id: timer.kiosk_restart_manual
 
-# # ##################################
-# # System - System Repair Event Notify
-# # ##################################
-# - alias: system_repair_event_notify
-#   id: system_repair_event_notify
-#   initial_state: true
-#   mode: queued
-#   max: 50
-#   max_exceeded: silent
-#   trigger:
-#     - platform: event
-#       event_type: repairs_issue_registry_updated
-#       event_data:
-#         action: create
-#   action:
-#     - service: notify.telegram
-#       data:
-#         message: "\U0001F41B Проблема в <b>{{ trigger.event.data.domain | e }}</b>, детали: <b>{{ trigger.event.data.issue_id | e }}</b>"
+# ##################################
+# System - System Repair Event Notify
+# ##################################
+- alias: system_repair_event_notify
+  id: system_repair_event_notify
+  initial_state: true
+  mode: queued
+  max: 50
+  max_exceeded: silent
+  trigger:
+    - platform: event
+      event_type: repairs_issue_registry_updated
+      event_data:
+        action: create
+  action:
+    - service: notify.telegram
+      data:
+        message: "\U0001F41B Проблема в <b>{{ trigger.event.data.domain | e }}</b>, детали: <b>{{ trigger.event.data.issue_id | e }}</b>"
 
-# # ##################################
-# # System - System Repair Sensor Update
-# # ##################################
-# - alias: system_repair_sensor_update
-#   id: system_repair_sensor_update
-#   mode: restart
-#   trigger:
-#     - platform: event
-#       event_type: repairs_issue_registry_updated
-#       event_data:
-#         action: create
-#     - platform: homeassistant
-#       event: start
-#   action:
-#     - service: homeassistant.update_entity
-#       data:
-#         entity_id: sensor.repairs_state
+# ##################################
+# System - System Repair Sensor Update
+# ##################################
+- alias: system_repair_sensor_update
+  id: system_repair_sensor_update
+  mode: restart
+  trigger:
+    - platform: event
+      event_type: repairs_issue_registry_updated
+      event_data:
+        action: create
+    - platform: homeassistant
+      event: start
+  action:
+    - service: homeassistant.update_entity
+      data:
+        entity_id: sensor.repairs_state
 
 # # ##################################
 # # System - Digma100 Cam Restart
@@ -2552,23 +2553,23 @@
 # #     - service: switch.turn_on
 # #       entity_id: switch.digma_strip_hb_relay2
 
-# # ##################################
-# # System - DAy\Night toggle
-# # ##################################
-# - alias: system_day_night_switch
-#   id: system_day_night_switch
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.tod_day
-#       to: 'on'
-#   condition:
-#     - condition: state
-#       entity_id: switch.system_security_mode
-#       state: 'off'
-#   action:
-#     - service: switch.turn_off
-#       entity_id: switch.system_silent_mode
+# ##################################
+# System - DAy\Night toggle
+# ##################################
+- alias: system_day_night_switch
+  id: system_day_night_switch
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.tod_day
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.system_security_mode
+      state: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.system_silent_mode
       
       
 # # ##################################

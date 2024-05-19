@@ -184,13 +184,13 @@
 #     step: 1
 #     icon: mdi:fan
 
-#   main_volume:
-#     name: Main Volume
-#     mode: slider
-#     min: 0.0
-#     max: 1.0
-#     step: 0.05
-#     icon: mdi:volume-high
+  main_volume:
+    name: Main Volume
+    mode: slider
+    min: 0.0
+    max: 1.0
+    step: 0.05
+    icon: mdi:volume-high
 
 #   tts_volume:
 #     name: TTS Volume
@@ -300,12 +300,12 @@
 #     step: 1
 #     mode: box
     
-#   main_door_open:
-#     name: Main Door Open
-#     min: 0
-#     max: 999999999999999999
-#     step: 1
-#     mode: box
+  main_door_open:
+    name: Main Door Open
+    min: 0
+    max: 999999999999999999
+    step: 1
+    mode: box
 
 # # Energy
 #   power_meter_last_month_t1:

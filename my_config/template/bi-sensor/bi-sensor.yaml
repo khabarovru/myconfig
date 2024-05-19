@@ -323,7 +323,7 @@
   
   # # sandra_home:
   # #   friendly_name: Sandra home
-  # #   value_template: "{{is_state('person.sandra','home')}}"
+  # #   value_template: "{{is_state('person.zhenyash','home')}}"
   # #   delay_off: 120
   
   # # - name: Main Switch K Button

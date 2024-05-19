@@ -1,12 +1,12 @@
-  # cors_allowed_origins:
-  #   - https://google.com
-  #   - https://www.home-assistant.io
-  # ip_ban_enabled: true
-  # login_attempts_threshold: 3
-  # use_x_forwarded_for: true
-  # trusted_proxies:
-  #   - 172.30.32.0/24
-  #   - 172.30.33.0/24
-  #   - 192.168.1.26/32
-  #   - 192.168.1.46/32
-  #   - 192.168.1.14/32
+  cors_allowed_origins:
+    - https://google.com
+    - https://www.home-assistant.io
+  ip_ban_enabled: true
+  login_attempts_threshold: 3
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.32.0/24
+    - 172.30.33.0/24
+    - 192.168.1.26/32
+    - 192.168.1.46/32
+    - 192.168.1.14/32

@@ -1,9 +1,26 @@
-  # devices_to_turnoff:
-  #   name: Devices to Auto Turn Off
-  #   entities:
-  #     # Toilet
-  #     - switch.0x00158d0002a36f7f_channel_1
-  #     - climate.sonoff_pow_r2_2_wall_heater
+    # devices_to_turnoff:
+    #   name: Devices to Auto Turn Off
+    #   # entity_id: devices_to_turnoff
+    #   entities:
+    #     - light.hall_strip
+    #     - switch.hall_light_l1
+    #     - fan.bathroom_light_l2
+    #     - light.bathroom_strip
+    #     - switch.bathroom_light_l1
+    #     - light.livingroom_girland
+    #     - light.dve_lamp
+    #     - light.device7ec3a2
+    #     - switch.livingroom_light_l1
+    #     - light.kitchen_strip
+    #     - switch.kitchen_light_l1
+    #     - light.yeelight_stripe_0x5ec3ac2
+    #     - switch.bedroom_light
+    #     - switch.kidroom_light
+    # name: Devices to Auto Turn Off
+    # entities:
+    #   # Toilet
+    #   - switch.0x00158d0002a36f7f_channel_1
+    #   - climate.sonoff_pow_r2_2_wall_heater
   #     # Kitchen
   #     - light.round_led_k
   #     - light.round_led_k_ambilight
@@ -105,8 +122,8 @@
   # persons:
   #   name: Persons
   #   entities:
-  #     - person.dima
-  #     - person.sandra
+  #     - person.khabarovru
+  #     - person.zhenyash
   #     - person.vova
   #     - person.sasha
   #     - person.elena

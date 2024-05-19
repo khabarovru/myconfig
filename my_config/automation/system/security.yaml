@@ -1,128 +1,128 @@
-# # ##################################
-# # Security - Everybody Out 1min
-# # ##################################
-#   - alias: security_everybody_out_1min
-#     id: security_everybody_out_1min
-#     initial_state: true
-#     trigger:
-#       - platform: state
-#         entity_id: binary_sensor.family_home
-#         to: 'off'
-#         for:
-#           minutes: 1
-#     # condition:
-#     #   - condition: state
-#     #     entity_id: switch.guestmode
-#     #     state: 'off'
-#     action:
-#       - service: notify.mobile_app_iphone_14_pro_dtsymbal
-#         data:
-#           message: Включение режима охраны через 1 минуту!
-#           title: Никого нет дома!
-#           data:
-#             actions: 
-#               - action: guestmode
-#                 title: Гостевой режим
-#                 authenticationRequired: false
-#                 activationMode: background
-#                 icon: "sfsymbols:person.circle.fill"
+# ##################################
+# Security - Everybody Out 1min
+# ##################################
+  - alias: security_everybody_out_1min
+    id: security_everybody_out_1min
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.family_home
+        to: 'off'
+        for:
+          minutes: 1
+    # condition:
+    #   - condition: state
+    #     entity_id: switch.guestmode
+    #     state: 'off'
+    action:
+      - service: notify.mobile_app_denis_phone
+        data:
+          message: Включение режима охраны через 1 минуту!
+          title: Никого нет дома!
+          data:
+            actions: 
+              - action: guestmode
+                title: Гостевой режим
+                authenticationRequired: false
+                activationMode: background
+                icon: "sfsymbols:person.circle.fill"
 
 
-# # ##################################
-# # Security - Everybody Out 1min - Mobile App Reply
-# # ##################################
-#   - alias: security_everybody_out_reply_from_app
-#     id: security_everybody_out_reply_from_app
-#     initial_state: true
-#     trigger:
-#       - platform: event
-#         event_type: mobile_app_notification_action
-#         event_data:
-#           action: "guestmode"
-#     action:
-#       - service: switch.turn_on
-#         entity_id: switch.system_guest_mode
+# ##################################
+# Security - Everybody Out 1min - Mobile App Reply
+# ##################################
+  - alias: security_everybody_out_reply_from_app
+    id: security_everybody_out_reply_from_app
+    initial_state: true
+    trigger:
+      - platform: event
+        event_type: mobile_app_notification_action
+        event_data:
+          action: "guestmode"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.system_guest_mode
 
-# # ##################################
-# # Security - Wrapper
-# # ##################################
-#   - alias: security_wrapper
-#     id: security_wrapper
-#     initial_state: true
-#     trigger:
-#       - platform: state
-#         entity_id: binary_sensor.family_home
-#         to: 'off'
-#         for:
-#           minutes: 2
-#         id: 'to_on'
-#       - platform: state
-#         entity_id: binary_sensor.family_home
-#         to: 'on'
-#         for:
-#           seconds: 15
-#         id: 'to_off'
-#     condition:
-#       - condition: state
-#         entity_id: switch.system_guest_mode
-#         state: 'off'
-#     action:
-#       - choose:
-#           - conditions:
-#               - condition: trigger
-#                 id: 'to_on'
-#             sequence:
-#               - service: switch.turn_on
-#                 entity_id: switch.system_security_mode
-#           - conditions:
-#               - condition: trigger
-#                 id: 'to_off'
-#             sequence:
-#               - service: switch.turn_off
-#                 entity_id: switch.system_security_mode, switch.system_guest_mode
-#       - delay:
-#           seconds: 3
-#       - service: notify.telegram
-#         data:
-#           message: "\U0001f46e Режим охраны {{ iif(is_state('switch.system_security_mode','off'), 'выключен!', 'включен!', '')}}"
+# ##################################
+# Security - Wrapper
+# ##################################
+  - alias: security_wrapper
+    id: security_wrapper
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.family_home
+        to: 'off'
+        for:
+          minutes: 2
+        id: 'to_on'
+      - platform: state
+        entity_id: binary_sensor.family_home
+        to: 'on'
+        for:
+          seconds: 15
+        id: 'to_off'
+    condition:
+      - condition: state
+        entity_id: switch.system_guest_mode
+        state: 'off'
+    action:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: 'to_on'
+            sequence:
+              - service: switch.turn_on
+                entity_id: switch.system_security_mode
+          - conditions:
+              - condition: trigger
+                id: 'to_off'
+            sequence:
+              - service: switch.turn_off
+                entity_id: switch.system_security_mode, switch.system_guest_mode
+      - delay:
+          seconds: 3
+      - service: notify.telegram
+        data:
+          message: "\U0001f46e Режим охраны {{ iif(is_state('switch.system_security_mode','off'), 'выключен!', 'включен!', '')}}"
 
-# # ##################################
-# # Security - Turn  On
-# # ##################################
-#   - alias: security_state_change
-#     id: security_state_change
-#     initial_state: true
-#     trigger:
-#       - platform: state
-#         entity_id: switch.system_security_mode
-#         to:
-#         for:
-#           seconds: 15
-#     action:
-#       - choose:
-#           - conditions:
-#               - condition: state 
-#                 entity_id: switch.system_security_mode
-#                 state: 'on'
-#             sequence:
-#               - service: notify.telegram
-#                 data:
-#                   message: "\U0001F3e2 Никого нет дома, выключаем освещение!"
-#               - service: script.turn_on
-#                 entity_id: script.away_mode_on
-#               - service: notify.telegram
-#                 data:
-#                   message: "\U0001f514 Освещение выключено!"
-#           - conditions:
-#               - condition: state 
-#                 entity_id: switch.system_security_mode
-#                 state: 'off'
-#             sequence:
-#               - service: input_boolean.turn_off
-#                 data:
-#                   entity_id: switch.system_security_mode
-#               - service: script.turn_on
-#                 entity_id: script.away_mode_off
+# ##################################
+# Security - Turn  On
+# ##################################
+  - alias: security_state_change
+    id: security_state_change
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: switch.system_security_mode
+        to:
+        for:
+          seconds: 15
+    action:
+      - choose:
+          - conditions:
+              - condition: state 
+                entity_id: switch.system_security_mode
+                state: 'on'
+            sequence:
+              - service: notify.telegram
+                data:
+                  message: "\U0001F3e2 Никого нет дома, выключаем освещение!"
+              - service: script.turn_on
+                entity_id: script.away_mode_on
+              - service: notify.telegram
+                data:
+                  message: "\U0001f514 Освещение выключено!"
+          - conditions:
+              - condition: state 
+                entity_id: switch.system_security_mode
+                state: 'off'
+            sequence:
+              - service: input_boolean.turn_off
+                data:
+                  entity_id: switch.system_security_mode
+              - service: script.turn_on
+                entity_id: script.away_mode_off
 
 # # ##################################
 # # Security - Sensors State change

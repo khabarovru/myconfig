@@ -107,10 +107,10 @@
 #     max_exceeded: silent
 #     trigger:
 #       - platform: state
-#         entity_id: person.sandra
+#         entity_id: person.zhenyash
 #         to: 'home'
 #       - platform: state
-#         entity_id: person.sandra
+#         entity_id: person.zhenyash
 #         from: 'home'
 #       # - platform: homeassistant
 #       #   event: start
@@ -129,7 +129,7 @@
 #       - choose:
 #           - conditions:
 #               - condition: state
-#                 entity_id: person.sandra
+#                 entity_id: person.zhenyash
 #                 state: 'home'
 #             sequence:
 #               - service: fan.turn_on
@@ -143,7 +143,7 @@
 #               - condition: not
 #                 conditions:
 #                   - condition: state
-#                     entity_id: person.sandra
+#                     entity_id: person.zhenyash
 #                     state: 'home'
 #             sequence:
 #               - service: fan.turn_off

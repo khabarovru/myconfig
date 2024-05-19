@@ -1,7 +1,15 @@
-  # # guest_mode:
-  # #   name: Guest Mode
-  # #   icon: mdi:account-question
-
+  system_guest_mode:
+    name: system guest mode
+    icon: mdi:account-question
+  system_security_mode:
+    name: system security mode
+    icon: mdi:account-question
+  system_silent_mode:
+    name: system silent mode
+    icon: mdi:account-question
+  system_dark_mode:
+    name: system dark mode
+    icon: mdi:account-question
   # dima_business_trip:
   #   name: Dima Business Trip
   #   icon: mdi:airplane-clock
