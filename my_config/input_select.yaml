@@ -1,226 +1,226 @@
-  room_selector:
-    name: Room Selector
-    options:
-      - Большая комната
-      - Средняя комната
-      - Спальня
-      - Кухня
-      - Корридор
-    icon: mdi:form-select
+#   room_selector:
+#     name: Room Selector
+#     options:
+#       - Большая комната
+#       - Средняя комната
+#       - Спальня
+#       - Кухня
+#       - Корридор
+#     icon: mdi:form-select
 
-  breather_v_auto_mode:
-    name: Breather V Auto Mode
-    options:
-      - Idle
-      - Auto
-      - Fixed
-    icon: mdi:fan
+#   breather_v_auto_mode:
+#     name: Breather V Auto Mode
+#     options:
+#       - Idle
+#       - Auto
+#       - Fixed
+#     icon: mdi:fan
 
-  calendar_events_list:
-    name: Calendar Events
-    options:
-      - Нет событий
-    icon: mdi:calendar
+#   calendar_events_list:
+#     name: Calendar Events
+#     options:
+#       - Нет событий
+#     icon: mdi:calendar
 
-  calendar_holiday_events_list:
-    name: Calendar Holiday Events
-    options:
-      - Нет событий
-    icon: mdi:calendar
+#   calendar_holiday_events_list:
+#     name: Calendar Holiday Events
+#     options:
+#       - Нет событий
+#     icon: mdi:calendar
 
-  dima_status_dropdown:
-    name: Dima
-    options:
-      - Home
-      - Just Arrived
-      - Just Left
-      - Away
-      - Extended Away
+#   dima_status_dropdown:
+#     name: Dima
+#     options:
+#       - Home
+#       - Just Arrived
+#       - Just Left
+#       - Away
+#       - Extended Away
 
-  sandra_status_dropdown:
-    name: Sandra
-    options:
-      - Home
-      - Just Arrived
-      - Just Left
-      - Away
-      - Extended Away
+#   sandra_status_dropdown:
+#     name: Sandra
+#     options:
+#       - Home
+#       - Just Arrived
+#       - Just Left
+#       - Away
+#       - Extended Away
 
-  vova_status_dropdown:
-    name: Vova
-    options:
-      - Home
-      - Just Arrived
-      - Just Left
-      - Away
-      - Extended Away
+#   vova_status_dropdown:
+#     name: Vova
+#     options:
+#       - Home
+#       - Just Arrived
+#       - Just Left
+#       - Away
+#       - Extended Away
 
-  sasha_status_dropdown:
-    name: Sasha
-    options:
-      - Home
-      - Just Arrived
-      - Just Left
-      - Away
-      - Extended Away
+#   sasha_status_dropdown:
+#     name: Sasha
+#     options:
+#       - Home
+#       - Just Arrived
+#       - Just Left
+#       - Away
+#       - Extended Away
 
-  home_mode:
-    name: Home Mode
-    icon: mdi:home-account
-    options:
-      - Home
-      - Away
-      - Returning
-      - Vacation
+#   home_mode:
+#     name: Home Mode
+#     icon: mdi:home-account
+#     options:
+#       - Home
+#       - Away
+#       - Returning
+#       - Vacation
 
-  dishwasher:
-    name: This Day Dishwasher
-    options:
-      - Vova
-      - Sasha
-    icon: mdi:disqus
+#   dishwasher:
+#     name: This Day Dishwasher
+#     options:
+#       - Vova
+#       - Sasha
+#     icon: mdi:disqus
 
-  breazer_timer:
-    name: Breather V Timer
-    options:
-      - '15'
-      - '30'
-      - '45'
-      - '60'
-    #unit_of_measurement: min
-    icon: mdi:av-timer
+#   breazer_timer:
+#     name: Breather V Timer
+#     options:
+#       - '15'
+#       - '30'
+#       - '45'
+#       - '60'
+#     #unit_of_measurement: min
+#     icon: mdi:av-timer
 
-  oven_target_temperature:
-    name: Oven Target Temperature
-    options:
-      - '0'
-      - '160'
-      - '180'
-      - '200'
-      - '220'
-      - '240'
-    #initial: '180'
-    icon: mdi:temperature-celsius
+#   oven_target_temperature:
+#     name: Oven Target Temperature
+#     options:
+#       - '0'
+#       - '160'
+#       - '180'
+#       - '200'
+#       - '220'
+#       - '240'
+#     #initial: '180'
+#     icon: mdi:temperature-celsius
     
-  washer_state:
-    name: Washing machine state
-    options:
-      - Idle
-      - Washing
-      - Drying
-      - Pause
-    icon: mdi:washing-machine
+#   washer_state:
+#     name: Washing machine state
+#     options:
+#       - Idle
+#       - Washing
+#       - Drying
+#       - Pause
+#     icon: mdi:washing-machine
 
-  # zigbee2mqtt_log_level:
-  #   name: Zigbee2mqtt Log Level
-  #   options:
-  #     - debug
-  #     - info
-  #     - warn
-  #     - error
-  #   initial: debug
-  #   icon: mdi:format-list-bulleted
+#   # zigbee2mqtt_log_level:
+#   #   name: Zigbee2mqtt Log Level
+#   #   options:
+#   #     - debug
+#   #     - info
+#   #     - warn
+#   #     - error
+#   #   initial: debug
+#   #   icon: mdi:format-list-bulleted
 
-  # zigbee2mqtt2_log_level:
-  #   name: Zigbee2mqtt2 Log Level
-  #   options:
-  #     - debug
-  #     - info
-  #     - warn
-  #     - error
-  #   initial: debug
-  #   icon: mdi:format-list-bulleted    
+#   # zigbee2mqtt2_log_level:
+#   #   name: Zigbee2mqtt2 Log Level
+#   #   options:
+#   #     - debug
+#   #     - info
+#   #     - warn
+#   #     - error
+#   #   initial: debug
+#   #   icon: mdi:format-list-bulleted    
     
-  radio_station:
-    name: 'Select Radio Station:'
-    options:
-      - Русское радио
-      - Шансон
-      - Ретро FM
-      - Детское радио
-      - Детское радио 2
-      - Camedy Радио
-      - Наше радио
-      - Babbling brook sounds
-      - Oscillating fan sounds
-      - Fireplace sounds
-      - Forest sounds
-      - Country night sounds
-      - Ocean sounds
-      - Rain sounds
-      - River sounds
-      - Thunderstorm sounds
-      - White noise
-    #initial: Детское радио
+#   radio_station:
+#     name: 'Select Radio Station:'
+#     options:
+#       - Русское радио
+#       - Шансон
+#       - Ретро FM
+#       - Детское радио
+#       - Детское радио 2
+#       - Camedy Радио
+#       - Наше радио
+#       - Babbling brook sounds
+#       - Oscillating fan sounds
+#       - Fireplace sounds
+#       - Forest sounds
+#       - Country night sounds
+#       - Ocean sounds
+#       - Rain sounds
+#       - River sounds
+#       - Thunderstorm sounds
+#       - White noise
+#     #initial: Детское радио
 
-  chromecast_radio:
-    name: 'Select Speakers:'
-    options:
-      - Kitchen
-      - Sasha room
-      - Vova room
-      - Master Bedroom
-      - MPD
-      - Hall big
-    icon: mdi:speaker-wireless
+#   chromecast_radio:
+#     name: 'Select Speakers:'
+#     options:
+#       - Kitchen
+#       - Sasha room
+#       - Vova room
+#       - Master Bedroom
+#       - MPD
+#       - Hall big
+#     icon: mdi:speaker-wireless
     
-  main_audio_out:
-    name: 'Select Speaker:'
-    options:
-      - yandex_hb
-      - yandex_k
-      - yandex_s
-      - yandex_v
-      - yandex_mb
-      - yandex_b
-    #initial: yandex_hb
-    icon: mdi:speaker-wireless
+#   main_audio_out:
+#     name: 'Select Speaker:'
+#     options:
+#       - yandex_hb
+#       - yandex_k
+#       - yandex_s
+#       - yandex_v
+#       - yandex_mb
+#       - yandex_b
+#     #initial: yandex_hb
+#     icon: mdi:speaker-wireless
 
-  tts_audio_out:
-    name: 'TTS Speaker:'
-    options:
-      - yandex_hb
-      - yandex_k
-      - yandex_s
-      - yandex_v
-      - yandex_mb
-      - yandex_b
-    icon: mdi:speaker
+#   tts_audio_out:
+#     name: 'TTS Speaker:'
+#     options:
+#       - yandex_hb
+#       - yandex_k
+#       - yandex_s
+#       - yandex_v
+#       - yandex_mb
+#       - yandex_b
+#     icon: mdi:speaker
 
-  tts_audio_mode:
-    name: 'TTS Audio Mode:'
-    options:
-      - Текст
-      - Команда
-      - Вопрос
-    icon: mdi:speaker
+#   tts_audio_mode:
+#     name: 'TTS Audio Mode:'
+#     options:
+#       - Текст
+#       - Команда
+#       - Вопрос
+#     icon: mdi:speaker
 
-  tts_audio_effect:
-    name: 'TTS Audio Effect:'
-    options:
-      - Нет
-      - За стеной
-      - Хомяк
-      - Мегафон
-      - Питч
-      - Психоделика
-      - Пульсация
-      - Вокзал
-    icon: mdi:speaker-message
+#   tts_audio_effect:
+#     name: 'TTS Audio Effect:'
+#     options:
+#       - Нет
+#       - За стеной
+#       - Хомяк
+#       - Мегафон
+#       - Питч
+#       - Психоделика
+#       - Пульсация
+#       - Вокзал
+#     icon: mdi:speaker-message
 
 
-# - behind_the_wall
-# - hamster
-# - megaphone
-# - pitch_down
-# - psychodelic
-# - pulse
-# - train_announce
-  # fan_mode:
-  #   name: Fan Mode
-  #   options:
-  #     - M
-  #     - A
-  #     - F
-  #     - S
-  #   icon: mdi:fan
+# # - behind_the_wall
+# # - hamster
+# # - megaphone
+# # - pitch_down
+# # - psychodelic
+# # - pulse
+# # - train_announce
+#   # fan_mode:
+#   #   name: Fan Mode
+#   #   options:
+#   #     - M
+#   #     - A
+#   #     - F
+#   #     - S
+#   #   icon: mdi:fan

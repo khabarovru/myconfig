@@ -1,19 +1,19 @@
-#   - name: developer-tools/yaml
-#     sidebar_title: YAML
-#     sidebar_icon: mdi:code-json
+# #   - name: developer-tools/yaml
+# #     sidebar_title: YAML
+# #     sidebar_icon: mdi:code-json
+# #     module_url: dummy
+
+#   - name: config/integrations
+#     sidebar_title: Integrations
+#     sidebar_icon: mdi:puzzle
 #     module_url: dummy
 
-  - name: config/integrations
-    sidebar_title: Integrations
-    sidebar_icon: mdi:puzzle
-    module_url: dummy
+#   - name: hassio/dashboard
+#     sidebar_title: Addons
+#     sidebar_icon: mdi:home-assistant
+#     module_url: dummy    
 
-  - name: hassio/dashboard
-    sidebar_title: Addons
-    sidebar_icon: mdi:home-assistant
-    module_url: dummy    
-
-  # - namme: 'https://materialdesignicons.com/cdn/5.7.55/'
-  #   sidebar_title: MDI
-  #   sidebar_icon: mdi:material-design
-  #   module_url: dummy
+#   # - namme: 'https://materialdesignicons.com/cdn/5.7.55/'
+#   #   sidebar_title: MDI
+#   #   sidebar_icon: mdi:material-design
+#   #   module_url: dummy

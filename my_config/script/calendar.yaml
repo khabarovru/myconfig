@@ -1,74 +1,74 @@
-calendar_events:
-    alias: Calendar Events
-    description: "Returns calendar events within a day of the specified date."
-    fields:
-      calendar:
-        name: "Target"
-        description: "Calendar from which we receive events."
-        example: "calendar.contacts"
-        required: true
-        selector:
-          entity:
-            filter:
-              domain: calendar
-      date_start:
-        name: "Start Date"
-        description: "The date or date time the event starts."
-        example: "2023-08-24 00:00:00"
-        selector:
-          datetime:
-      remove:
-        name: "Text to be removed"
-        description: "Text to be removed from calendar events."
-        example: "some text"
-        default: ""
-        selector:
-          text:
-      make_choice:
-        name: "Make a choice"
-        description: "If selected, then parse by the word of choice."
-        default: false
-        selector:
-          boolean:
-      choice_word:
-        name: "Сhoice word"
-        description: "Сhoice word, if empty, then return the summary of the event. If it is specified and the summary starts with the given Choice Word, then return the summary of the event, otherwise the description of the event."
-        example: "some text"
-        default: ""
-        selector:
-          text:
-    sequence:
-      - service: calendar.get_events
-        data:
-          start_date_time: "{{ date_start | default( today_at().strftime('%Y-%m-%d %H:%M:%S') ) }}"
-          duration:
-            hours: 24
-            minutes: 0
-            seconds: 0
-        target:
-          entity_id: "{{ calendar }}"
-        response_variable: calendar_events
-      - variables:
-          result: |-
-            {% set ns = namespace(events={}) %}
-            {% for calendar in calendar_events.values() %}
-              {% for event in calendar.events %}
-                {% set index = loop.index | string %}
-                {% if not make_choice | default(false) %}
-                  {% set value = event.summary %}
-                {% else %}
-                  {% set cns = namespace(choice=false) -%}
-                  {% for word in choice_word.split("|") %}
-                    {% set cns.choice = cns.choice or event.summary.startswith(word) %}
-                  {% endfor %}
-                  {% set value = event.summary if cns.choice else event.description %}
-                {% endif %}
-                {% set value = value | replace(remove | default(''), '') %}
-                {% set ns.events = dict(ns.events, **{ index : value }) %}
-              {% endfor %}
-            {% endfor %}
-            {{ ns.events }}
-      - stop: Success
-        response_variable: result
-    icon: mdi:calendar-alert-outline
-    mode: single
+# calendar_events:
+#     alias: Calendar Events
+#     description: "Returns calendar events within a day of the specified date."
+#     fields:
+#       calendar:
+#         name: "Target"
+#         description: "Calendar from which we receive events."
+#         example: "calendar.contacts"
+#         required: true
+#         selector:
+#           entity:
+#             filter:
+#               domain: calendar
+#       date_start:
+#         name: "Start Date"
+#         description: "The date or date time the event starts."
+#         example: "2023-08-24 00:00:00"
+#         selector:
+#           datetime:
+#       remove:
+#         name: "Text to be removed"
+#         description: "Text to be removed from calendar events."
+#         example: "some text"
+#         default: ""
+#         selector:
+#           text:
+#       make_choice:
+#         name: "Make a choice"
+#         description: "If selected, then parse by the word of choice."
+#         default: false
+#         selector:
+#           boolean:
+#       choice_word:
+#         name: "Сhoice word"
+#         description: "Сhoice word, if empty, then return the summary of the event. If it is specified and the summary starts with the given Choice Word, then return the summary of the event, otherwise the description of the event."
+#         example: "some text"
+#         default: ""
+#         selector:
+#           text:
+#     sequence:
+#       - service: calendar.get_events
+#         data:
+#           start_date_time: "{{ date_start | default( today_at().strftime('%Y-%m-%d %H:%M:%S') ) }}"
+#           duration:
+#             hours: 24
+#             minutes: 0
+#             seconds: 0
+#         target:
+#           entity_id: "{{ calendar }}"
+#         response_variable: calendar_events
+#       - variables:
+#           result: |-
+#             {% set ns = namespace(events={}) %}
+#             {% for calendar in calendar_events.values() %}
+#               {% for event in calendar.events %}
+#                 {% set index = loop.index | string %}
+#                 {% if not make_choice | default(false) %}
+#                   {% set value = event.summary %}
+#                 {% else %}
+#                   {% set cns = namespace(choice=false) -%}
+#                   {% for word in choice_word.split("|") %}
+#                     {% set cns.choice = cns.choice or event.summary.startswith(word) %}
+#                   {% endfor %}
+#                   {% set value = event.summary if cns.choice else event.description %}
+#                 {% endif %}
+#                 {% set value = value | replace(remove | default(''), '') %}
+#                 {% set ns.events = dict(ns.events, **{ index : value }) %}
+#               {% endfor %}
+#             {% endfor %}
+#             {{ ns.events }}
+#       - stop: Success
+#         response_variable: result
+#     icon: mdi:calendar-alert-outline
+#     mode: single

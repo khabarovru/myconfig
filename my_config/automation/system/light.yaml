@@ -1,105 +1,105 @@
-# #####################################################################################
-#
-# System - Lights
-#
-# #####################################################################################
-# System - Single person at home light control
-# ##################################
-# - alias: system_single_person_at_home_light_control
-#   initial_state: false
-#   trigger:
-#     - platform: state
-#       entity_id: 
-#         - light.square_led_v
-#         - light.round_led_k
-#         - light.round_led_mb
-#         - light.square_led_s
-#       from: 'off'
-#       to: 'on'
-#   condition:
-#     - condition: template
-#       value_template: "{{ states('sensor.people_home')|int(0) == 1 }}"
-#   action:
-#     - service: light.turn_off
-#       data:
-#         entity_id: > 
-#           {{ states.light | map(attribute='entity_id') | select('ne',trigger.entity_id) | join(', ') }}
+# # #####################################################################################
+# #
+# # System - Lights
+# #
+# # #####################################################################################
+# # System - Single person at home light control
+# # ##################################
+# # - alias: system_single_person_at_home_light_control
+# #   initial_state: false
+# #   trigger:
+# #     - platform: state
+# #       entity_id: 
+# #         - light.square_led_v
+# #         - light.round_led_k
+# #         - light.round_led_mb
+# #         - light.square_led_s
+# #       from: 'off'
+# #       to: 'on'
+# #   condition:
+# #     - condition: template
+# #       value_template: "{{ states('sensor.people_home')|int(0) == 1 }}"
+# #   action:
+# #     - service: light.turn_off
+# #       data:
+# #         entity_id: > 
+# #           {{ states.light | map(attribute='entity_id') | select('ne',trigger.entity_id) | join(', ') }}
 
 
 
-# ##################################
-# System - Light Control with intents
-# ##################################
-  - alias: system_light_control
-    id: system_light_control
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: yandex_intent
-        event_data:
-          text: Включи свет
-        id: 'to_on_alice'
-      # - platform: event
-      #   event_type: yandex_intent
-      #   event_data:
-      #     text: Выключи свет
-      #   id: 'to_off_alice'
-    condition:
-      - condition: state
-        entity_id: switch.system_security_mode
-        state: 'off'
-    action:
-      - choose:
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_mb' }}"
-            sequence:
-              - service: light.turn_on
-                entity_id: light.round_led_mb
-                data:
-                  brightness: 230
-                  kelvin: 5000
+# # ##################################
+# # System - Light Control with intents
+# # ##################################
+#   - alias: system_light_control
+#     id: system_light_control
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: yandex_intent
+#         event_data:
+#           text: Включи свет
+#         id: 'to_on_alice'
+#       # - platform: event
+#       #   event_type: yandex_intent
+#       #   event_data:
+#       #     text: Выключи свет
+#       #   id: 'to_off_alice'
+#     condition:
+#       - condition: state
+#         entity_id: switch.system_security_mode
+#         state: 'off'
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: template
+#                 value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_mb' }}"
+#             sequence:
+#               - service: light.turn_on
+#                 entity_id: light.round_led_mb
+#                 data:
+#                   brightness: 230
+#                   kelvin: 5000
 
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_s' }}"
-            sequence:
-              - service: light.turn_on
-                entity_id: light.square_led_s
-                data:
-                  brightness: 230
-                  kelvin: 5000
+#           - conditions:
+#               - condition: template
+#                 value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_s' }}"
+#             sequence:
+#               - service: light.turn_on
+#                 entity_id: light.square_led_s
+#                 data:
+#                   brightness: 230
+#                   kelvin: 5000
 
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_v' }}"
-            sequence:
-              - service: light.turn_on
-                entity_id: light.square_led_v
-                data:
-                  brightness: 230
-                  kelvin: 5000
+#           - conditions:
+#               - condition: template
+#                 value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_v' }}"
+#             sequence:
+#               - service: light.turn_on
+#                 entity_id: light.square_led_v
+#                 data:
+#                   brightness: 230
+#                   kelvin: 5000
                 
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_k' }}"
-            sequence:
-              - service: light.turn_on
-                entity_id: light.round_led_k
-                data:
-                  brightness: 230
-                  kelvin: 5000
+#           - conditions:
+#               - condition: template
+#                 value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_k' }}"
+#             sequence:
+#               - service: light.turn_on
+#                 entity_id: light.round_led_k
+#                 data:
+#                   brightness: 230
+#                   kelvin: 5000
 
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_hb' }}"
-            sequence:
-              - service: switch.turn_on
-                entity_id: switch.0x00158d000223921b_channel_1
+#           - conditions:
+#               - condition: template
+#                 value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_hb' }}"
+#             sequence:
+#               - service: switch.turn_on
+#                 entity_id: switch.0x00158d000223921b_channel_1
 
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_b' }}"
-            sequence:
-              - service: switch.turn_on
-                entity_id: switch.0x00158d0002a36433_channel_2
+#           - conditions:
+#               - condition: template
+#                 value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_b' }}"
+#             sequence:
+#               - service: switch.turn_on
+#                 entity_id: switch.0x00158d0002a36433_channel_2

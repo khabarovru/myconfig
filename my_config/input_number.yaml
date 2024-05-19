@@ -1,561 +1,561 @@
 
-  tv_delay:
-    name: TV Delay
-    mode: box
-    min: 5
-    max: 60
-    step: 5
-    unit_of_measurement: 'min'
-    icon: mdi:television-off
+#   tv_delay:
+#     name: TV Delay
+#     mode: box
+#     min: 5
+#     max: 60
+#     step: 5
+#     unit_of_measurement: 'min'
+#     icon: mdi:television-off
 
-  low_speed_for_timer_mode_breather_v:
-    name: Breather V Low Speed For Timer Mode
-    mode: slider
-    min: 0
-    max: 100
-    step: 25
-    unit_of_measurement: '%'
-    icon: mdi:fan-alert
+#   low_speed_for_timer_mode_breather_v:
+#     name: Breather V Low Speed For Timer Mode
+#     mode: slider
+#     min: 0
+#     max: 100
+#     step: 25
+#     unit_of_measurement: '%'
+#     icon: mdi:fan-alert
 
-  high_speed_for_timer_mode_breather_v:
-    name: Breather V High Speed For Timer Mode
-    mode: slider
-    min: 0
-    max: 100
-    step: 25
-    unit_of_measurement: '%'
-    icon: mdi:fan-alert
+#   high_speed_for_timer_mode_breather_v:
+#     name: Breather V High Speed For Timer Mode
+#     mode: slider
+#     min: 0
+#     max: 100
+#     step: 25
+#     unit_of_measurement: '%'
+#     icon: mdi:fan-alert
 
-  co2_low_limit:
-    name: CO2 Low Limit
-    mode: slider
-    min: 400
-    max: 1000
-    step: 100
-    unit_of_measurement: ppm
-    icon: mdi:format-vertical-align-bottom
+#   co2_low_limit:
+#     name: CO2 Low Limit
+#     mode: slider
+#     min: 400
+#     max: 1000
+#     step: 100
+#     unit_of_measurement: ppm
+#     icon: mdi:format-vertical-align-bottom
 
-  co2_high_limit:
-    name: CO2 High Limit
-    mode: slider
-    min: 1000
-    max: 2000
-    step: 100
-    unit_of_measurement: ppm
-    icon: mdi:format-vertical-align-top
+#   co2_high_limit:
+#     name: CO2 High Limit
+#     mode: slider
+#     min: 1000
+#     max: 2000
+#     step: 100
+#     unit_of_measurement: ppm
+#     icon: mdi:format-vertical-align-top
 
-  washing_gel_usage:
-    name: Washing Gel Usage
-    mode: box
-    min: 0
-    max: 500
-    step: 0.01
-    unit_of_measurement: l
-    icon: mdi:bottle-tonic
+#   washing_gel_usage:
+#     name: Washing Gel Usage
+#     mode: box
+#     min: 0
+#     max: 500
+#     step: 0.01
+#     unit_of_measurement: l
+#     icon: mdi:bottle-tonic
 
-  last_action_breather_v:
-    name: Last Action Time Breather V
-    mode: box
-    min: 0
-    max: 999999999999
-    unit_of_measurement: s
-    icon: mdi:av-timer
+#   last_action_breather_v:
+#     name: Last Action Time Breather V
+#     mode: box
+#     min: 0
+#     max: 999999999999
+#     unit_of_measurement: s
+#     icon: mdi:av-timer
 
-  light_temperature_high:
-    name: Light Temperature High
-    mode: box
-    min: 3000
-    max: 6000
-    step: 10
-    unit_of_measurement: 'k'
-    icon: mdi:brightness-5
+#   light_temperature_high:
+#     name: Light Temperature High
+#     mode: box
+#     min: 3000
+#     max: 6000
+#     step: 10
+#     unit_of_measurement: 'k'
+#     icon: mdi:brightness-5
 
-  light_temperature_low:
-    name: Light Temperature Low
-    mode: box
-    min: 3000
-    max: 6000
-    step: 10
-    unit_of_measurement: 'k'
-    icon: mdi:brightness-4
+#   light_temperature_low:
+#     name: Light Temperature Low
+#     mode: box
+#     min: 3000
+#     max: 6000
+#     step: 10
+#     unit_of_measurement: 'k'
+#     icon: mdi:brightness-4
 
-  breather_mb_percentage:
-    name: Breather MB Percentage
-    min: 0
-    max: 100
-    step: 25
-    unit_of_measurement: '%'
+#   breather_mb_percentage:
+#     name: Breather MB Percentage
+#     min: 0
+#     max: 100
+#     step: 25
+#     unit_of_measurement: '%'
 
-  breather_s_percentage:
-    name: Breather S Percentage
-    min: 0
-    max: 100
-    step: 25
-    unit_of_measurement: '%'
+#   breather_s_percentage:
+#     name: Breather S Percentage
+#     min: 0
+#     max: 100
+#     step: 25
+#     unit_of_measurement: '%'
     
-  breather_v_percentage:
-    name: Breather V Percentage
-    min: 0
-    max: 100
-    step: 25
-    unit_of_measurement: '%'
+#   breather_v_percentage:
+#     name: Breather V Percentage
+#     min: 0
+#     max: 100
+#     step: 25
+#     unit_of_measurement: '%'
     
-  ambient_temperature_k:
-    name: Ambient Temperature K
-    min: 15
-    max: 35
-    unit_of_measurement: "°C"
+#   ambient_temperature_k:
+#     name: Ambient Temperature K
+#     min: 15
+#     max: 35
+#     unit_of_measurement: "°C"
     
-  breather_v_run_time:
-    name: Breather V Run Time
-    mode: box
-    min: 0
-    max: 1000000
-    step: 0.01
-    unit_of_measurement: 'h'
-    icon: mdi:progress-clock
+#   breather_v_run_time:
+#     name: Breather V Run Time
+#     mode: box
+#     min: 0
+#     max: 1000000
+#     step: 0.01
+#     unit_of_measurement: 'h'
+#     icon: mdi:progress-clock
 
-  breather_s_run_time:
-    name: Breather S Run Time
-    mode: box
-    min: 0
-    max: 1000000
-    step: 0.01
-    unit_of_measurement: 'h'
-    icon: mdi:progress-clock
+#   breather_s_run_time:
+#     name: Breather S Run Time
+#     mode: box
+#     min: 0
+#     max: 1000000
+#     step: 0.01
+#     unit_of_measurement: 'h'
+#     icon: mdi:progress-clock
     
-  breather_mb_run_time:
-    name: Breather mb Run Time
-    mode: box
-    min: 0
-    max: 1000000
-    step: 0.01
-    unit_of_measurement: 'h'
-    icon: mdi:progress-clock
+#   breather_mb_run_time:
+#     name: Breather mb Run Time
+#     mode: box
+#     min: 0
+#     max: 1000000
+#     step: 0.01
+#     unit_of_measurement: 'h'
+#     icon: mdi:progress-clock
     
-  washer_b_run_time:
-    name: Washer B Run Time
-    mode: box
-    min: 0
-    max: 1000000
-    step: 0.01
-    unit_of_measurement: 'h'
-    icon: mdi:progress-clock
+#   washer_b_run_time:
+#     name: Washer B Run Time
+#     mode: box
+#     min: 0
+#     max: 1000000
+#     step: 0.01
+#     unit_of_measurement: 'h'
+#     icon: mdi:progress-clock
     
-  outside_light_level:
-    name: Outside Light Level Threshold
-    mode: slider
-    min: 0
-    max: 1000
-    step: 5
-    unit_of_measurement: lx
-    icon: mdi:brightness-6
+#   outside_light_level:
+#     name: Outside Light Level Threshold
+#     mode: slider
+#     min: 0
+#     max: 1000
+#     step: 5
+#     unit_of_measurement: lx
+#     icon: mdi:brightness-6
 
-  inside_light_level:
-    name: Inside Light Level Threshold
-    mode: slider
-    min: 0
-    max: 40
-    step: 2
-    unit_of_measurement: lx
-    icon: mdi:brightness-percent
+#   inside_light_level:
+#     name: Inside Light Level Threshold
+#     mode: slider
+#     min: 0
+#     max: 40
+#     step: 2
+#     unit_of_measurement: lx
+#     icon: mdi:brightness-percent
 
-  oven_target_temperature:
-    name: Oven target Temperature
-    mode: slider
-    min: 160
-    max: 250
-    step: 5
-    unit_of_measurement: "°C"
+#   oven_target_temperature:
+#     name: Oven target Temperature
+#     mode: slider
+#     min: 160
+#     max: 250
+#     step: 5
+#     unit_of_measurement: "°C"
     
-  fan_main:
-    name: Main Fan Speed
-    mode: slider
-    min: 0
-    max: 64
-    step: 1
-    icon: mdi:fan
+#   fan_main:
+#     name: Main Fan Speed
+#     mode: slider
+#     min: 0
+#     max: 64
+#     step: 1
+#     icon: mdi:fan
     
-  fan_aux:
-    name: Aux Fan Speed
-    mode: slider
-    min: 0
-    max: 64
-    step: 1
-    icon: mdi:fan
+#   fan_aux:
+#     name: Aux Fan Speed
+#     mode: slider
+#     min: 0
+#     max: 64
+#     step: 1
+#     icon: mdi:fan
 
-  main_volume:
-    name: Main Volume
-    mode: slider
-    min: 0.0
-    max: 1.0
-    step: 0.05
-    icon: mdi:volume-high
+#   main_volume:
+#     name: Main Volume
+#     mode: slider
+#     min: 0.0
+#     max: 1.0
+#     step: 0.05
+#     icon: mdi:volume-high
 
-  tts_volume:
-    name: TTS Volume
-    mode: slider
-    min: 0.0
-    max: 1.0
-    step: 0.1
-    icon: mdi:volume-high
+#   tts_volume:
+#     name: TTS Volume
+#     mode: slider
+#     min: 0.0
+#     max: 1.0
+#     step: 0.1
+#     icon: mdi:volume-high
 
-  temp_volume:
-    name: Temp Volume
-    mode: slider
-    min: 0.0
-    max: 1.0
-    step: 0.1
-    icon: mdi:volume-low
+#   temp_volume:
+#     name: Temp Volume
+#     mode: slider
+#     min: 0.0
+#     max: 1.0
+#     step: 0.1
+#     icon: mdi:volume-low
 
-  fridge_door_open_time:
-    name: Fridge Door Open Time
-    mode: box
-    min: 0
-    max: 999999999999
-    step: 0.01
-    unit_of_measurement: s
-    icon: mdi:av-timer
+#   fridge_door_open_time:
+#     name: Fridge Door Open Time
+#     mode: box
+#     min: 0
+#     max: 999999999999
+#     step: 0.01
+#     unit_of_measurement: s
+#     icon: mdi:av-timer
 
-  freezer_door_open_time:
-    name: Freezer Door Open Time
-    mode: box
-    min: 0
-    max: 999999999999
-    step: 0.01
-    unit_of_measurement: s
-    icon: mdi:av-timer
+#   freezer_door_open_time:
+#     name: Freezer Door Open Time
+#     mode: box
+#     min: 0
+#     max: 999999999999
+#     step: 0.01
+#     unit_of_measurement: s
+#     icon: mdi:av-timer
 
-  vova_gps_delta:
-    name: Vova GPS Delta
-    mode: box
-    min: 0
-    max: 20160
-    step: 0.001
-    unit_of_measurement: 'm'
+#   vova_gps_delta:
+#     name: Vova GPS Delta
+#     mode: box
+#     min: 0
+#     max: 20160
+#     step: 0.001
+#     unit_of_measurement: 'm'
 
-  battery_low_level_zb:
-    name: Battery Low Level ZB
-    mode: slider
-    min: 0
-    max: 100
-    step: 1
-    unit_of_measurement: '%'
-    icon: mdi:battery-alert
+#   battery_low_level_zb:
+#     name: Battery Low Level ZB
+#     mode: slider
+#     min: 0
+#     max: 100
+#     step: 1
+#     unit_of_measurement: '%'
+#     icon: mdi:battery-alert
 
-  battery_low_level_bt:
-    name: Battery Low Level BT
-    mode: slider
-    min: 0
-    max: 100
-    step: 1
-    unit_of_measurement: '%'
-    icon: mdi:battery-alert
+#   battery_low_level_bt:
+#     name: Battery Low Level BT
+#     mode: slider
+#     min: 0
+#     max: 100
+#     step: 1
+#     unit_of_measurement: '%'
+#     icon: mdi:battery-alert
 
-  # automation_current_threshold:
-  #   name: Automation Current Threshold
-  #   mode: slider
-  #   min: 0
-  #   max: 10
-  #   step: 1
-  #   unit_of_measurement: 'ea'
+#   # automation_current_threshold:
+#   #   name: Automation Current Threshold
+#   #   mode: slider
+#   #   min: 0
+#   #   max: 10
+#   #   step: 1
+#   #   unit_of_measurement: 'ea'
     
-  # msg_missed_threshold:
-  #   name: Zigbee Msg Missed Threshold
-  #   mode: slider
-  #   min: 0
-  #   max: 10000
-  #   step: 1
-  #   unit_of_measurement: 'ea'
-  #   icon: mdi:message-bulleted-off
+#   # msg_missed_threshold:
+#   #   name: Zigbee Msg Missed Threshold
+#   #   mode: slider
+#   #   min: 0
+#   #   max: 10000
+#   #   step: 1
+#   #   unit_of_measurement: 'ea'
+#   #   icon: mdi:message-bulleted-off
     
-  sandra_gps_delta:
-    name: Sandra GPS Delta
-    mode: box
-    min: 0
-    max: 20160
-    step: 0.001
-    unit_of_measurement: 'm'
+#   sandra_gps_delta:
+#     name: Sandra GPS Delta
+#     mode: box
+#     min: 0
+#     max: 20160
+#     step: 0.001
+#     unit_of_measurement: 'm'
     
-  dima_gps_delta:
-    name: Dima GPS Delta
-    mode: box
-    min: 0
-    max: 20160
-    step: 0.001
-    unit_of_measurement: 'm'
+#   dima_gps_delta:
+#     name: Dima GPS Delta
+#     mode: box
+#     min: 0
+#     max: 20160
+#     step: 0.001
+#     unit_of_measurement: 'm'
     
-  volume_radio:
-    mode: slider
-    name: Volume
-    icon: mdi:volume-high
-    min: 0
-    max: 1
-    step: 0.05
+#   volume_radio:
+#     mode: slider
+#     name: Volume
+#     icon: mdi:volume-high
+#     min: 0
+#     max: 1
+#     step: 0.05
 
-  washer_start:
-    name: Washer start
-    min: 1567583200
-    max: 999999999999999999
-    step: 1
-    mode: box
+#   washer_start:
+#     name: Washer start
+#     min: 1567583200
+#     max: 999999999999999999
+#     step: 1
+#     mode: box
     
-  main_door_open:
-    name: Main Door Open
-    min: 0
-    max: 999999999999999999
-    step: 1
-    mode: box
+#   main_door_open:
+#     name: Main Door Open
+#     min: 0
+#     max: 999999999999999999
+#     step: 1
+#     mode: box
 
-# Energy
-  power_meter_last_month_t1:
-    name: Power Meter Last Month/T1
-    mode: box
-    min: 0
-    max: 1000000
-    step: 0.01
-    unit_of_measurement: "kWh"
-  power_meter_last_month_t2:
-    name: Power Meter Last Month/T2
-    mode: box
-    min: 0
-    max: 1000000
-    step: 0.01
-    unit_of_measurement: "kWh"
+# # Energy
+#   power_meter_last_month_t1:
+#     name: Power Meter Last Month/T1
+#     mode: box
+#     min: 0
+#     max: 1000000
+#     step: 0.01
+#     unit_of_measurement: "kWh"
+#   power_meter_last_month_t2:
+#     name: Power Meter Last Month/T2
+#     mode: box
+#     min: 0
+#     max: 1000000
+#     step: 0.01
+#     unit_of_measurement: "kWh"
 
-  power_meter_t1:
-    name: Power meter T1
-    mode: box
-    min: 0
-    max: 100000000
-    step: 0.01
-    unit_of_measurement: "kWh"
-  power_meter_t2:
-    name: Power meter T2
-    mode: box
-    min: 0
-    max: 100000000
-    step: 0.01
-    unit_of_measurement: "kWh"
+#   power_meter_t1:
+#     name: Power meter T1
+#     mode: box
+#     min: 0
+#     max: 100000000
+#     step: 0.01
+#     unit_of_measurement: "kWh"
+#   power_meter_t2:
+#     name: Power meter T2
+#     mode: box
+#     min: 0
+#     max: 100000000
+#     step: 0.01
+#     unit_of_measurement: "kWh"
 
-  tariff_energy_day:
-    name: Power Day Tariff (T1)
-    min: 0.1
-    max: 20
-    step: 0.01
-    mode: box
-    unit_of_measurement: "RUB/kWh"
+#   tariff_energy_day:
+#     name: Power Day Tariff (T1)
+#     min: 0.1
+#     max: 20
+#     step: 0.01
+#     mode: box
+#     unit_of_measurement: "RUB/kWh"
     
-  tariff_energy_night:
-    name: Power Night Tariff (T2)
-    min: 0.1
-    max: 20
-    step: 0.01
-    mode: box
-    unit_of_measurement: "RUB/kWh"
+#   tariff_energy_night:
+#     name: Power Night Tariff (T2)
+#     min: 0.1
+#     max: 20
+#     step: 0.01
+#     mode: box
+#     unit_of_measurement: "RUB/kWh"
 
-# Water
-  cold_water_meter:
-    name: Cold water meter
-    mode: box
-    min: 0
-    max: 300000
-    step: 0.01
-    unit_of_measurement: "m³"
+# # Water
+#   cold_water_meter:
+#     name: Cold water meter
+#     mode: box
+#     min: 0
+#     max: 300000
+#     step: 0.01
+#     unit_of_measurement: "m³"
     
-  hot_water_meter:
-    name: Hot water meter
-    mode: box
-    min: 0
-    max: 300000
-    step: 0.01
-    unit_of_measurement: "m³"
+#   hot_water_meter:
+#     name: Hot water meter
+#     mode: box
+#     min: 0
+#     max: 300000
+#     step: 0.01
+#     unit_of_measurement: "m³"
 
-  cold_water_meter_month:
-    name: Cold water month
-    mode: box
-    min: 0
-    max: 100000
-    step: 0.01
-    unit_of_measurement: "m³"
+#   cold_water_meter_month:
+#     name: Cold water month
+#     mode: box
+#     min: 0
+#     max: 100000
+#     step: 0.01
+#     unit_of_measurement: "m³"
     
-  hot_water_meter_month:
-    name: Hot water month
-    mode: box
-    min: 0
-    max: 100000
-    step: 0.01
-    unit_of_measurement: "m³"
+#   hot_water_meter_month:
+#     name: Hot water month
+#     mode: box
+#     min: 0
+#     max: 100000
+#     step: 0.01
+#     unit_of_measurement: "m³"
 
-  cold_water_meter_last_month:
-    name: Cold Water Last Month
-    mode: box
-    min: 0
-    max: 100000
-    step: 0.01
-    unit_of_measurement: "m³"
+#   cold_water_meter_last_month:
+#     name: Cold Water Last Month
+#     mode: box
+#     min: 0
+#     max: 100000
+#     step: 0.01
+#     unit_of_measurement: "m³"
     
-  hot_water_meter_last_month:
-    name: Hot Water Last Month
-    mode: box
-    min: 0
-    max: 100000
-    step: 0.01
-    unit_of_measurement: "m³"
+#   hot_water_meter_last_month:
+#     name: Hot Water Last Month
+#     mode: box
+#     min: 0
+#     max: 100000
+#     step: 0.01
+#     unit_of_measurement: "m³"
 
-  tariff_hot_water:
-    name: Hot Water Tariff
-    min: 150
-    max: 300
-    step: 0.01
-    mode: box
-    unit_of_measurement: "RUB/m³"
+#   tariff_hot_water:
+#     name: Hot Water Tariff
+#     min: 150
+#     max: 300
+#     step: 0.01
+#     mode: box
+#     unit_of_measurement: "RUB/m³"
 
-  tariff_cold_water:
-    name: Cold Water Tariff
-    min: 0
-    max: 150
-    step: 0.01
-    mode: box
-    unit_of_measurement: "RUB/m³"
+#   tariff_cold_water:
+#     name: Cold Water Tariff
+#     min: 0
+#     max: 150
+#     step: 0.01
+#     mode: box
+#     unit_of_measurement: "RUB/m³"
 
-# RO Filter    
-  ro_filter1_usage:
-    name: RO Mech Usage
-    mode: box
-    min: 0
-    max: 30000
-    step: 0.01
-    unit_of_measurement: L
-    icon: mdi:numeric-1-box
+# # RO Filter    
+#   ro_filter1_usage:
+#     name: RO Mech Usage
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 0.01
+#     unit_of_measurement: L
+#     icon: mdi:numeric-1-box
 
-  ro_filter2_usage:
-    name: RO Coal Usage
-    mode: box
-    min: 0
-    max: 30000
-    step: 0.01
-    unit_of_measurement: L
-    icon: mdi:numeric-2-box
+#   ro_filter2_usage:
+#     name: RO Coal Usage
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 0.01
+#     unit_of_measurement: L
+#     icon: mdi:numeric-2-box
 
-  ro_filter3_usage:
-    name: RO Coal_Ag Usage
-    mode: box
-    min: 0
-    max: 30000
-    step: 0.01
-    unit_of_measurement: L
-    icon: mdi:numeric-3-box
+#   ro_filter3_usage:
+#     name: RO Coal_Ag Usage
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 0.01
+#     unit_of_measurement: L
+#     icon: mdi:numeric-3-box
 
-  ro_membrane_usage:
-    name: RO Membrane Usage
-    mode: box
-    min: 0
-    max: 30000
-    step: 0.01
-    unit_of_measurement: L
-    icon: mdi:air-filter
+#   ro_membrane_usage:
+#     name: RO Membrane Usage
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 0.01
+#     unit_of_measurement: L
+#     icon: mdi:air-filter
 
-  ro_postfilter_usage:
-    name: RO Postfilter Usage
-    mode: box
-    min: 0
-    max: 30000
-    step: 0.01
-    unit_of_measurement: L
-    icon: mdi:numeric-4-box
+#   ro_postfilter_usage:
+#     name: RO Postfilter Usage
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 0.01
+#     unit_of_measurement: L
+#     icon: mdi:numeric-4-box
 
-  ro_mineralizer_usage:
-    name: RO Mineralizer Usage
-    mode: box
-    min: 0
-    max: 30000
-    step: 0.01
-    unit_of_measurement: L
-    icon: mdi:filter-variant-plus
+#   ro_mineralizer_usage:
+#     name: RO Mineralizer Usage
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 0.01
+#     unit_of_measurement: L
+#     icon: mdi:filter-variant-plus
     
-  ro_filter1_resource:
-    name: RO Mech Resource
-    mode: box
-    min: 0
-    max: 30000
-    step: 1
-    unit_of_measurement: L
-    icon: mdi:numeric-1-box
+#   ro_filter1_resource:
+#     name: RO Mech Resource
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 1
+#     unit_of_measurement: L
+#     icon: mdi:numeric-1-box
 
-  ro_filter2_resource:
-    name: RO Coal Resource
-    mode: box
-    min: 0
-    max: 30000
-    step: 1
-    unit_of_measurement: L
-    icon: mdi:numeric-2-box
+#   ro_filter2_resource:
+#     name: RO Coal Resource
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 1
+#     unit_of_measurement: L
+#     icon: mdi:numeric-2-box
 
-  ro_filter3_resource:
-    name: RO Coal_Ag Resource
-    mode: box
-    min: 0
-    max: 30000
-    step: 1
-    unit_of_measurement: L
-    icon: mdi:numeric-3-box
+#   ro_filter3_resource:
+#     name: RO Coal_Ag Resource
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 1
+#     unit_of_measurement: L
+#     icon: mdi:numeric-3-box
 
-  ro_membrane_resource:
-    name: RO Membrane Resource
-    mode: box
-    min: 0
-    max: 30000
-    step: 1
-    unit_of_measurement: L
-    icon: mdi:air-filter
+#   ro_membrane_resource:
+#     name: RO Membrane Resource
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 1
+#     unit_of_measurement: L
+#     icon: mdi:air-filter
 
-  ro_postfilter_resource:
-    name: RO Postfilter Resource
-    mode: box
-    min: 0
-    max: 30000
-    step: 1
-    unit_of_measurement: L
-    icon: mdi:numeric-4-box
+#   ro_postfilter_resource:
+#     name: RO Postfilter Resource
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 1
+#     unit_of_measurement: L
+#     icon: mdi:numeric-4-box
 
-  ro_mineralizer_resource:
-    name: RO Mineralizer Resource
-    mode: box
-    min: 0
-    max: 30000
-    step: 1
-    unit_of_measurement: L
-    icon: mdi:filter-variant-plus
+#   ro_mineralizer_resource:
+#     name: RO Mineralizer Resource
+#     mode: box
+#     min: 0
+#     max: 30000
+#     step: 1
+#     unit_of_measurement: L
+#     icon: mdi:filter-variant-plus
 
-  weight_dima: 
-    name: Dima
-    min: 80
-    max: 150
-    step: 0.1
-    mode: box
-    unit_of_measurement: 'kg' 
+#   weight_dima: 
+#     name: Dima
+#     min: 80
+#     max: 150
+#     step: 0.1
+#     mode: box
+#     unit_of_measurement: 'kg' 
     
-  weight_sandra: 
-    name: Sandra 
-    min: 60
-    max: 100
-    step: 0.1
-    mode: box
-    unit_of_measurement: kg
+#   weight_sandra: 
+#     name: Sandra 
+#     min: 60
+#     max: 100
+#     step: 0.1
+#     mode: box
+#     unit_of_measurement: kg
 
-  weight_vova: 
-    name: Vova 
-    min: 60
-    max: 100
-    step: 0.1
-    mode: box
-    unit_of_measurement: kg 
+#   weight_vova: 
+#     name: Vova 
+#     min: 60
+#     max: 100
+#     step: 0.1
+#     mode: box
+#     unit_of_measurement: kg 
 
-  weight_sasha: 
-    name: Sasha 
-    min: 30
-    max: 100
-    step: 0.1
-    mode: box
-    unit_of_measurement: kg 
+#   weight_sasha: 
+#     name: Sasha 
+#     min: 30
+#     max: 100
+#     step: 0.1
+#     mode: box
+#     unit_of_measurement: kg 

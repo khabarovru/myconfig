@@ -1,429 +1,429 @@
-# #####################################################################################
-#
-# SYSTEM - Water Leak
-#
-# #####################################################################################
-# System - Water Leak Detected
-# ##################################
-  - alias: system_water_leak_detected
-    id: system_water_leak_detected
-    initial_state: true
-    mode: queued
-    max: 10
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: 
-          - binary_sensor.0x00158d00023297e7_moisture
-          - binary_sensor.0x00158d00023684c2_moisture
-          - binary_sensor.0x00158d0002373a67_moisture
-          - binary_sensor.0x00158d0002349f5b_moisture
-          - binary_sensor.54ef44c335f4_water_leak
-        to: 'on'
-        for:
-          seconds: 5
-    action:
-      - service: light.turn_on
-        data:
-          entity_id: >
-            {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture" or trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak" %}light.esp32_node_k_led
-            {%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}light.esp32_node_hs_toilet
-            {%else%}light.esp32_node_hs_bathroom
-            {%endif%}
-          effect: 'Red_Alarm'
-          brightness: 255
-      - service: media_player.volume_set
-        data:
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          volume_level: '{{states("input_number.main_volume")|float(0)}}'
-      - parallel:
-          - service: media_player.play_media
-            data:
-              media_content_type: dialog
-              entity_id: 
-                - media_player.{{states('input_select.main_audio_out')|lower}}
-                - media_player.yandex_k
-              media_content_id: >-
-                Вним+ание! Вним+ание! Обнар+ужена ут+ечка вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Обнар+ужена ут+ечка вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Вод+а перекрыв+ается!'
-          - service: notify.telegram
-            data:
-              message: >-
-                {{'\U000026d4'}}Внимание! Обнаружена утечка воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Вода перекрывается!
-          - service: notify.mobile_app_iphone_14_pro_dtsymbal
-            data:
-              message: >-
-                {{'\U000026d4'}}Внимание! Обнаружена утечка воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Вода перекрывается!
-              data:
-                push:
-                  sound:
-                    name: "default"
-                    critical: 1
-                    volume: 1.0        
-      # - service: switch.turn_on
-      #   entity_id: switch.esp32_node_b_relay_1
-      - service: button.press
-        entity_id: button.esp32_node_b_close_valve
-      - delay: '00:00:25'
-      - service: switch.turn_off
-        entity_id: switch.esp32_node_b_relay_1
-      - service: media_player.play_media
-        data:
-          media_content_type: dialog
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          media_content_id: >-
-            'Вним+ание! Вод+а перекр+ыта! Устран+ите прот+ечку вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}!'
-      - service: notify.telegram
-        data:
-          message: >
-            {{'\U000026d4'}} Внимание! Вода перекрыта! Устраните протечку воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%} для включения воды!
+# # #####################################################################################
+# #
+# # SYSTEM - Water Leak
+# #
+# # #####################################################################################
+# # System - Water Leak Detected
+# # ##################################
+#   - alias: system_water_leak_detected
+#     id: system_water_leak_detected
+#     initial_state: true
+#     mode: queued
+#     max: 10
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: 
+#           - binary_sensor.0x00158d00023297e7_moisture
+#           - binary_sensor.0x00158d00023684c2_moisture
+#           - binary_sensor.0x00158d0002373a67_moisture
+#           - binary_sensor.0x00158d0002349f5b_moisture
+#           - binary_sensor.54ef44c335f4_water_leak
+#         to: 'on'
+#         for:
+#           seconds: 5
+#     action:
+#       - service: light.turn_on
+#         data:
+#           entity_id: >
+#             {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture" or trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak" %}light.esp32_node_k_led
+#             {%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}light.esp32_node_hs_toilet
+#             {%else%}light.esp32_node_hs_bathroom
+#             {%endif%}
+#           effect: 'Red_Alarm'
+#           brightness: 255
+#       - service: media_player.volume_set
+#         data:
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#       - parallel:
+#           - service: media_player.play_media
+#             data:
+#               media_content_type: dialog
+#               entity_id: 
+#                 - media_player.{{states('input_select.main_audio_out')|lower}}
+#                 - media_player.yandex_k
+#               media_content_id: >-
+#                 Вним+ание! Вним+ание! Обнар+ужена ут+ечка вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Обнар+ужена ут+ечка вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Вод+а перекрыв+ается!'
+#           - service: notify.telegram
+#             data:
+#               message: >-
+#                 {{'\U000026d4'}}Внимание! Обнаружена утечка воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Вода перекрывается!
+#           - service: notify.mobile_app_iphone_14_pro_dtsymbal
+#             data:
+#               message: >-
+#                 {{'\U000026d4'}}Внимание! Обнаружена утечка воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}! Вода перекрывается!
+#               data:
+#                 push:
+#                   sound:
+#                     name: "default"
+#                     critical: 1
+#                     volume: 1.0        
+#       # - service: switch.turn_on
+#       #   entity_id: switch.esp32_node_b_relay_1
+#       - service: button.press
+#         entity_id: button.esp32_node_b_close_valve
+#       - delay: '00:00:25'
+#       - service: switch.turn_off
+#         entity_id: switch.esp32_node_b_relay_1
+#       - service: media_player.play_media
+#         data:
+#           media_content_type: dialog
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           media_content_id: >-
+#             'Вним+ание! Вод+а перекр+ыта! Устран+ите прот+ечку вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%}!'
+#       - service: notify.telegram
+#         data:
+#           message: >
+#             {{'\U000026d4'}} Внимание! Вода перекрыта! Устраните протечку воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%} для включения воды!
   
-# ##################################
-# System - Water Leak Off
-# ##################################
-  - alias: system_water_leak_resolved
-    id: system_water_leak_resolved
-    initial_state: true
-    mode: queued
-    max: 10
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: 
-          - binary_sensor.0x00158d00023297e7_moisture
-          - binary_sensor.0x00158d00023684c2_moisture
-          - binary_sensor.0x00158d0002373a67_moisture
-          - binary_sensor.0x00158d0002349f5b_moisture
-          - binary_sensor.54ef44c335f4_water_leak
-        to: 'off'
-        from: 'on'
-        for:
-          seconds: 3
-    action:
-      - service: homeassistant.turn_off
-        data:
-          entity_id: >
-            {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}light.esp32_node_k_led
-            {%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}light.esp32_node_hs_toilet
-            {%else%}light.esp32_node_hs_bathroom
-            {%endif%}  
-      - service: media_player.volume_set
-        data:
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          volume_level: '{{states("input_number.main_volume")|float(0)}}'
-      - service: media_player.play_media
-        data:
-          media_content_type: dialog
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          media_content_id: >-
-            'Прот+ечка вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%} устранен+а! Спас+ибо!'
-      - service: notify.telegram
-        data:
-          message: >
-            {{'\U00002705'}} Протечка воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%} устранена!
+# # ##################################
+# # System - Water Leak Off
+# # ##################################
+#   - alias: system_water_leak_resolved
+#     id: system_water_leak_resolved
+#     initial_state: true
+#     mode: queued
+#     max: 10
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: 
+#           - binary_sensor.0x00158d00023297e7_moisture
+#           - binary_sensor.0x00158d00023684c2_moisture
+#           - binary_sensor.0x00158d0002373a67_moisture
+#           - binary_sensor.0x00158d0002349f5b_moisture
+#           - binary_sensor.54ef44c335f4_water_leak
+#         to: 'off'
+#         from: 'on'
+#         for:
+#           seconds: 3
+#     action:
+#       - service: homeassistant.turn_off
+#         data:
+#           entity_id: >
+#             {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}light.esp32_node_k_led
+#             {%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}light.esp32_node_hs_toilet
+#             {%else%}light.esp32_node_hs_bathroom
+#             {%endif%}  
+#       - service: media_player.volume_set
+#         data:
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#       - service: media_player.play_media
+#         data:
+#           media_content_type: dialog
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           media_content_id: >-
+#             'Прот+ечка вод+ы {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}н+а к+ухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туал+ете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%} устранен+а! Спас+ибо!'
+#       - service: notify.telegram
+#         data:
+#           message: >
+#             {{'\U00002705'}} Протечка воды {% if trigger.entity_id=="binary_sensor.0x00158d00023297e7_moisture"%}на кухне{%elif trigger.entity_id=="binary_sensor.54ef44c335f4_water_leak"%}под кухонной мебелью{%elif trigger.entity_id=="binary_sensor.0x00158d00023684c2_moisture"%}в туалете{%else%}в ванне{%if trigger.entity_id=="binary_sensor.0x00158d0002349f5b_moisture"%} за машинкой{%endif%}{%endif%} устранена!
   
-# ##################################
-# System - Turn Water Off
-# ##################################
-  - alias: system_water_leak_turn_water_off
-    id: system_water_leak_turn_water_off
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-          entity_id: sensor.0x00158d0001ef609b_action
-          click_type: single
-    condition:
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: binary_sensor.esp32_node_b_valve_status
-                state: 'off'
-            sequence:
-              - service: media_player.volume_set
-                data:
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  volume_level: '{{states("input_number.main_volume")|float(0)}}'
-              - service: media_player.play_media
-                data:
-                  media_content_type: dialog
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  media_content_id: >-
-                    'Действие не трубуется - краны уже закрыты!'
-          - conditions:
-              - not:
-                  - condition: state
-                    entity_id: binary_sensor.esp32_node_b_valve_status
-                    state: 'off'
-            sequence:
-              - service: media_player.volume_set
-                data:
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  volume_level: '{{states("input_number.main_volume")|float(0)}}'
-              - service: media_player.play_media
-                data:
-                  media_content_type: dialog
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  media_content_id: >-
-                    'Вним+ание! Зап+ущена процедура выключ+ения вод+ы!'
-              - service: notify.telegram
-                data:
-                  message: 'Внимание! Запущена процедура принудительного закрытия воды!'
-              # - service: switch.turn_on
-              #   entity_id: switch.esp32_node_b_relay_1
-              - service: button.press
-                entity_id: button.esp32_node_b_close_valve
-              - delay: '00:00:25'
-              - service: switch.turn_off
-                entity_id: switch.esp32_node_b_relay_1
-              - service: media_player.volume_set
-                data:
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  volume_level: '{{states("input_number.main_volume")|float(0)}}'
-              - service: media_player.play_media
-                data:
-                  media_content_type: dialog
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  media_content_id: >-
-                    'Внимание! Вода выключена!'
-              # - service: notify.notify
-              #   data:
-              #     title: "Внимание!"
-              #     message: "Принудительное закрытие воды!"
-              - service: notify.telegram
-                data:
-                  message: 'Внимание! Вода принидительно закрыта!'
+# # ##################################
+# # System - Turn Water Off
+# # ##################################
+#   - alias: system_water_leak_turn_water_off
+#     id: system_water_leak_turn_water_off
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#           entity_id: sensor.0x00158d0001ef609b_action
+#           click_type: single
+#     condition:
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: state
+#                 entity_id: binary_sensor.esp32_node_b_valve_status
+#                 state: 'off'
+#             sequence:
+#               - service: media_player.volume_set
+#                 data:
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#               - service: media_player.play_media
+#                 data:
+#                   media_content_type: dialog
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   media_content_id: >-
+#                     'Действие не трубуется - краны уже закрыты!'
+#           - conditions:
+#               - not:
+#                   - condition: state
+#                     entity_id: binary_sensor.esp32_node_b_valve_status
+#                     state: 'off'
+#             sequence:
+#               - service: media_player.volume_set
+#                 data:
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#               - service: media_player.play_media
+#                 data:
+#                   media_content_type: dialog
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   media_content_id: >-
+#                     'Вним+ание! Зап+ущена процедура выключ+ения вод+ы!'
+#               - service: notify.telegram
+#                 data:
+#                   message: 'Внимание! Запущена процедура принудительного закрытия воды!'
+#               # - service: switch.turn_on
+#               #   entity_id: switch.esp32_node_b_relay_1
+#               - service: button.press
+#                 entity_id: button.esp32_node_b_close_valve
+#               - delay: '00:00:25'
+#               - service: switch.turn_off
+#                 entity_id: switch.esp32_node_b_relay_1
+#               - service: media_player.volume_set
+#                 data:
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#               - service: media_player.play_media
+#                 data:
+#                   media_content_type: dialog
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   media_content_id: >-
+#                     'Внимание! Вода выключена!'
+#               # - service: notify.notify
+#               #   data:
+#               #     title: "Внимание!"
+#               #     message: "Принудительное закрытие воды!"
+#               - service: notify.telegram
+#                 data:
+#                   message: 'Внимание! Вода принидительно закрыта!'
   
-# ##################################
-# System - Turn Water On
-# ##################################
-  - alias: system_water_leak_turn_water_on
-    id: system_water_leak_turn_water_on
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-          entity_id: sensor.0x00158d0001ef609b_action
-          click_type: double
-    condition:
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-      - condition: state
-        entity_id: group.leak_detected
-        state: 'off'
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: binary_sensor.esp32_node_b_valve_status
-                state: 'on'
-            sequence:
-              - service: media_player.volume_set
-                data:
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  volume_level: '{{states("input_number.main_volume")|float(0)}}'
-              - service: media_player.play_media
-                data:
-                  media_content_type: dialog
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  media_content_id: >-
-                    'Действие не трубуется - краны уже открыты!'
-          - conditions:
-              - not:
-                  - condition: state
-                    entity_id: binary_sensor.esp32_node_b_valve_status
-                    state: 'on'
-            sequence:
-              - service: media_player.volume_set
-                data:
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  volume_level: '{{states("input_number.main_volume")|float(0)}}'
-              - service: media_player.play_media
-                data:
-                  media_content_type: dialog
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  media_content_id: >-
-                    'Вним+ание! Запущена процедура включ+ения вод+ы!'
-              - service: notify.telegram
-                data:
-                  message: 'Внимание! Запущена процедура принудительного включения воды!'
-              # - service: switch.turn_on
-              #   entity_id: switch.esp32_node_b_relay_2
-              - service: button.press
-                entity_id: button.esp32_node_b_open_valve
-              - delay: '00:00:25'
-              - service: switch.turn_off
-                entity_id: switch.esp32_node_b_relay_2
-              - service: media_player.volume_set
-                data:
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  volume_level: '{{states("input_number.main_volume")|float(0)}}'
-              - service: media_player.play_media
-                data:
-                  media_content_type: dialog
-                  entity_id: 
-                    - media_player.{{states('input_select.main_audio_out')|lower}}
-                    - media_player.yandex_k
-                  media_content_id: >-
-                    'Вним+ание! Вода включена!'
-              - service: notify.telegram
-                data:
-                  message: 'Внимание! Вода принидительно открыта!'
+# # ##################################
+# # System - Turn Water On
+# # ##################################
+#   - alias: system_water_leak_turn_water_on
+#     id: system_water_leak_turn_water_on
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#           entity_id: sensor.0x00158d0001ef609b_action
+#           click_type: double
+#     condition:
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#       - condition: state
+#         entity_id: group.leak_detected
+#         state: 'off'
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: state
+#                 entity_id: binary_sensor.esp32_node_b_valve_status
+#                 state: 'on'
+#             sequence:
+#               - service: media_player.volume_set
+#                 data:
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#               - service: media_player.play_media
+#                 data:
+#                   media_content_type: dialog
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   media_content_id: >-
+#                     'Действие не трубуется - краны уже открыты!'
+#           - conditions:
+#               - not:
+#                   - condition: state
+#                     entity_id: binary_sensor.esp32_node_b_valve_status
+#                     state: 'on'
+#             sequence:
+#               - service: media_player.volume_set
+#                 data:
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#               - service: media_player.play_media
+#                 data:
+#                   media_content_type: dialog
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   media_content_id: >-
+#                     'Вним+ание! Запущена процедура включ+ения вод+ы!'
+#               - service: notify.telegram
+#                 data:
+#                   message: 'Внимание! Запущена процедура принудительного включения воды!'
+#               # - service: switch.turn_on
+#               #   entity_id: switch.esp32_node_b_relay_2
+#               - service: button.press
+#                 entity_id: button.esp32_node_b_open_valve
+#               - delay: '00:00:25'
+#               - service: switch.turn_off
+#                 entity_id: switch.esp32_node_b_relay_2
+#               - service: media_player.volume_set
+#                 data:
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#               - service: media_player.play_media
+#                 data:
+#                   media_content_type: dialog
+#                   entity_id: 
+#                     - media_player.{{states('input_select.main_audio_out')|lower}}
+#                     - media_player.yandex_k
+#                   media_content_id: >-
+#                     'Вним+ание! Вода включена!'
+#               - service: notify.telegram
+#                 data:
+#                   message: 'Внимание! Вода принидительно открыта!'
           
-# ##################################
-# System - Turn Water On_Leak detected
-# ##################################
-  - alias: system_water_leak_turn_water_on_leak_detected
-    id: system_water_leak_turn_water_on_leak_detected
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-          entity_id: sensor.0x00158d0001ef609b_action
-          click_type: double
-    condition:
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-      - condition: state
-        entity_id: group.leak_detected
-        state: 'on'
-    action:
-      - service: media_player.volume_set
-        data:
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          volume_level: '{{states("input_number.main_volume")|float(0)}}'
-      - service: media_player.play_media
-        data:
-          media_content_type: dialog
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          media_content_id: >-
-            'Вним+ание! Включ+ение вод+ы невозм+ожно! Прот+ечка н+е устранен+а! Дл+я принуд+ительного включ+ения вод+ы нажм+ите и удерживайте кнопку!'
-      - service: notify.telegram
-        data:
-          message: 'Внимание! Попытка открыть воду, протечка НЕ устранена!'
+# # ##################################
+# # System - Turn Water On_Leak detected
+# # ##################################
+#   - alias: system_water_leak_turn_water_on_leak_detected
+#     id: system_water_leak_turn_water_on_leak_detected
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#           entity_id: sensor.0x00158d0001ef609b_action
+#           click_type: double
+#     condition:
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#       - condition: state
+#         entity_id: group.leak_detected
+#         state: 'on'
+#     action:
+#       - service: media_player.volume_set
+#         data:
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#       - service: media_player.play_media
+#         data:
+#           media_content_type: dialog
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           media_content_id: >-
+#             'Вним+ание! Включ+ение вод+ы невозм+ожно! Прот+ечка н+е устранен+а! Дл+я принуд+ительного включ+ения вод+ы нажм+ите и удерживайте кнопку!'
+#       - service: notify.telegram
+#         data:
+#           message: 'Внимание! Попытка открыть воду, протечка НЕ устранена!'
   
-# ##################################
-# System - Turn Water On_Force
-# ##################################
-  - alias: system_water_leak_turn_water_on_force
-    id: system_water_leak_turn_water_on_force
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-          entity_id: sensor.0x00158d0001ef609b_action
-          click_type: hold
-    condition:
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-    action:
-      - service: media_player.volume_set
-        data:
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          volume_level: '{{states("input_number.main_volume")|float(0)}}'
-      - service: media_player.play_media
-        data:
-          media_content_type: dialog
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          media_content_id: >-
-            'Вним+ание! {{ iif(is_state("group.leak_detected", "on"), "Прот+ечка вод+ы н+е устранен+а! ", "") }}Зап+ущена процедура принуд+ительного включ+ения вод+ы!'
-      - service: notify.telegram
-        data:
-          message: 'Внимание! {{ iif(is_state("group.leak_detected", "on"), "Протечка воды не устранена! ", "") }}Запущена процедура принудительного включения воды!'
-      # - service: switch.turn_on
-      #   entity_id: switch.esp32_node_b_relay_2
-      - service: button.press
-        entity_id: button.esp32_node_b_open_valve
-      - delay: '00:00:25'
-      - service: switch.turn_off
-        entity_id: switch.esp32_node_b_relay_2
-      - service: media_player.volume_set
-        data:
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          volume_level: '{{states("input_number.main_volume")|float(0)}}'
-      - service: media_player.play_media
-        data:
-          media_content_type: dialog
-          entity_id: 
-            - media_player.{{states('input_select.main_audio_out')|lower}}
-            - media_player.yandex_k
-          media_content_id: >-
-            'Вним+ание! Вод+а включен+а! {{ iif(is_state("group.leak_detected", "on"), "Прот+ечка н+е устранен+а! ", "") }}'
-      - service: notify.telegram
-        data:
-          message: 'Внимание! Вода включена! {{ iif(is_state("group.leak_detected", "on"), "Протечка НЕ устранена!", "") }}'
+# # ##################################
+# # System - Turn Water On_Force
+# # ##################################
+#   - alias: system_water_leak_turn_water_on_force
+#     id: system_water_leak_turn_water_on_force
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#           entity_id: sensor.0x00158d0001ef609b_action
+#           click_type: hold
+#     condition:
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#     action:
+#       - service: media_player.volume_set
+#         data:
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#       - service: media_player.play_media
+#         data:
+#           media_content_type: dialog
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           media_content_id: >-
+#             'Вним+ание! {{ iif(is_state("group.leak_detected", "on"), "Прот+ечка вод+ы н+е устранен+а! ", "") }}Зап+ущена процедура принуд+ительного включ+ения вод+ы!'
+#       - service: notify.telegram
+#         data:
+#           message: 'Внимание! {{ iif(is_state("group.leak_detected", "on"), "Протечка воды не устранена! ", "") }}Запущена процедура принудительного включения воды!'
+#       # - service: switch.turn_on
+#       #   entity_id: switch.esp32_node_b_relay_2
+#       - service: button.press
+#         entity_id: button.esp32_node_b_open_valve
+#       - delay: '00:00:25'
+#       - service: switch.turn_off
+#         entity_id: switch.esp32_node_b_relay_2
+#       - service: media_player.volume_set
+#         data:
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#       - service: media_player.play_media
+#         data:
+#           media_content_type: dialog
+#           entity_id: 
+#             - media_player.{{states('input_select.main_audio_out')|lower}}
+#             - media_player.yandex_k
+#           media_content_id: >-
+#             'Вним+ание! Вод+а включен+а! {{ iif(is_state("group.leak_detected", "on"), "Прот+ечка н+е устранен+а! ", "") }}'
+#       - service: notify.telegram
+#         data:
+#           message: 'Внимание! Вода включена! {{ iif(is_state("group.leak_detected", "on"), "Протечка НЕ устранена!", "") }}'
           
-# ##################################
-# System - Water Valves Action
-# ##################################
-  - alias: system_water_valves_action
-    id: system_water_valves_action
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.esp32_node_b_valve_active
-        to:
-    condition:
-      - condition: template
-        value_template: >
-          {% set ignore = ['unknown', 'unavailable', 'none','0'] %}
-          {{ trigger.from_state.state not in ignore and
-            trigger.to_state.state not in ignore and
-            trigger.to_state.state != trigger.from_state.state }}
-    action:
-      - service: notify.telegram
-        data:
-          message: >-
-            {%- set current_state = states('binary_sensor.esp32_node_b_valve_status') %}
-            {%- set current_status = states('binary_sensor.esp32_node_b_valve_active') %}
-            {%- if current_state == 'on' and current_status == 'on' %}{{'\U000026d4'}} Внимание! Закрытие кранов!
-            {%- elif current_state == 'off' and current_status == 'off' %}{{'\U00002705'}} Краны закрыты!
-            {%- elif current_state == 'off' and current_status == 'on' %}{{'\U000026d4'}} Внимание! Открытие кранов!
-            {%- elif current_state == 'on' and current_status == 'off' %}{{'\U00002705'}} Краны открыты!
-            {%- endif %}
+# # ##################################
+# # System - Water Valves Action
+# # ##################################
+#   - alias: system_water_valves_action
+#     id: system_water_valves_action
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.esp32_node_b_valve_active
+#         to:
+#     condition:
+#       - condition: template
+#         value_template: >
+#           {% set ignore = ['unknown', 'unavailable', 'none','0'] %}
+#           {{ trigger.from_state.state not in ignore and
+#             trigger.to_state.state not in ignore and
+#             trigger.to_state.state != trigger.from_state.state }}
+#     action:
+#       - service: notify.telegram
+#         data:
+#           message: >-
+#             {%- set current_state = states('binary_sensor.esp32_node_b_valve_status') %}
+#             {%- set current_status = states('binary_sensor.esp32_node_b_valve_active') %}
+#             {%- if current_state == 'on' and current_status == 'on' %}{{'\U000026d4'}} Внимание! Закрытие кранов!
+#             {%- elif current_state == 'off' and current_status == 'off' %}{{'\U00002705'}} Краны закрыты!
+#             {%- elif current_state == 'off' and current_status == 'on' %}{{'\U000026d4'}} Внимание! Открытие кранов!
+#             {%- elif current_state == 'on' and current_status == 'off' %}{{'\U00002705'}} Краны открыты!
+#             {%- endif %}

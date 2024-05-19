@@ -1,37 +1,37 @@
 
-  dima_home: 
-    zone: home
-    devices:
-      - person.dima
-    tolerance: 5
-    unit_of_measurement: m
+  # dima_home: 
+  #   zone: home
+  #   devices:
+  #     - person.dima
+  #   tolerance: 5
+  #   unit_of_measurement: m
   
-  sandra_home: 
-    zone: home
-    devices:
-      - person.sandra
-    tolerance: 5
-    unit_of_measurement: m
+  # sandra_home: 
+  #   zone: home
+  #   devices:
+  #     - person.sandra
+  #   tolerance: 5
+  #   unit_of_measurement: m
   
-  vova_home: 
-    zone: home
-    devices:
-      - person.vova
-    tolerance: 5
-    unit_of_measurement: m
+  # vova_home: 
+  #   zone: home
+  #   devices:
+  #     - person.vova
+  #   tolerance: 5
+  #   unit_of_measurement: m
 
-  sasha_home: 
-    zone: home
-    devices:
-      - person.sasha
-    tolerance: 5
-    unit_of_measurement: m
+  # sasha_home: 
+  #   zone: home
+  #   devices:
+  #     - person.sasha
+  #   tolerance: 5
+  #   unit_of_measurement: m
 
-  home:
-    zone: home
-    devices:
-      - person.dima
-      - person.sandra
-      - person.vova
-    tolerance: 5
-    unit_of_measurement: m
+  # home:
+  #   zone: home
+  #   devices:
+  #     - person.dima
+  #     - person.sandra
+  #     - person.vova
+  #   tolerance: 5
+  #   unit_of_measurement: m

@@ -1,24 +1,24 @@
-  - trigger:
-      - platform: time_pattern
-        minutes: "/1"
-      - platform: homeassistant
-        event: start
-      - platform: event
-        event_type: event_template_reloaded
-      - platform: event
-        event_type: automation_reloaded
-    sensor:
-      - name: Log Size
-        unique_id: db_size
-        state: "{{ states('sensor.home_assistant_log_size') | float(0) | round(1, 'common') }}"
-        unit_of_measurement: Mb
+  # - trigger:
+  #     - platform: time_pattern
+  #       minutes: "/1"
+  #     - platform: homeassistant
+  #       event: start
+  #     - platform: event
+  #       event_type: event_template_reloaded
+  #     - platform: event
+  #       event_type: automation_reloaded
+  #   sensor:
+  #     - name: Log Size
+  #       unique_id: db_size
+  #       state: "{{ states('sensor.home_assistant_log_size') | float(0) | round(1, 'common') }}"
+  #       unit_of_measurement: Mb
 
-  #     - name: DB Size Change 1h
-  #       state: "{{ state_attr('sensor.db_size_statistics','change') }}"
-  #       unit_of_measurement: 'Mb\h'
-  #       icon: mdi:decimal-increase
+  # #     - name: DB Size Change 1h
+  # #       state: "{{ state_attr('sensor.db_size_statistics','change') }}"
+  # #       unit_of_measurement: 'Mb\h'
+  # #       icon: mdi:decimal-increase
 
-  #     - name: InfluxDB Size Change 1h
-  #       state: "{{ state_attr('sensor.influxdb_size_statistics','change') }}"
-  #       unit_of_measurement: 'Mb\h'
-  #       icon: mdi:decimal-increase
+  # #     - name: InfluxDB Size Change 1h
+  # #       state: "{{ state_attr('sensor.influxdb_size_statistics','change') }}"
+  # #       unit_of_measurement: 'Mb\h'
+  # #       icon: mdi:decimal-increase

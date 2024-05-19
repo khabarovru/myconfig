@@ -1,50 +1,50 @@
-# ############################################################################
-# Purifier sensors
-# ############################################################################
-  - trigger:
-      - platform: time_pattern
-        minutes: "/1"
-      - platform: state
-        entity_id: fan.purifier2s
-        attribute: preset_mode
-      - platform: homeassistant
-        event: start
-      - platform: event
-        event_type: event_template_reloaded
-      - platform: event
-        event_type: automation_reloaded
-    sensor:
-      - name: Purifier Mode
-        unique_id: purifier_mode
-        state: "{{ 'NA' if not is_state('fan.purifier2s','on') else state_attr('fan.purifier2s','preset_mode') }}"
-        icon: mdi:debug-step-over
-
-#       - name: Purifier PM25
-#         state: "{{ state_attr('fan.purifier2s','aqi') | int(0) }}"
-#         unit_of_measurement: "mcg/m3"
-#         icon: mdi:meteor
-
-#       - name: Purifier Filter Left
-#         state: "{{ state_attr('fan.purifier2s','filter_life_remaining') | int(0) }}"
-#         unit_of_measurement: '%'
-#         icon: mdi:filter-variant
-
-# ############################################################################
-# Humidifier sensors
-# ############################################################################
-#       - name: Humidifier2 Mode
-#         state: "{{ 'NA' if not is_state('humidifier.humidifier2','on') else state_attr('humidifier.humidifier2','mode') }}"
+# # ############################################################################
+# # Purifier sensors
+# # ############################################################################
+#   - trigger:
+#       - platform: time_pattern
+#         minutes: "/1"
+#       - platform: state
+#         entity_id: fan.purifier2s
+#         attribute: preset_mode
+#       - platform: homeassistant
+#         event: start
+#       - platform: event
+#         event_type: event_template_reloaded
+#       - platform: event
+#         event_type: automation_reloaded
+#     sensor:
+#       - name: Purifier Mode
+#         unique_id: purifier_mode
+#         state: "{{ 'NA' if not is_state('fan.purifier2s','on') else state_attr('fan.purifier2s','preset_mode') }}"
 #         icon: mdi:debug-step-over
 
-#       - name: Humidifier Water Level
-#         unit_of_measurement: '%'
-#         state: "{{( state_attr('fan.humidifier2','depth')|int(0) / 1.24) | int(0)}}"
-#         icon: >-
-#           {%if (state_attr('fan.humidifier2','depth')|int(0) / 1.2) >= 15 %}
-#           mdi:water-percent
-#           {% else %}
-#           mdi:water-off
-#           {% endif %}
+# #       - name: Purifier PM25
+# #         state: "{{ state_attr('fan.purifier2s','aqi') | int(0) }}"
+# #         unit_of_measurement: "mcg/m3"
+# #         icon: mdi:meteor
+
+# #       - name: Purifier Filter Left
+# #         state: "{{ state_attr('fan.purifier2s','filter_life_remaining') | int(0) }}"
+# #         unit_of_measurement: '%'
+# #         icon: mdi:filter-variant
+
+# # ############################################################################
+# # Humidifier sensors
+# # ############################################################################
+# #       - name: Humidifier2 Mode
+# #         state: "{{ 'NA' if not is_state('humidifier.humidifier2','on') else state_attr('humidifier.humidifier2','mode') }}"
+# #         icon: mdi:debug-step-over
+
+# #       - name: Humidifier Water Level
+# #         unit_of_measurement: '%'
+# #         state: "{{( state_attr('fan.humidifier2','depth')|int(0) / 1.24) | int(0)}}"
+# #         icon: >-
+# #           {%if (state_attr('fan.humidifier2','depth')|int(0) / 1.2) >= 15 %}
+# #           mdi:water-percent
+# #           {% else %}
+# #           mdi:water-off
+# #           {% endif %}
           
-#       - name: Humidifier2 LED
-#         state: "{{ states('select.humidifier2_led_brightness') }}"
+# #       - name: Humidifier2 LED
+# #         state: "{{ states('select.humidifier2_led_brightness') }}"

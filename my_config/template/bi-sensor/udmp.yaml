@@ -1,49 +1,49 @@
-  - trigger:
-      - platform: time_pattern
-        minutes: "/1"
-      - platform: state
-        entity_id: sensor.unifios_state
-        to:
-      - platform: homeassistant
-        event: start
-      - platform: event
-        event_type: event_template_reloaded
-      - platform: event
-        event_type: automation_reloaded
-    binary_sensor:
-      - name: UDM WAN1 Uplink
-        unique_id: udm_wan1_uplink
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[20] | default }}
-        attributes:
-          friendly_name: "aaasdsd"
-          icon: mdi:numeric-1-box
+  # - trigger:
+  #     - platform: time_pattern
+  #       minutes: "/1"
+  #     - platform: state
+  #       entity_id: sensor.unifios_state
+  #       to:
+  #     - platform: homeassistant
+  #       event: start
+  #     - platform: event
+  #       event_type: event_template_reloaded
+  #     - platform: event
+  #       event_type: automation_reloaded
+  #   binary_sensor:
+  #     - name: UDM WAN1 Uplink
+  #       unique_id: udm_wan1_uplink
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[20] | default }}
+  #       attributes:
+  #         friendly_name: "aaasdsd"
+  #         icon: mdi:numeric-1-box
 
-      - name: UDM WAN2 Uplink
-        unique_id: udm_wan2_uplink
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[21] | default }}
-        attributes:
-          friendly_name: UDM WAN2 Uplink
-          icon: mdi:numeric-2-box
+  #     - name: UDM WAN2 Uplink
+  #       unique_id: udm_wan2_uplink
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[21] | default }}
+  #       attributes:
+  #         friendly_name: UDM WAN2 Uplink
+  #         icon: mdi:numeric-2-box
 
-      - name: UDM WAN1 Up
-        unique_id: udm_wan1_up
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[18] | default }}
-        attributes:
-          friendly_name: UDM WAN1 Up
-          icon: mdi:numeric-1-box-multiple
+  #     - name: UDM WAN1 Up
+  #       unique_id: udm_wan1_up
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[18] | default }}
+  #       attributes:
+  #         friendly_name: UDM WAN1 Up
+  #         icon: mdi:numeric-1-box-multiple
 
-      - name: UDM WAN2 Up
-        unique_id: udm_wan2_up
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[19] | default }}
-        attributes:
-          friendly_name: UDM WAN2 Up
-          icon: mdi:numeric-2-box-multiple
+  #     - name: UDM WAN2 Up
+  #       unique_id: udm_wan2_up
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[19] | default }}
+  #       attributes:
+  #         friendly_name: UDM WAN2 Up
+  #         icon: mdi:numeric-2-box-multiple
 

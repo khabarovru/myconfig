@@ -1,83 +1,83 @@
-  # guest_mode:
-  #   name: Guest Mode
-  #   icon: mdi:account-question
+  # # guest_mode:
+  # #   name: Guest Mode
+  # #   icon: mdi:account-question
 
-  dima_business_trip:
-    name: Dima Business Trip
-    icon: mdi:airplane-clock
+  # dima_business_trip:
+  #   name: Dima Business Trip
+  #   icon: mdi:airplane-clock
 
 
-  fan_manual_b:
-    name: Manual Mode Fan B
+  # fan_manual_b:
+  #   name: Manual Mode Fan B
   
-  washer_door_issue:
-    name: Washer Door Issue
+  # washer_door_issue:
+  #   name: Washer Door Issue
 
-  washer_drying:
-    name: Washer Drying
+  # washer_drying:
+  #   name: Washer Drying
     
-  central_heating:
-    name: Central Heating
-    icon: mdi:fire
+  # central_heating:
+  #   name: Central Heating
+  #   icon: mdi:fire
 
-  hot_water:
-    name: Hot Water
-    icon: mdi:check-circle
+  # hot_water:
+  #   name: Hot Water
+  #   icon: mdi:check-circle
 
-  cold_water:
-    name: Cold Water
-    icon: mdi:checkbox-marked
+  # cold_water:
+  #   name: Cold Water
+  #   icon: mdi:checkbox-marked
 
-  auto_fan_t:
-    name: Auto Fan T
-    icon: mdi:fan-plus
+  # auto_fan_t:
+  #   name: Auto Fan T
+  #   icon: mdi:fan-plus
     
-  ha_shutdown:
-    name: HA Shutdown
-    icon: mdi:power
-    initial: false
+  # ha_shutdown:
+  #   name: HA Shutdown
+  #   icon: mdi:power
+  #   initial: false
 
-  toilet_occupancy:
-    name: Toilet occupancy
-    icon: mdi:toilet
+  # toilet_occupancy:
+  #   name: Toilet occupancy
+  #   icon: mdi:toilet
 
-  bathroom_occupancy:
-    name: Bathroom occupancy
-    icon: mdi:hot-tub
+  # bathroom_occupancy:
+  #   name: Bathroom occupancy
+  #   icon: mdi:hot-tub
     
-  bed_led_enable:
-    name: Bed Led Enable
-    initial: true
+  # bed_led_enable:
+  #   name: Bed Led Enable
+  #   initial: true
 
-  silent_mode:
-    name: Silent Mode
-    icon: mdi:volume-off
+  # silent_mode:
+  #   name: Silent Mode
+  #   icon: mdi:volume-off
 
-  dark_mode:
-    name: Dark Mode
-    icon: mdi:weather-night
+  # dark_mode:
+  #   name: Dark Mode
+  #   icon: mdi:weather-night
 
-  sasha_tracker:
-    name: sasha_tracker
-    icon: mdi:child
+  # sasha_tracker:
+  #   name: sasha_tracker
+  #   icon: mdi:child
 
-  # humidifier2_auto_mode:
-  #   name: Humidifier2 Auto Off
+  # # humidifier2_auto_mode:
+  # #   name: Humidifier2 Auto Off
 
-  # security_mode:
-  #   name: Security Mode
-  #   icon: mdi:shield
+  # # security_mode:
+  # #   name: Security Mode
+  # #   icon: mdi:shield
   
-  # hourly_mode_breather_v:
-  #   name: Hourly Mode Breather V
+  # # hourly_mode_breather_v:
+  # #   name: Hourly Mode Breather V
 
-  force_mode_fan_b:
-    name: Force Mode Fan B
+  # force_mode_fan_b:
+  #   name: Force Mode Fan B
 
-  settings_ble_gateway:
-    name: BLE Gateway
-    icon: mdi:bluetooth
+  # settings_ble_gateway:
+  #   name: BLE Gateway
+  #   icon: mdi:bluetooth
     
-  settings_ble_gateway_discovery:
-    name: BLE Gateway Discovery
-    icon: mdi:bluetooth-connect
+  # settings_ble_gateway_discovery:
+  #   name: BLE Gateway Discovery
+  #   icon: mdi:bluetooth-connect

@@ -1,97 +1,97 @@
-  # - platform: xiaomi_miio
-  #   name: Philips_E27_S
-  #   host: 192.168.1.205
-  #   token: 4f605d98f20ba2761cb803c5f4ee6fcf
-  #   model: philips.light.bulb
+  # # - platform: xiaomi_miio
+  # #   name: Philips_E27_S
+  # #   host: 192.168.1.205
+  # #   token: 4f605d98f20ba2761cb803c5f4ee6fcf
+  # #   model: philips.light.bulb
 
-  # - platform: xiaomi_miio
-  #   name: Philips_E27_MB
-  #   host: 192.168.1.206
-  #   token: 15bf89c998bf2fd374c7c11f4a227a13
-  #   model: philips.light.bulb
+  # # - platform: xiaomi_miio
+  # #   name: Philips_E27_MB
+  # #   host: 192.168.1.206
+  # #   token: 15bf89c998bf2fd374c7c11f4a227a13
+  # #   model: philips.light.bulb
 
-  # - platform: xiaomi_miio
-  #   name: Mirror Light B
-  #   host: 192.168.1.237
-  #   token: 76e2f734332539b088b22edbfb13c7a3
-  #   model: philips.light.downlight
+  # # - platform: xiaomi_miio
+  # #   name: Mirror Light B
+  # #   host: 192.168.1.237
+  # #   token: 76e2f734332539b088b22edbfb13c7a3
+  # #   model: philips.light.downlight
 
-  # - platform: xiaomi_miio
-  #   name: Spot Near T
-  #   host: 192.168.1.96
-  #   token: 39431fd8a61979be07439df5a8cdf7f0
-  #   model: philips.light.downlight
+  # # - platform: xiaomi_miio
+  # #   name: Spot Near T
+  # #   host: 192.168.1.96
+  # #   token: 39431fd8a61979be07439df5a8cdf7f0
+  # #   model: philips.light.downlight
 
-  # - platform: xiaomi_miio
-  #   name: Spot Far T
-  #   host: 192.168.1.97
-  #   token: 93f7f82697271260db2529aeb12b9716
-  #   model: philips.light.downlight
+  # # - platform: xiaomi_miio
+  # #   name: Spot Far T
+  # #   host: 192.168.1.97
+  # #   token: 93f7f82697271260db2529aeb12b9716
+  # #   model: philips.light.downlight
 
-  # - platform: template
-  #     lights::
-  #       tt_ceiling_virtual:
-  #         frienidly_name: 'Tyner, hogryanNag Jarmo' 
-  #         value_template: >-
-  #           {{ is_state('light.ff_reiling_lights, 'on')
-  #             or is_state('light.Oxeclbbdfffea37571', 'on')
-  #           }}
-  #         icon_template: phu:ceiling-Severe
-  #         turn_on:
-  #           service: light.turn_on
-  #           data_template:
-  #             entity_id: >-
-  #               {% if is_state('light.tt_ceiling_light', 'unavailable') %}
-  #               light.Oxecabdfffea37571
-  #               (% else %}
-  #               light.tt_ceiling_light
-  #               {% endif %}
-  #             brightness: >-
-  #               (% if is_state('binary_senaor.tt_night", 'off") %} 
-  #               255
-  #               {% else %}
-  #               128
-  #               {% endif %}
-  #             kelvin: >-
-  #               {% if is_state("binary_sensor.tt_night", 'off') %} 
-  #               4000
-  #               {% else %}
-  #               3000
-  #               {% endif %}
-  #         turn_off:
-  #           service: light.turn_off
-  #           entity_id:
-  #             - lighm.tt_ceiling_light
-  #             - light.Oxeclbbdfffea37571
-  #         level_template: >-
-  #           {% if is_state('light.tt_ceiling_light', 'unavailable') 
-  #             or is_state('light.tt_ceiling_light', 'off')
-  #           %}
-  #           255
-  #           {% else %}
-  #             {% state_attr('light.tt_ceiling_light, 'brightness')|int(0) %} 
-  #           {% endif %}
-  #         set_level:
-  #           service: light.turn_on
-  #           entity_id: light.tt_ceiling_light
-  #           data_templale:
-  #             brightness: "{{ brightness }}"
-  #         temperature_template: >-
-  #           {%  if is_state('light.tt_ceiling_light', 'unavailable') 
-  #               or is_state('light.tt_ceiling_light', 'off')
-  #           %}
-  #           250
-  #           {% else %}
-  #             {% state_attr('light.tt_ceiling_light, 'color_temp')|int(0) %} 
-  #           {% endif %}
-  #         set_remperature:
-  #           service: light.turn_on
-  #           entity_id: light.tt_celling_light
-  #           data template:
-  #             color_temp: "{{ color_temp }}"
+  # # - platform: template
+  # #     lights::
+  # #       tt_ceiling_virtual:
+  # #         frienidly_name: 'Tyner, hogryanNag Jarmo' 
+  # #         value_template: >-
+  # #           {{ is_state('light.ff_reiling_lights, 'on')
+  # #             or is_state('light.Oxeclbbdfffea37571', 'on')
+  # #           }}
+  # #         icon_template: phu:ceiling-Severe
+  # #         turn_on:
+  # #           service: light.turn_on
+  # #           data_template:
+  # #             entity_id: >-
+  # #               {% if is_state('light.tt_ceiling_light', 'unavailable') %}
+  # #               light.Oxecabdfffea37571
+  # #               (% else %}
+  # #               light.tt_ceiling_light
+  # #               {% endif %}
+  # #             brightness: >-
+  # #               (% if is_state('binary_senaor.tt_night", 'off") %} 
+  # #               255
+  # #               {% else %}
+  # #               128
+  # #               {% endif %}
+  # #             kelvin: >-
+  # #               {% if is_state("binary_sensor.tt_night", 'off') %} 
+  # #               4000
+  # #               {% else %}
+  # #               3000
+  # #               {% endif %}
+  # #         turn_off:
+  # #           service: light.turn_off
+  # #           entity_id:
+  # #             - lighm.tt_ceiling_light
+  # #             - light.Oxeclbbdfffea37571
+  # #         level_template: >-
+  # #           {% if is_state('light.tt_ceiling_light', 'unavailable') 
+  # #             or is_state('light.tt_ceiling_light', 'off')
+  # #           %}
+  # #           255
+  # #           {% else %}
+  # #             {% state_attr('light.tt_ceiling_light, 'brightness')|int(0) %} 
+  # #           {% endif %}
+  # #         set_level:
+  # #           service: light.turn_on
+  # #           entity_id: light.tt_ceiling_light
+  # #           data_templale:
+  # #             brightness: "{{ brightness }}"
+  # #         temperature_template: >-
+  # #           {%  if is_state('light.tt_ceiling_light', 'unavailable') 
+  # #               or is_state('light.tt_ceiling_light', 'off')
+  # #           %}
+  # #           250
+  # #           {% else %}
+  # #             {% state_attr('light.tt_ceiling_light, 'color_temp')|int(0) %} 
+  # #           {% endif %}
+  # #         set_remperature:
+  # #           service: light.turn_on
+  # #           entity_id: light.tt_celling_light
+  # #           data template:
+  # #             color_temp: "{{ color_temp }}"
 
-  - platform: group
-    name: "Strip St"
-    entities:
-      - light.led_strip_st
-      - light.led_strip_2_st
+  # - platform: group
+  #   name: "Strip St"
+  #   entities:
+  #     - light.led_strip_st
+  #     - light.led_strip_2_st

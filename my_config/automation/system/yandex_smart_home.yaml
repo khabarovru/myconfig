@@ -1,125 +1,125 @@
-# ##################################
-# System - Ya speakers mode set
-# ##################################
-  # - alias: system_ya_speakers_mode_set
-  #   id: system_ya_speakers_mode_set
-  #   initial_state: true
-  #   max_exceeded: silent
-  #   trigger:
-  #     - platform: homeassistant
-  #       event: start
-  #     - platform: state
-  #       entity_id: switch.system_dark_mode, binary_sensor.tod_day
-  #       to: 
-  #   action:
-  #     - repeat:
-  #         for_each:
-  #           - 'media_player.yandex_k'
-  #           - 'media_player.yandex_hb'
-  #           - 'media_player.yandex_v'
-  #           - 'media_player.yandex_s'
-  #           - 'media_player.yandex_mb'
-  #         sequence:
-  #           - variables:
-  #               command_1: >-
-  #                 {%- if is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on') %}
-  #                 без лишних слов: да
-  #                 {%- else %}
-  #                 без лишних слов: да
-  #                 {%- endif %}
-  #               command_2: >-
-  #                 {%- if is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on') %}
-  #                 звук активации: нет
-  #                 {%- else %}
-  #                 звук активации: нет
-  #                 {%- endif %}
-  #               command_3: >-
-  #                 {%- if is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on') %}
-  #                 ответить шепотом: да
-  #                 {%- else %}
-  #                 ответить шепотом: нет
-  #                 {%- endif %}
-  #           - service: media_player.play_media
-  #             data:
-  #               entity_id: '{{ repeat.item }}'
-  #               media_content_id: '{{command_1}}'
-  #               media_content_type: settings
-  #           - delay: 2
-  #           - service: media_player.play_media
-  #             data:
-  #               entity_id: '{{ repeat.item }}'
-  #               media_content_id: '{{command_2}}'
-  #               media_content_type: settings
-  #           - delay: 2
-  #           - service: media_player.play_media
-  #             data:
-  #               entity_id: '{{ repeat.item }}'
-  #               media_content_id: '{{command_3}}'
-  #               media_content_type: settings
-  #           - delay: 2
+# # ##################################
+# # System - Ya speakers mode set
+# # ##################################
+#   # - alias: system_ya_speakers_mode_set
+#   #   id: system_ya_speakers_mode_set
+#   #   initial_state: true
+#   #   max_exceeded: silent
+#   #   trigger:
+#   #     - platform: homeassistant
+#   #       event: start
+#   #     - platform: state
+#   #       entity_id: switch.system_dark_mode, binary_sensor.tod_day
+#   #       to: 
+#   #   action:
+#   #     - repeat:
+#   #         for_each:
+#   #           - 'media_player.yandex_k'
+#   #           - 'media_player.yandex_hb'
+#   #           - 'media_player.yandex_v'
+#   #           - 'media_player.yandex_s'
+#   #           - 'media_player.yandex_mb'
+#   #         sequence:
+#   #           - variables:
+#   #               command_1: >-
+#   #                 {%- if is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on') %}
+#   #                 без лишних слов: да
+#   #                 {%- else %}
+#   #                 без лишних слов: да
+#   #                 {%- endif %}
+#   #               command_2: >-
+#   #                 {%- if is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on') %}
+#   #                 звук активации: нет
+#   #                 {%- else %}
+#   #                 звук активации: нет
+#   #                 {%- endif %}
+#   #               command_3: >-
+#   #                 {%- if is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on') %}
+#   #                 ответить шепотом: да
+#   #                 {%- else %}
+#   #                 ответить шепотом: нет
+#   #                 {%- endif %}
+#   #           - service: media_player.play_media
+#   #             data:
+#   #               entity_id: '{{ repeat.item }}'
+#   #               media_content_id: '{{command_1}}'
+#   #               media_content_type: settings
+#   #           - delay: 2
+#   #           - service: media_player.play_media
+#   #             data:
+#   #               entity_id: '{{ repeat.item }}'
+#   #               media_content_id: '{{command_2}}'
+#   #               media_content_type: settings
+#   #           - delay: 2
+#   #           - service: media_player.play_media
+#   #             data:
+#   #               entity_id: '{{ repeat.item }}'
+#   #               media_content_id: '{{command_3}}'
+#   #               media_content_type: settings
+#   #           - delay: 2
 
-# ##################################
-# System - Ya speakers volume set
-# ##################################
-  - alias: system_ya_speakers_volume_set
-    id: system_ya_speakers_volume_set
-    initial_state: true
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.tod_day
-        to: 'on'
-        for:
-          seconds: 30
-      - platform: state
-        entity_id: switch.system_dark_mode
-        to: 'off'
-        for:
-          seconds: 30
-    action:
-      - repeat:
-          for_each:
-            - 'media_player.yandex_k'
-            - 'media_player.yandex_hb'
-            - 'media_player.yandex_v'
-            - 'media_player.yandex_s'
-            - 'media_player.yandex_mb'
-          sequence:
-            - service: media_player.volume_set
-              data:
-                entity_id: '{{ repeat.item }}'
-                volume_level: '{{states("input_number.main_volume")|float(0)}}'
+# # ##################################
+# # System - Ya speakers volume set
+# # ##################################
+#   - alias: system_ya_speakers_volume_set
+#     id: system_ya_speakers_volume_set
+#     initial_state: true
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.tod_day
+#         to: 'on'
+#         for:
+#           seconds: 30
+#       - platform: state
+#         entity_id: switch.system_dark_mode
+#         to: 'off'
+#         for:
+#           seconds: 30
+#     action:
+#       - repeat:
+#           for_each:
+#             - 'media_player.yandex_k'
+#             - 'media_player.yandex_hb'
+#             - 'media_player.yandex_v'
+#             - 'media_player.yandex_s'
+#             - 'media_player.yandex_mb'
+#           sequence:
+#             - service: media_player.volume_set
+#               data:
+#                 entity_id: '{{ repeat.item }}'
+#                 volume_level: '{{states("input_number.main_volume")|float(0)}}'
                 
                 
-# ##################################
-# System - When Daddy Get back home
-# ##################################
-  - alias: system_when_daddy_get_back_home
-    id: system_when_daddy_get_back_home
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: yandex_intent
-        event_data:
-          text: Когда папа вернется
-    action:
-      - if:
-          - condition: state
-            entity_id: input_boolean.dima_business_trip
-            state: 'off'
-        then:
-          - service: media_player.play_media
-            data:
-              media_content_type: text
-              entity_id: '{{ trigger.event.data.entity_id }}'
-              media_content_id: "Папа дома и пока не уезжает в командировку"
-              extra:
-                volume_level: '{{states("input_number.main_volume")|float(0)}}'
-        else:    
-          - service: media_player.play_media
-            data:
-              media_content_type: text
-              entity_id: '{{ trigger.event.data.entity_id }}'
-              media_content_id: "{{['Папа вернется через','Папа приедет через','Через','Папа вернется из командировки через']|random}} {{ (states('input_datetime.dima_return_date') | as_datetime | as_local - today_at()).days|format(morph='день', as_text=false) }}"
-              extra:
-                volume_level: '{{states("input_number.main_volume")|float(0)}}'
+# # ##################################
+# # System - When Daddy Get back home
+# # ##################################
+#   - alias: system_when_daddy_get_back_home
+#     id: system_when_daddy_get_back_home
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: yandex_intent
+#         event_data:
+#           text: Когда папа вернется
+#     action:
+#       - if:
+#           - condition: state
+#             entity_id: input_boolean.dima_business_trip
+#             state: 'off'
+#         then:
+#           - service: media_player.play_media
+#             data:
+#               media_content_type: text
+#               entity_id: '{{ trigger.event.data.entity_id }}'
+#               media_content_id: "Папа дома и пока не уезжает в командировку"
+#               extra:
+#                 volume_level: '{{states("input_number.main_volume")|float(0)}}'
+#         else:    
+#           - service: media_player.play_media
+#             data:
+#               media_content_type: text
+#               entity_id: '{{ trigger.event.data.entity_id }}'
+#               media_content_id: "{{['Папа вернется через','Папа приедет через','Через','Папа вернется из командировки через']|random}} {{ (states('input_datetime.dima_return_date') | as_datetime | as_local - today_at()).days|format(morph='день', as_text=false) }}"
+#               extra:
+#                 volume_level: '{{states("input_number.main_volume")|float(0)}}'

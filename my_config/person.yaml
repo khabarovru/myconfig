@@ -1,52 +1,52 @@
-  - name: Dima
-    id: Dima001
-    user_id: !secret dima_user_id
-    device_trackers:
-      - device_tracker.iphone_14_pro_dtsymbal
+  # - name: Dima
+  #   id: Dima001
+  #   user_id: !secret dima_user_id
+  #   device_trackers:
+  #     - device_tracker.iphone_14_pro_dtsymbal
 
-  - name: Sandra
-    id: Sandra001
-    user_id: !secret sandra_user_id
-    device_trackers:
-      - device_tracker.iphone_12_mini_sandra
-      - device_tracker.iphone_14_pro_sandra
+  # - name: Sandra
+  #   id: Sandra001
+  #   user_id: !secret sandra_user_id
+  #   device_trackers:
+  #     - device_tracker.iphone_12_mini_sandra
+  #     - device_tracker.iphone_14_pro_sandra
 
-  - name: Vova
-    id: Vova001
-    user_id: !secret vova_user_id
-    device_trackers:
-      - device_tracker.xiaomi_13_vova
+  # - name: Vova
+  #   id: Vova001
+  #   user_id: !secret vova_user_id
+  #   device_trackers:
+  #     - device_tracker.xiaomi_13_vova
 
-  - name: Sasha
-    id: Sasha001
-    user_id: !secret sasha_user_id
-    device_trackers:
-      #- device_tracker.sasha
-      - device_tracker.pova_5
+  # - name: Sasha
+  #   id: Sasha001
+  #   user_id: !secret sasha_user_id
+  #   device_trackers:
+  #     #- device_tracker.sasha
+  #     - device_tracker.pova_5
 
-  - name: Natasha
-    id: Natasha001
-    device_trackers:
-      - device_tracker.note_9_pro_natasha
+  # - name: Natasha
+  #   id: Natasha001
+  #   device_trackers:
+  #     - device_tracker.note_9_pro_natasha
 
       
-  - name: Sergey
-    id: Sergey001
-    device_trackers:
-      - device_tracker.a32_sergey
+  # - name: Sergey
+  #   id: Sergey001
+  #   device_trackers:
+  #     - device_tracker.a32_sergey
 
-  - name: Elena
-    id: Elena001
-    device_trackers:
-      - device_tracker.iphone_elena
-      #- device_tracker.redmi7_sergey
+  # - name: Elena
+  #   id: Elena001
+  #   device_trackers:
+  #     - device_tracker.iphone_elena
+  #     #- device_tracker.redmi7_sergey
       
-  - name: Vasya
-    id: Vasya001
-    device_trackers:
-      - device_tracker.note_6_vasya
+  # - name: Vasya
+  #   id: Vasya001
+  #   device_trackers:
+  #     - device_tracker.note_6_vasya
   
-  - name: Guest
-    id: Guest001
-    device_trackers:
-      - device_tracker.guest
+  # - name: Guest
+  #   id: Guest001
+  #   device_trackers:
+  #     - device_tracker.guest

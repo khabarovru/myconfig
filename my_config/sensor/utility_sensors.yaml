@@ -1,120 +1,120 @@
 
-  - platform: statistics
-    name: Server Daily Power Consumption
-    entity_id: sensor.server_plug_hb_power
-    state_characteristic: mean
-    sampling_size: 900000
-    max_age:
-      hours: 24
-
-  - platform: statistics
-    name: Plex Daily Power Consumption
-    entity_id: sensor.plex_plug_hb_power
-    state_characteristic: mean
-    sampling_size: 900000
-    max_age:
-      hours: 24
-
-  - platform: statistics
-    name: Ds1621plus Daily Power Consumption
-    entity_id: sensor.1621_plug_st_power
-    state_characteristic: mean
-    sampling_size: 900000
-    max_age:
-      hours: 24
-      
   # - platform: statistics
-  #   name: Ds220plus Daily Power Consumption
-  #   entity_id: sensor.ds220plus_plug_hs_power
+  #   name: Server Daily Power Consumption
+  #   entity_id: sensor.server_plug_hb_power
   #   state_characteristic: mean
   #   sampling_size: 900000
   #   max_age:
   #     hours: 24
 
-  - platform: statistics
-    name: Ds920plus Daily Power Consumption
-    entity_id: sensor.ds920plus_plug_mb_power
-    state_characteristic: mean
-    sampling_size: 900000
-    max_age:
-      hours: 24
+  # - platform: statistics
+  #   name: Plex Daily Power Consumption
+  #   entity_id: sensor.plex_plug_hb_power
+  #   state_characteristic: mean
+  #   sampling_size: 900000
+  #   max_age:
+  #     hours: 24
 
-  - platform: statistics
-    name: Thermo Pad Hourly Power Consumption
-    entity_id: sensor.0x00158d000392623d_power
-    state_characteristic: mean
-    sampling_size: 900000
-    max_age:
-      hours: 24
+  # - platform: statistics
+  #   name: Ds1621plus Daily Power Consumption
+  #   entity_id: sensor.1621_plug_st_power
+  #   state_characteristic: mean
+  #   sampling_size: 900000
+  #   max_age:
+  #     hours: 24
+      
+  # # - platform: statistics
+  # #   name: Ds220plus Daily Power Consumption
+  # #   entity_id: sensor.ds220plus_plug_hs_power
+  # #   state_characteristic: mean
+  # #   sampling_size: 900000
+  # #   max_age:
+  # #     hours: 24
 
-  # ############################################################################
-  # Utility (water + Power Cost sensor
-  # ############################################################################
+  # - platform: statistics
+  #   name: Ds920plus Daily Power Consumption
+  #   entity_id: sensor.ds920plus_plug_mb_power
+  #   state_characteristic: mean
+  #   sampling_size: 900000
+  #   max_age:
+  #     hours: 24
 
-  # - platform: min_max
-  #   type: mean
-  #   name: Voltage
-  #   round_digits: 1
-  #   entity_ids:
-  #     - sensor.ippon_1200_input_voltage
-  #     - sensor.ippon_1050_input_voltage
-  #     - sensor.cyber650_input_voltage
-  #     - sensor.shp2_socket_1_v
-  #     - sensor.shp2_socket_2_v
-  #     - sensor.shp6_socket_1_v
-  #     - sensor.shp6_socket_2_v
-  #     - sensor.sonoff_pow_r2_1_voltage
-  #     - sensor.sonoff_pow_r2_2_voltage
+  # - platform: statistics
+  #   name: Thermo Pad Hourly Power Consumption
+  #   entity_id: sensor.0x00158d000392623d_power
+  #   state_characteristic: mean
+  #   sampling_size: 900000
+  #   max_age:
+  #     hours: 24
 
-  # ############################################################################
-  # Breathers run time stat
-  # ############################################################################
-  - platform: history_stats
-    name: Breather V Run Time Today
-    entity_id: binary_sensor.breather_v
-    state: "on"
-    type: time
-    end: "{{ now().replace(hour=0, minute=0, second=0) }}"
-    duration:
-      hours: 24
+  # # ############################################################################
+  # # Utility (water + Power Cost sensor
+  # # ############################################################################
 
-  - platform: history_stats
-    name: Breather S Run Time Today
-    entity_id: binary_sensor.breather_s
-    state: "on"
-    type: time
-    end: "{{ now().replace(hour=0, minute=0, second=0) }}"
-    duration:
-      hours: 24
+  # # - platform: min_max
+  # #   type: mean
+  # #   name: Voltage
+  # #   round_digits: 1
+  # #   entity_ids:
+  # #     - sensor.ippon_1200_input_voltage
+  # #     - sensor.ippon_1050_input_voltage
+  # #     - sensor.cyber650_input_voltage
+  # #     - sensor.shp2_socket_1_v
+  # #     - sensor.shp2_socket_2_v
+  # #     - sensor.shp6_socket_1_v
+  # #     - sensor.shp6_socket_2_v
+  # #     - sensor.sonoff_pow_r2_1_voltage
+  # #     - sensor.sonoff_pow_r2_2_voltage
 
-  - platform: history_stats
-    name: Breather MB Run Time Today
-    entity_id: binary_sensor.breather_mb
-    state: "on"
-    type: time
-    end: "{{ now().replace(hour=0, minute=0, second=0) }}"
-    duration:
-      hours: 24
-
+  # # ############################################################################
+  # # Breathers run time stat
+  # # ############################################################################
   # - platform: history_stats
-  #   name: Washer B Run Time Yesterday
-  #   entity_id: binary_sensor.washer_b
+  #   name: Breather V Run Time Today
+  #   entity_id: binary_sensor.breather_v
   #   state: "on"
   #   type: time
   #   end: "{{ now().replace(hour=0, minute=0, second=0) }}"
   #   duration:
   #     hours: 24
 
-  - platform: history_stats
-    name: PC S Stats
-    entity_id: switch.pc_s
-    state: "on"
-    start: "{{ now().replace(hour=0, minute=0, second=0) }}"
-    end: "{{ now() }}"
+  # - platform: history_stats
+  #   name: Breather S Run Time Today
+  #   entity_id: binary_sensor.breather_s
+  #   state: "on"
+  #   type: time
+  #   end: "{{ now().replace(hour=0, minute=0, second=0) }}"
+  #   duration:
+  #     hours: 24
 
-  - platform: history_stats
-    name: Phone S Stats
-    entity_id: binary_sensor.pova_5_interactive
-    state: "on"
-    start: "{{ now().replace(hour=0, minute=0, second=0) }}"
-    end: "{{ now() }}"
+  # - platform: history_stats
+  #   name: Breather MB Run Time Today
+  #   entity_id: binary_sensor.breather_mb
+  #   state: "on"
+  #   type: time
+  #   end: "{{ now().replace(hour=0, minute=0, second=0) }}"
+  #   duration:
+  #     hours: 24
+
+  # # - platform: history_stats
+  # #   name: Washer B Run Time Yesterday
+  # #   entity_id: binary_sensor.washer_b
+  # #   state: "on"
+  # #   type: time
+  # #   end: "{{ now().replace(hour=0, minute=0, second=0) }}"
+  # #   duration:
+  # #     hours: 24
+
+  # - platform: history_stats
+  #   name: PC S Stats
+  #   entity_id: switch.pc_s
+  #   state: "on"
+  #   start: "{{ now().replace(hour=0, minute=0, second=0) }}"
+  #   end: "{{ now() }}"
+
+  # - platform: history_stats
+  #   name: Phone S Stats
+  #   entity_id: binary_sensor.pova_5_interactive
+  #   state: "on"
+  #   start: "{{ now().replace(hour=0, minute=0, second=0) }}"
+  #   end: "{{ now() }}"

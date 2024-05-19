@@ -1,553 +1,553 @@
-# #####################################################################################
-#
-# BATHROOM
-#
-# #####################################################################################
-# Bathroom Fan - On Manual Single
-# ##################################
-  - alias: bathroom_button_b_single
-    id: bathroom_button_b_single
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-          entity_id: sensor.0x00158d0001b94abe_action
-          click_type: single
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: group.lights_b
-                state: 'off'
-            sequence:
-              - service: xiaomi_miio.light_set_scene
-                data:
-                  entity_id: light.mirror_light_b
-                  scene: 4
-          - conditions:
-              - condition: state
-                entity_id: fan.esp32_node_b_fan_b
-                state: 'off'
-              - condition: state
-                entity_id: group.lights_b
-                state: 'on'
-              - condition: state
-                entity_id: switch.esp32_node_b_fan_b_force_mode
-                state: 'off'
-            sequence:
-              - service: fan.turn_off
-                entity_id: fan.esp32_node_b_fan_t
-              - service: timer.pause
-                entity_id: timer.fan_t
-              - service: switch.turn_on
-                entity_id: switch.esp32_node_b_fan_b_manual_mode
-          - conditions:
-              - condition: state
-                entity_id: fan.esp32_node_b_fan_b
-                state: 'on'
-              - condition: state
-                entity_id: switch.esp32_node_b_fan_b_force_mode
-                state: 'off'
-              # - condition: state
-              #   entity_id: group.lights_b
-              #   state: 'on'
-            sequence:
-              - service: switch.turn_off
-                entity_id: switch.esp32_node_b_fan_b_manual_mode
-              - service: switch.turn_on
-                entity_id: switch.esp32_node_b_fan_b_auto_mode
-  
-# ##################################
-# Bathroom Fan - On Manual Double
-# ##################################
-  - alias: bathroom_button_b_double
-    id: bathroom_button_b_double
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-          entity_id: sensor.0x00158d0001b94abe_action
-          click_type: double
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: group.lights_b
-                state: 'off'
-            sequence:
-              - service: xiaomi_miio.light_set_scene
-                data:
-                  entity_id: light.mirror_light_b
-                  scene: 1
-          - conditions:
-              - condition: state
-                entity_id: group.lights_b
-                state: 'on'
-            sequence:
-              - service: fan.toggle
-                entity_id: fan.sonoff_pow_r2_1_bottom_fan
+# # #####################################################################################
+# #
+# # BATHROOM
+# #
+# # #####################################################################################
+# # Bathroom Fan - On Manual Single
+# # ##################################
+#   - alias: bathroom_button_b_single
+#     id: bathroom_button_b_single
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#           entity_id: sensor.0x00158d0001b94abe_action
+#           click_type: single
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: state
+#                 entity_id: group.lights_b
+#                 state: 'off'
+#             sequence:
+#               - service: xiaomi_miio.light_set_scene
+#                 data:
+#                   entity_id: light.mirror_light_b
+#                   scene: 4
+#           - conditions:
+#               - condition: state
+#                 entity_id: fan.esp32_node_b_fan_b
+#                 state: 'off'
+#               - condition: state
+#                 entity_id: group.lights_b
+#                 state: 'on'
+#               - condition: state
+#                 entity_id: switch.esp32_node_b_fan_b_force_mode
+#                 state: 'off'
+#             sequence:
+#               - service: fan.turn_off
+#                 entity_id: fan.esp32_node_b_fan_t
+#               - service: timer.pause
+#                 entity_id: timer.fan_t
+#               - service: switch.turn_on
+#                 entity_id: switch.esp32_node_b_fan_b_manual_mode
+#           - conditions:
+#               - condition: state
+#                 entity_id: fan.esp32_node_b_fan_b
+#                 state: 'on'
+#               - condition: state
+#                 entity_id: switch.esp32_node_b_fan_b_force_mode
+#                 state: 'off'
+#               # - condition: state
+#               #   entity_id: group.lights_b
+#               #   state: 'on'
+#             sequence:
+#               - service: switch.turn_off
+#                 entity_id: switch.esp32_node_b_fan_b_manual_mode
+#               - service: switch.turn_on
+#                 entity_id: switch.esp32_node_b_fan_b_auto_mode
   
 # # ##################################
-# # Bathroom Fan - On Manual Hold
+# # Bathroom Fan - On Manual Double
 # # ##################################
-# - alias: bathroom_button_b_hold
-#   id: bathroom_button_b_hold
-#   initial_state: true
-#   trigger:
-#     - platform: event
-#       event_type: xiaomi_aqara.click
-#       event_data:
-#         entity_id: sensor.0x00158d0001b94abe_action
-#         click_type: hold
-#   condition:
-#     - condition: state
-#       entity_id: group.lights_b
-#       state: 'off'
-#   action:
-#     - service: switch.turn_on
-#       entity_id: switch.0x00158d0002a36433_channel_2
+#   - alias: bathroom_button_b_double
+#     id: bathroom_button_b_double
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#           entity_id: sensor.0x00158d0001b94abe_action
+#           click_type: double
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: state
+#                 entity_id: group.lights_b
+#                 state: 'off'
+#             sequence:
+#               - service: xiaomi_miio.light_set_scene
+#                 data:
+#                   entity_id: light.mirror_light_b
+#                   scene: 1
+#           - conditions:
+#               - condition: state
+#                 entity_id: group.lights_b
+#                 state: 'on'
+#             sequence:
+#               - service: fan.toggle
+#                 entity_id: fan.sonoff_pow_r2_1_bottom_fan
+  
+# # # ##################################
+# # # Bathroom Fan - On Manual Hold
+# # # ##################################
+# # - alias: bathroom_button_b_hold
+# #   id: bathroom_button_b_hold
+# #   initial_state: true
+# #   trigger:
+# #     - platform: event
+# #       event_type: xiaomi_aqara.click
+# #       event_data:
+# #         entity_id: sensor.0x00158d0001b94abe_action
+# #         click_type: hold
+# #   condition:
+# #     - condition: state
+# #       entity_id: group.lights_b
+# #       state: 'off'
+# #   action:
+# #     - service: switch.turn_on
+# #       entity_id: switch.0x00158d0002a36433_channel_2
               
-# ##################################
-# Bathroom Fan - Auto Off
-# ##################################
-# - alias: bathroom_fan_auto_off
-#   id: bathroom_fan_auto_off
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.high_humidity_b
-#       to: 'off'
-#     - platform: homeassistant
-#       event: start
-#     - platform: event
-#       event_type: automation_reloaded
-#   condition:
-#     - condition: state
-#       entity_id: timer.fan_b
-#       state: 'idle'
-#     - condition: state
-#       entity_id: binary_sensor.high_humidity_b
-#       state: 'off'
-#     - condition: state
-#       entity_id: input_boolean.fan_manual_b
-#       state: 'off'
-#   action:
-#     - service: fan.turn_off
-#       entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+# # ##################################
+# # Bathroom Fan - Auto Off
+# # ##################################
+# # - alias: bathroom_fan_auto_off
+# #   id: bathroom_fan_auto_off
+# #   initial_state: true
+# #   trigger:
+# #     - platform: state
+# #       entity_id: binary_sensor.high_humidity_b
+# #       to: 'off'
+# #     - platform: homeassistant
+# #       event: start
+# #     - platform: event
+# #       event_type: automation_reloaded
+# #   condition:
+# #     - condition: state
+# #       entity_id: timer.fan_b
+# #       state: 'idle'
+# #     - condition: state
+# #       entity_id: binary_sensor.high_humidity_b
+# #       state: 'off'
+# #     - condition: state
+# #       entity_id: input_boolean.fan_manual_b
+# #       state: 'off'
+# #   action:
+# #     - service: fan.turn_off
+# #       entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
 
-# ##################################
-# Bathroom Fan - Auto On
-# ##################################
-# - alias: bathroom_fan_auto_on
-#   id: bathroom_fan_auto_on
-#   initial_state: true
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.high_humidity_b
-#       to: 'on'
-#     - platform: homeassistant
-#       event: start
-#     - platform: event
-#       event_type: automation_reloaded
-#     - platform: time_pattern
-#       minutes: '/5'
-#   condition:
-#     - condition: state
-#       entity_id: timer.fan_b
-#       state: 'idle'
-#     - condition: state
-#       entity_id: group.lights_b
-#       state: 'off'
-#     - condition: state
-#       entity_id: binary_sensor.high_humidity_b
-#       state: 'on'
-#   action:
-#     - service: fan.turn_on
-#       entity_id: fan.sonoff_pow_r2_1_bottom_fan
-#     - condition: state
-#       entity_id: fan.esp32_node_b_fan_t
-#       state: 'off'
-#     - service: fan.turn_on
-#       entity_id: fan.esp32_node_b_fan_b
+# # ##################################
+# # Bathroom Fan - Auto On
+# # ##################################
+# # - alias: bathroom_fan_auto_on
+# #   id: bathroom_fan_auto_on
+# #   initial_state: true
+# #   trigger:
+# #     - platform: state
+# #       entity_id: binary_sensor.high_humidity_b
+# #       to: 'on'
+# #     - platform: homeassistant
+# #       event: start
+# #     - platform: event
+# #       event_type: automation_reloaded
+# #     - platform: time_pattern
+# #       minutes: '/5'
+# #   condition:
+# #     - condition: state
+# #       entity_id: timer.fan_b
+# #       state: 'idle'
+# #     - condition: state
+# #       entity_id: group.lights_b
+# #       state: 'off'
+# #     - condition: state
+# #       entity_id: binary_sensor.high_humidity_b
+# #       state: 'on'
+# #   action:
+# #     - service: fan.turn_on
+# #       entity_id: fan.sonoff_pow_r2_1_bottom_fan
+# #     - condition: state
+# #       entity_id: fan.esp32_node_b_fan_t
+# #       state: 'off'
+# #     - service: fan.turn_on
+# #       entity_id: fan.esp32_node_b_fan_b
 
-# ##################################
-# Bathroom Fan - Auto
-# ##################################
-  # - alias: bathroom_fan_auto
-  #   id: bathroom_fan_auto
-  #   initial_state: true
-  #   mode: single
-  #   max_exceeded: silent
-  #   trigger:
-  #     - platform: time_pattern
-  #       minutes: "/1"
-  #   condition:
-  #     - condition: state
-  #       entity_id: timer.fan_b
-  #       state: 'idle'
-  #     # - condition: template
-  #     #   value_template: "{{ (as_timestamp(now())|int(0) - as_timestamp(state_attr('automation.bathroom_fan_auto', 'last_triggered'))|int(0)) > 60 }}"
-  #   action:
-  #     - choose:
-  #         - conditions:
-  #             - condition: state
-  #               entity_id: binary_sensor.high_humidity_b
-  #               state: 'on'
-  #               for:
-  #                 seconds: 30
-  #             - condition: template
-  #               value_template: "{{ not is_state('switch.0x00158d0002a36433_channel_2','on') }}"
-  #             - condition: state
-  #               entity_id: fan.esp32_node_b_fan_b
-  #               state: 'off'
-  #           sequence:
-  #             - service: fan.turn_on
-  #               entity_id: fan.sonoff_pow_r2_1_bottom_fan
-  #             - condition: state
-  #               entity_id: fan.esp32_node_b_fan_t
-  #               state: 'off'
-  #             - service: fan.turn_on
-  #               entity_id: fan.esp32_node_b_fan_b
-  #         - conditions:
-  #             - condition: state
-  #               entity_id: binary_sensor.high_humidity_b
-  #               state: 'off'
-  #               for:
-  #                 seconds: 30
-  #             - condition: state
-  #               entity_id: switch.esp32_node_b_fan_b_manual_mode
-  #               state: 'off'
-  #             - condition: template
-  #               value_template: "{{ is_state('fan.esp32_node_b_fan_b','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on')  }}"
-  #           sequence:
-  #             - service: fan.turn_off
-  #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
-
-
-# ##################################
-# Bathroom Fan - With light
-# ##################################
-  - alias: bathroom_fan_with_light
-    id: bathroom_fan_with_light
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: switch.0x00158d0002a36433_channel_2 #group.lights_b
-        to: 'on'
-        id: 'to_on'
-      - platform: state
-        entity_id: switch.0x00158d0002a36433_channel_2 #group.lights_b
-        to: 'off'
-        id: 'to_off'
-    action:
-      - choose:
-          - conditions:
-              - condition: trigger
-                id: 'to_on'
-            sequence:
-              # - condition: template
-              #   value_template: "{{ is_state('fan.esp32_node_b_fan_b','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on') }}"
-              # - condition: state
-              #   entity_id: switch.esp32_node_b_fan_b_manual_mode
-              #   state: 'off'
-              # - condition: state
-              #   entity_id: switch.esp32_node_b_fan_b_force_mode
-              #   state: 'off'
-              - service: switch.turn_off
-                entity_id: switch.esp32_node_b_fan_b_auto_mode
-              - service: fan.turn_off
-                entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
-          - conditions:
-              - condition: trigger
-                id: 'to_off'
-            sequence:
-              # - condition: state
-              #   entity_id: switch.esp32_node_b_fan_b_manual_mode
-              #   state: 'off'
-              # - condition: state
-              #   entity_id: switch.esp32_node_b_fan_b_force_mode
-              #   state: 'off'
-              - service: switch.turn_on
-                entity_id: switch.esp32_node_b_fan_b_auto_mode
-
-# ##################################
-# Bathroom - Fan Night mode
-# ##################################
-  - alias: bathroom_fan_night_mode
-    id: bathroom_fan_night_mode
-    initial_state: true
-    trigger:
-      - platform: time_pattern
-        minutes: '/5'
-    condition:
-      - condition: state
-        entity_id: switch.system_security_mode
-        state: 'off'
-      - condition: template
-        value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
-      - condition: template
-        value_template: "{{ 1 <= now().hour < 6 }}"
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: binary_sensor.0x00158d0002a14c5e_contact
-                state: 'off'
-                for: 
-                  minutes: 3
-            sequence:
-              - service: number.set_value
-                data:
-                  value: "30"
-                target:
-                  entity_id: number.esp32_node_b_humidity_set
-          - conditions:
-              - condition: state
-                entity_id: binary_sensor.0x00158d0002a14c5e_contact
-                state: 'on'
-                for: 
-                  minutes: 3
-            sequence:
-              - service: number.set_value
-                data:
-                  value: "65"
-                target:
-                  entity_id: number.esp32_node_b_humidity_set
-
-# ##################################
-# Bathroom - Fan to normal mode
-# ##################################
-  - alias: bathroom_fan_to_normal_mode
-    id: bathroom_fan_to_normal_mode
-    initial_state: true
-    trigger:
-      - platform: time
-        at: "06:20:00"
-    condition:
-      - condition: state
-        entity_id: switch.system_security_mode
-        state: 'off'
-      - condition: template
-        value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
-      - condition: template
-        value_template: "{{states('number.esp32_node_b_humidity_set')|int(0) < 50 }}"
-    action:
-      - service: number.set_value
-        data:
-          value: "65"
-        target:
-          entity_id: number.esp32_node_b_humidity_set
-      - service: switch.turn_off
-        entity_id: switch.esp32_node_b_fan_b_force_mode
+# # ##################################
+# # Bathroom Fan - Auto
+# # ##################################
+#   # - alias: bathroom_fan_auto
+#   #   id: bathroom_fan_auto
+#   #   initial_state: true
+#   #   mode: single
+#   #   max_exceeded: silent
+#   #   trigger:
+#   #     - platform: time_pattern
+#   #       minutes: "/1"
+#   #   condition:
+#   #     - condition: state
+#   #       entity_id: timer.fan_b
+#   #       state: 'idle'
+#   #     # - condition: template
+#   #     #   value_template: "{{ (as_timestamp(now())|int(0) - as_timestamp(state_attr('automation.bathroom_fan_auto', 'last_triggered'))|int(0)) > 60 }}"
+#   #   action:
+#   #     - choose:
+#   #         - conditions:
+#   #             - condition: state
+#   #               entity_id: binary_sensor.high_humidity_b
+#   #               state: 'on'
+#   #               for:
+#   #                 seconds: 30
+#   #             - condition: template
+#   #               value_template: "{{ not is_state('switch.0x00158d0002a36433_channel_2','on') }}"
+#   #             - condition: state
+#   #               entity_id: fan.esp32_node_b_fan_b
+#   #               state: 'off'
+#   #           sequence:
+#   #             - service: fan.turn_on
+#   #               entity_id: fan.sonoff_pow_r2_1_bottom_fan
+#   #             - condition: state
+#   #               entity_id: fan.esp32_node_b_fan_t
+#   #               state: 'off'
+#   #             - service: fan.turn_on
+#   #               entity_id: fan.esp32_node_b_fan_b
+#   #         - conditions:
+#   #             - condition: state
+#   #               entity_id: binary_sensor.high_humidity_b
+#   #               state: 'off'
+#   #               for:
+#   #                 seconds: 30
+#   #             - condition: state
+#   #               entity_id: switch.esp32_node_b_fan_b_manual_mode
+#   #               state: 'off'
+#   #             - condition: template
+#   #               value_template: "{{ is_state('fan.esp32_node_b_fan_b','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on')  }}"
+#   #           sequence:
+#   #             - service: fan.turn_off
+#   #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
 
 
-# ##################################
-# Bathroom - Bottom Fan On with Fan
-# ##################################
-  - alias: bathroom_bottom_fan_with_fan
-    id: bathroom_bottom_fan_with_fan
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: fan.esp32_node_b_fan_b
-        to: 
-    condition:
-      - condition: state
-        entity_id: switch.system_security_mode
-        state: 'off'
-      - condition: template
-        value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
-    action:
-      - service: fan.turn_{{ states('fan.esp32_node_b_fan_b') }}
-        entity_id: fan.sonoff_pow_r2_1_bottom_fan
+# # ##################################
+# # Bathroom Fan - With light
+# # ##################################
+#   - alias: bathroom_fan_with_light
+#     id: bathroom_fan_with_light
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: switch.0x00158d0002a36433_channel_2 #group.lights_b
+#         to: 'on'
+#         id: 'to_on'
+#       - platform: state
+#         entity_id: switch.0x00158d0002a36433_channel_2 #group.lights_b
+#         to: 'off'
+#         id: 'to_off'
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: trigger
+#                 id: 'to_on'
+#             sequence:
+#               # - condition: template
+#               #   value_template: "{{ is_state('fan.esp32_node_b_fan_b','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on') }}"
+#               # - condition: state
+#               #   entity_id: switch.esp32_node_b_fan_b_manual_mode
+#               #   state: 'off'
+#               # - condition: state
+#               #   entity_id: switch.esp32_node_b_fan_b_force_mode
+#               #   state: 'off'
+#               - service: switch.turn_off
+#                 entity_id: switch.esp32_node_b_fan_b_auto_mode
+#               - service: fan.turn_off
+#                 entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#           - conditions:
+#               - condition: trigger
+#                 id: 'to_off'
+#             sequence:
+#               # - condition: state
+#               #   entity_id: switch.esp32_node_b_fan_b_manual_mode
+#               #   state: 'off'
+#               # - condition: state
+#               #   entity_id: switch.esp32_node_b_fan_b_force_mode
+#               #   state: 'off'
+#               - service: switch.turn_on
+#                 entity_id: switch.esp32_node_b_fan_b_auto_mode
 
-# ##################################
-# Bathroom - Bottom Fan On
-# ##################################
-  - alias: bathroom_bottom_fan
-    id: bathroom_bottom_fan
-    initial_state: true
-    trigger:
-      - platform: time
-        at: '07:00:03'
-      - platform: time
-        at: '23:00:03'
-    condition:
-      - condition: state
-        entity_id: switch.system_security_mode
-        state: 'off'
-    action:
-      - service: fan.turn_{%if states('binary_sensor.tod_day')%}off{%else%}on{%endif%}
-        entity_id: fan.sonoff_pow_r2_1_bottom_fan
+# # ##################################
+# # Bathroom - Fan Night mode
+# # ##################################
+#   - alias: bathroom_fan_night_mode
+#     id: bathroom_fan_night_mode
+#     initial_state: true
+#     trigger:
+#       - platform: time_pattern
+#         minutes: '/5'
+#     condition:
+#       - condition: state
+#         entity_id: switch.system_security_mode
+#         state: 'off'
+#       - condition: template
+#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#       - condition: template
+#         value_template: "{{ 1 <= now().hour < 6 }}"
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: state
+#                 entity_id: binary_sensor.0x00158d0002a14c5e_contact
+#                 state: 'off'
+#                 for: 
+#                   minutes: 3
+#             sequence:
+#               - service: number.set_value
+#                 data:
+#                   value: "30"
+#                 target:
+#                   entity_id: number.esp32_node_b_humidity_set
+#           - conditions:
+#               - condition: state
+#                 entity_id: binary_sensor.0x00158d0002a14c5e_contact
+#                 state: 'on'
+#                 for: 
+#                   minutes: 3
+#             sequence:
+#               - service: number.set_value
+#                 data:
+#                   value: "65"
+#                 target:
+#                   entity_id: number.esp32_node_b_humidity_set
 
-# ##################################
-# Bathroom - Bottom Fan Toggle
-# ##################################
-  - alias: bathroom_bottom_fan_toggle
-    id: bathroom_bottom_fan_toggle
-    initial_state: true
-    trigger:
-      - platform: time_pattern
-        minutes: "/30"
-    condition:
-      - condition: state
-        entity_id: binary_sensor.tod_day
-        state: 'off'
-      - condition: state
-        entity_id: switch.system_security_mode
-        state: 'off'
-      - condition: state
-        entity_id: switch.esp32_node_b_fan_b_force_mode
-        state: 'off'
-    action:
-      - condition: template
-        value_template: "{{ is_state('group.lights_b','off') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on') }}"
-      - service: fan.toggle
-        entity_id: fan.sonoff_pow_r2_1_bottom_fan
+# # ##################################
+# # Bathroom - Fan to normal mode
+# # ##################################
+#   - alias: bathroom_fan_to_normal_mode
+#     id: bathroom_fan_to_normal_mode
+#     initial_state: true
+#     trigger:
+#       - platform: time
+#         at: "06:20:00"
+#     condition:
+#       - condition: state
+#         entity_id: switch.system_security_mode
+#         state: 'off'
+#       - condition: template
+#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#       - condition: template
+#         value_template: "{{states('number.esp32_node_b_humidity_set')|int(0) < 50 }}"
+#     action:
+#       - service: number.set_value
+#         data:
+#           value: "65"
+#         target:
+#           entity_id: number.esp32_node_b_humidity_set
+#       - service: switch.turn_off
+#         entity_id: switch.esp32_node_b_fan_b_force_mode
+
+
+# # ##################################
+# # Bathroom - Bottom Fan On with Fan
+# # ##################################
+#   - alias: bathroom_bottom_fan_with_fan
+#     id: bathroom_bottom_fan_with_fan
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: fan.esp32_node_b_fan_b
+#         to: 
+#     condition:
+#       - condition: state
+#         entity_id: switch.system_security_mode
+#         state: 'off'
+#       - condition: template
+#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#     action:
+#       - service: fan.turn_{{ states('fan.esp32_node_b_fan_b') }}
+#         entity_id: fan.sonoff_pow_r2_1_bottom_fan
+
+# # ##################################
+# # Bathroom - Bottom Fan On
+# # ##################################
+#   - alias: bathroom_bottom_fan
+#     id: bathroom_bottom_fan
+#     initial_state: true
+#     trigger:
+#       - platform: time
+#         at: '07:00:03'
+#       - platform: time
+#         at: '23:00:03'
+#     condition:
+#       - condition: state
+#         entity_id: switch.system_security_mode
+#         state: 'off'
+#     action:
+#       - service: fan.turn_{%if states('binary_sensor.tod_day')%}off{%else%}on{%endif%}
+#         entity_id: fan.sonoff_pow_r2_1_bottom_fan
+
+# # ##################################
+# # Bathroom - Bottom Fan Toggle
+# # ##################################
+#   - alias: bathroom_bottom_fan_toggle
+#     id: bathroom_bottom_fan_toggle
+#     initial_state: true
+#     trigger:
+#       - platform: time_pattern
+#         minutes: "/30"
+#     condition:
+#       - condition: state
+#         entity_id: binary_sensor.tod_day
+#         state: 'off'
+#       - condition: state
+#         entity_id: switch.system_security_mode
+#         state: 'off'
+#       - condition: state
+#         entity_id: switch.esp32_node_b_fan_b_force_mode
+#         state: 'off'
+#     action:
+#       - condition: template
+#         value_template: "{{ is_state('group.lights_b','off') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on') }}"
+#       - service: fan.toggle
+#         entity_id: fan.sonoff_pow_r2_1_bottom_fan
   
-# ##################################
-# Bathroom - Main Fan Off by Timer
-# ##################################
-  - alias: bathroom_fan_off_by_timer
-    id: bathroom_fan_off_by_timer
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: timer.finished
-        event_data:
-          entity_id: timer.fan_b
-      # - platform: state
-      #   entity_id: fan.esp32_node_b_fan_b
-      #   to: 'off'
-    condition:
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-    action:
-      - service: fan.turn_off
-        entity_id: fan.esp32_node_b_fan_b
-      - service: switch.turn_off
-        entity_id: switch.esp32_node_b_fan_b_manual_mode
-      - condition: state
-        entity_id: timer.fan_t
-        state: 'paused'
-      - service: fan.turn_on
-        entity_id: fan.esp32_node_b_fan_t
-      - service: timer.start
-        entity_id: timer.fan_t
+# # ##################################
+# # Bathroom - Main Fan Off by Timer
+# # ##################################
+#   - alias: bathroom_fan_off_by_timer
+#     id: bathroom_fan_off_by_timer
+#     initial_state: true
+#     trigger:
+#       - platform: event
+#         event_type: timer.finished
+#         event_data:
+#           entity_id: timer.fan_b
+#       # - platform: state
+#       #   entity_id: fan.esp32_node_b_fan_b
+#       #   to: 'off'
+#     condition:
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#     action:
+#       - service: fan.turn_off
+#         entity_id: fan.esp32_node_b_fan_b
+#       - service: switch.turn_off
+#         entity_id: switch.esp32_node_b_fan_b_manual_mode
+#       - condition: state
+#         entity_id: timer.fan_t
+#         state: 'paused'
+#       - service: fan.turn_on
+#         entity_id: fan.esp32_node_b_fan_t
+#       - service: timer.start
+#         entity_id: timer.fan_t
   
-# ##################################
-# Bathroom - Main Fan Timer with switch
-# ##################################
-  - alias: bathroom_main_fan_timer_with_switch
-    id: bathroom_main_fan_timer_with_switch
-    mode: single
-    max_exceeded: silent
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: fan.esp32_node_b_fan_b
-        to:
-    condition:
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-      - condition: template
-        value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
-      - condition: state
-        entity_id: switch.esp32_node_b_fan_b_force_mode
-        state: 'off'
-    action:
-      - if:
-          - condition: state
-            entity_id: fan.esp32_node_b_fan_b
-            state: 'on'
-        then:
-          - service: timer.start
-            entity_id: timer.fan_b
+# # ##################################
+# # Bathroom - Main Fan Timer with switch
+# # ##################################
+#   - alias: bathroom_main_fan_timer_with_switch
+#     id: bathroom_main_fan_timer_with_switch
+#     mode: single
+#     max_exceeded: silent
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: fan.esp32_node_b_fan_b
+#         to:
+#     condition:
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#       - condition: template
+#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#       - condition: state
+#         entity_id: switch.esp32_node_b_fan_b_force_mode
+#         state: 'off'
+#     action:
+#       - if:
+#           - condition: state
+#             entity_id: fan.esp32_node_b_fan_b
+#             state: 'on'
+#         then:
+#           - service: timer.start
+#             entity_id: timer.fan_b
 
-# ##################################
-# Bathroom Fan - Humiditiy above 92%
-# ##################################
-  # - alias: bathroom_high_humidity
-  #   id: bathroom_high_humidity
-  #   initial_state: true
-  #   mode: single
-  #   max_exceeded: silent
-  #   trigger:
-  #     - platform: numeric_state
-  #       entity_id: 
-  #         - sensor.0x00158d00020d7c3a_humidity
-  #         - sensor.e72e0120fcdc_humidity
-  #       above: 95
-  #       for: 
-  #         minutes: 2
-  #       id: 'force_on'
-  #     - platform: state
-  #       entity_id: binary_sensor.high_humidity_b
-  #       to: 'off'
-  #       from: 'on'
-  #       id: 'force_off'
-  #   action:
-  #     - choose:
-  #         - conditions:
-  #             - condition: trigger
-  #               id: "force_on"
-  #           sequence:
-  #             - service: fan.turn_off
-  #               entity_id: fan.esp32_node_b_fan_t
-  #             - service: fan.turn_on
-  #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
-  #             - service: switch.turn_on
-  #               entity_id: switch.esp32_node_b_fan_b_force_mode
-  #         - conditions:
-  #             - condition: trigger
-  #               id: "force_off"
-  #           sequence:
-  #             - service: fan.turn_off
-  #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
-  #             - service: switch.turn_off
-  #               entity_id: switch.esp32_node_b_fan_b_force_mode
+# # ##################################
+# # Bathroom Fan - Humiditiy above 92%
+# # ##################################
+#   # - alias: bathroom_high_humidity
+#   #   id: bathroom_high_humidity
+#   #   initial_state: true
+#   #   mode: single
+#   #   max_exceeded: silent
+#   #   trigger:
+#   #     - platform: numeric_state
+#   #       entity_id: 
+#   #         - sensor.0x00158d00020d7c3a_humidity
+#   #         - sensor.e72e0120fcdc_humidity
+#   #       above: 95
+#   #       for: 
+#   #         minutes: 2
+#   #       id: 'force_on'
+#   #     - platform: state
+#   #       entity_id: binary_sensor.high_humidity_b
+#   #       to: 'off'
+#   #       from: 'on'
+#   #       id: 'force_off'
+#   #   action:
+#   #     - choose:
+#   #         - conditions:
+#   #             - condition: trigger
+#   #               id: "force_on"
+#   #           sequence:
+#   #             - service: fan.turn_off
+#   #               entity_id: fan.esp32_node_b_fan_t
+#   #             - service: fan.turn_on
+#   #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#   #             - service: switch.turn_on
+#   #               entity_id: switch.esp32_node_b_fan_b_force_mode
+#   #         - conditions:
+#   #             - condition: trigger
+#   #               id: "force_off"
+#   #           sequence:
+#   #             - service: fan.turn_off
+#   #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#   #             - service: switch.turn_off
+#   #               entity_id: switch.esp32_node_b_fan_b_force_mode
 
 
-# ##################################
-# Bathroom Fan - Door Closure at high humidity
-# ##################################
-  # - alias: bathroom_door_closure_high_humidity
-  #   id: bathroom_door_closure_high_humidity
-  #   initial_state: true
-  #   mode: single
-  #   max_exceeded: silent
-  #   trigger:
-  #     - platform: state
-  #       entity_id: binary_sensor.0x00158d0002a14c5e_contact
-  #       from: 'on'
-  #       to: 'off'
-  #   condition:
-  #     - condition: state
-  #       entity_id: binary_sensor.high_humidity_b
-  #       state: 'on'
-  #     - condition: state
-  #       entity_id: binary_sensor.0x00158d0002a14c5e_contact
-  #       state: 'off'
-  #     - condition: state
-  #       entity_id: switch.0x00158d0002a36433_channel_2
-  #       state: 'off'
-  #     - condition: state
-  #       entity_id: binary_sensor.tod_day
-  #       state: 'on'
-  #     - condition: state
-  #       entity_id: switch.system_dark_mode
-  #       state: 'off'
-  #     - condition: template
-  #       value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.toilet_close_seat_notify', 'last_triggered'))|int(0)) > 15 }}"
-  #     - condition: template
-  #       value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-  #   action:
-  #     - service: media_player.play_media
-  #       data:
-  #         media_content_type: dialog
-  #         entity_id: media_player.yandex_k
-  #         media_content_id: "В ванне высокая влажность - рекомендуется не закрывать дверь! Спасибо!"
-  #         extra:
-  #           volume_level: '{{states("input_number.main_volume")|float(0)}}'
+# # ##################################
+# # Bathroom Fan - Door Closure at high humidity
+# # ##################################
+#   # - alias: bathroom_door_closure_high_humidity
+#   #   id: bathroom_door_closure_high_humidity
+#   #   initial_state: true
+#   #   mode: single
+#   #   max_exceeded: silent
+#   #   trigger:
+#   #     - platform: state
+#   #       entity_id: binary_sensor.0x00158d0002a14c5e_contact
+#   #       from: 'on'
+#   #       to: 'off'
+#   #   condition:
+#   #     - condition: state
+#   #       entity_id: binary_sensor.high_humidity_b
+#   #       state: 'on'
+#   #     - condition: state
+#   #       entity_id: binary_sensor.0x00158d0002a14c5e_contact
+#   #       state: 'off'
+#   #     - condition: state
+#   #       entity_id: switch.0x00158d0002a36433_channel_2
+#   #       state: 'off'
+#   #     - condition: state
+#   #       entity_id: binary_sensor.tod_day
+#   #       state: 'on'
+#   #     - condition: state
+#   #       entity_id: switch.system_dark_mode
+#   #       state: 'off'
+#   #     - condition: template
+#   #       value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.toilet_close_seat_notify', 'last_triggered'))|int(0)) > 15 }}"
+#   #     - condition: template
+#   #       value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#   #   action:
+#   #     - service: media_player.play_media
+#   #       data:
+#   #         media_content_type: dialog
+#   #         entity_id: media_player.yandex_k
+#   #         media_content_id: "В ванне высокая влажность - рекомендуется не закрывать дверь! Спасибо!"
+#   #         extra:
+#   #           volume_level: '{{states("input_number.main_volume")|float(0)}}'

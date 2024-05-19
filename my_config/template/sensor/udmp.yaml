@@ -1,123 +1,123 @@
-  - trigger:
-      - platform: time_pattern
-        minutes: "/1"
-      - platform: state
-        entity_id: sensor.unifios_state
-        to:
-      - platform: homeassistant
-        event: start
-      - platform: event
-        event_type: event_template_reloaded
-      - platform: event
-        event_type: automation_reloaded
-    sensor:
-      - name: UDM CPU Use
-        unique_id: udm_cpu_use
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[0] | default }}
-        attributes:
-          friendly_name: UDM CPU Use
-          icon: mdi:chip
-          unit_of_measurement: '%'
+  # - trigger:
+  #     - platform: time_pattern
+  #       minutes: "/1"
+  #     - platform: state
+  #       entity_id: sensor.unifios_state
+  #       to:
+  #     - platform: homeassistant
+  #       event: start
+  #     - platform: event
+  #       event_type: event_template_reloaded
+  #     - platform: event
+  #       event_type: automation_reloaded
+  #   sensor:
+  #     - name: UDM CPU Use
+  #       unique_id: udm_cpu_use
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[0] | default }}
+  #       attributes:
+  #         friendly_name: UDM CPU Use
+  #         icon: mdi:chip
+  #         unit_of_measurement: '%'
 
-      - name: UDM CPU Temp
-        unique_id: udm_cpu_temp
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[1] | default }}
-        attributes:
-          friendly_name: UDM CPU Temperature
-          icon: mdi:thermometer
-          unit_of_measurement: '°C'
+  #     - name: UDM CPU Temp
+  #       unique_id: udm_cpu_temp
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[1] | default }}
+  #       attributes:
+  #         friendly_name: UDM CPU Temperature
+  #         icon: mdi:thermometer
+  #         unit_of_measurement: '°C'
 
-      - name: UDM Board Temp
-        unique_id: udm_board_temp
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[24] | default }}
-        attributes:
-          friendly_name: UDM Board Temperature
-          icon: mdi:thermometer
-          unit_of_measurement: '°C'
+  #     - name: UDM Board Temp
+  #       unique_id: udm_board_temp
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[24] | default }}
+  #       attributes:
+  #         friendly_name: UDM Board Temperature
+  #         icon: mdi:thermometer
+  #         unit_of_measurement: '°C'
 
-      - name: UDM MEM Used
-        unique_id: udm_mem_used
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[2] | default }}
-        attributes:
-          friendly_name: UDM MEM Used
-          icon: mdi:chip
-          unit_of_measurement: '%'
+  #     - name: UDM MEM Used
+  #       unique_id: udm_mem_used
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[2] | default }}
+  #       attributes:
+  #         friendly_name: UDM MEM Used
+  #         icon: mdi:chip
+  #         unit_of_measurement: '%'
 
-      - name: UDM eMMC Used
-        unique_id: udm_emmc_used
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ ((states('sensor.unifios_state').split('|')[17]|int(0) / 13097209856 ) * 100) | round(2) }}
-        attributes:
-          friendly_name: UDM eMMC Used
-          icon: mdi:usb-flash-drive
-          unit_of_measurement: '%'
+  #     - name: UDM eMMC Used
+  #       unique_id: udm_emmc_used
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ ((states('sensor.unifios_state').split('|')[17]|int(0) / 13097209856 ) * 100) | round(2) }}
+  #       attributes:
+  #         friendly_name: UDM eMMC Used
+  #         icon: mdi:usb-flash-drive
+  #         unit_of_measurement: '%'
 
-      - name: UDM Last Active IP
-        unique_id: udm_last_active_ip
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[23] }}
-        attributes:
-          friendly_name: UDM Last Active IP
-          icon: mdi:ip-network
+  #     - name: UDM Last Active IP
+  #       unique_id: udm_last_active_ip
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[23] }}
+  #       attributes:
+  #         friendly_name: UDM Last Active IP
+  #         icon: mdi:ip-network
 
-      - name: UDM WAN Name 
-        unique_id: udm_wan_name
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[22] }}
-        attributes:
-          friendly_name: UDM WAN Name
-          icon: mdi:router-network
+  #     - name: UDM WAN Name 
+  #       unique_id: udm_wan_name
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[22] }}
+  #       attributes:
+  #         friendly_name: UDM WAN Name
+  #         icon: mdi:router-network
 
 
-      - name: UDM Active WAN
-        unique_id: udm_active_wan
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {% if is_state('binary_sensor.udm_wan1_uplink','on') %}
-            WAN1
-          {% elif is_state('binary_sensor.udm_wan2_uplink','on') %}
-            WAN2
-          {% else %}
-            Unknown
-          {% endif %}
-        icon: >
-          {% if is_state('binary_sensor.udm_wan1_uplink','on') %}
-            mdi:numeric-1-box-outline
-          {% elif is_state('binary_sensor.udm_wan2_uplink','on') %}
-            mdi:numeric-2-box-outline
-          {% else %}
-            mdi:progress-question
-          {% endif %}
-        attributes:
-          friendly_name: UDM Active WAN
+  #     - name: UDM Active WAN
+  #       unique_id: udm_active_wan
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {% if is_state('binary_sensor.udm_wan1_uplink','on') %}
+  #           WAN1
+  #         {% elif is_state('binary_sensor.udm_wan2_uplink','on') %}
+  #           WAN2
+  #         {% else %}
+  #           Unknown
+  #         {% endif %}
+  #       icon: >
+  #         {% if is_state('binary_sensor.udm_wan1_uplink','on') %}
+  #           mdi:numeric-1-box-outline
+  #         {% elif is_state('binary_sensor.udm_wan2_uplink','on') %}
+  #           mdi:numeric-2-box-outline
+  #         {% else %}
+  #           mdi:progress-question
+  #         {% endif %}
+  #       attributes:
+  #         friendly_name: UDM Active WAN
 
-      - name: USW24 Temp
-        unique_id: usw24_temp
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[8] | default }}
-        attributes:
-          friendly_name: USW24 Temperature
-          icon: mdi:thermometer
-          unit_of_measurement: '°C'
+  #     - name: USW24 Temp
+  #       unique_id: usw24_temp
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[8] | default }}
+  #       attributes:
+  #         friendly_name: USW24 Temperature
+  #         icon: mdi:thermometer
+  #         unit_of_measurement: '°C'
           
-      - name: USW24 Fan Speed
-        unique_id: usw24_fan_speed
-        availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
-        state: >
-          {{ states('sensor.unifios_state').split('|\n')[7] | default }}
-        attributes:
-          friendly_name: USW24 Fan Speed
-          icon: mdi:fan
-          unit_of_measurement: '%'
+  #     - name: USW24 Fan Speed
+  #       unique_id: usw24_fan_speed
+  #       availability: "{{ not states('sensor.unifios_state')|lower in ['unavailable','unknown'] }}"
+  #       state: >
+  #         {{ states('sensor.unifios_state').split('|\n')[7] | default }}
+  #       attributes:
+  #         friendly_name: USW24 Fan Speed
+  #         icon: mdi:fan
+  #         unit_of_measurement: '%'

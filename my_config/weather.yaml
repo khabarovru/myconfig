@@ -1,40 +1,40 @@
-  # - platform: darksky
-  #   api_key: !secret darksky_api_key
-  #   mode: daily
+#   # - platform: darksky
+#   #   api_key: !secret darksky_api_key
+#   #   mode: daily
 
-#   - platform: pirateweather
-#     api_key: !secret pirateweather_api_key
-#     units: si
-#     mode: daily
+# #   - platform: pirateweather
+# #     api_key: !secret pirateweather_api_key
+# #     units: si
+# #     mode: daily
 
-  - platform: template
-    name: My Weather
-    condition_template: "{{ states('weather.pirateweather') }}"
-    temperature_template: "{{iif(states('sensor.esp32_node_mb_outside')|is_number,states('sensor.esp32_node_mb_outside')|float(0),states('sensor.pirateweather_temperature') | float(0))}}"
-    humidity_template: "{{ states('sensor.pirateweather_humidity')| float(0) }}"
-    pressure_template: "{{ states('sensor.esp32_node_k_pressure')|float(0) }}"
-    #forecast_template: "{{ state_attr('weather.pirateweather','forecast') }}"
-    wind_speed_template: "{{ state_attr('weather.pirateweather','wind_speed')|float(0) }}"
-    wind_bearing_template: "{{ state_attr('weather.pirateweather','wind_bearing')|float(0) }}"
-    #ozone_template: "{{ states('sensor.current_ozone_level') | float(0) }}"
-    visibility_template: "{{ state_attr('weather.pirateweather','visibility')|float(0) }}"
+#   - platform: template
+#     name: My Weather
+#     condition_template: "{{ states('weather.pirateweather') }}"
+#     temperature_template: "{{iif(states('sensor.esp32_node_mb_outside')|is_number,states('sensor.esp32_node_mb_outside')|float(0),states('sensor.pirateweather_temperature') | float(0))}}"
+#     humidity_template: "{{ states('sensor.pirateweather_humidity')| float(0) }}"
+#     pressure_template: "{{ states('sensor.esp32_node_k_pressure')|float(0) }}"
+#     #forecast_template: "{{ state_attr('weather.pirateweather','forecast') }}"
+#     wind_speed_template: "{{ state_attr('weather.pirateweather','wind_speed')|float(0) }}"
+#     wind_bearing_template: "{{ state_attr('weather.pirateweather','wind_bearing')|float(0) }}"
+#     #ozone_template: "{{ states('sensor.current_ozone_level') | float(0) }}"
+#     visibility_template: "{{ state_attr('weather.pirateweather','visibility')|float(0) }}"
     
-#   - platform: gismeteo
-#     name: GisMeteo Hourly
-#     mode: hourly
+# #   - platform: gismeteo
+# #     name: GisMeteo Hourly
+# #     mode: hourly
 
-#   - platform: gismeteo
-#     name: GisMeteo Daily
-#     mode: daily
+# #   - platform: gismeteo
+# #     name: GisMeteo Daily
+# #     mode: daily
 
-#   - platform: yandex_weather
-#     api_key: !secret yandexweather_api_key  
+# #   - platform: yandex_weather
+# #     api_key: !secret yandexweather_api_key  
 
-#  - platform: openweathermap
-#    api_key: !secret openweather_api_key
-#  
-#   netatmo:
-#  api_key: !secret netatmo_api_key
-#  secret_key: !secret netatmo_secret_key
-#  username: !secret netatmo_username
-#  password: !secret netatmo_password
+# #  - platform: openweathermap
+# #    api_key: !secret openweather_api_key
+# #  
+# #   netatmo:
+# #  api_key: !secret netatmo_api_key
+# #  secret_key: !secret netatmo_secret_key
+# #  username: !secret netatmo_username
+# #  password: !secret netatmo_password

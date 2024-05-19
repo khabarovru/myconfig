@@ -1,146 +1,146 @@
-# #####################################################################################
-#
-# SASHA - breather
-#
-# #####################################################################################
-# Sasha- breather auto co2
-# ##################################
-  - alias: sasha_breather_auto_co2
-    id: sasha_breather_auto_co2
-    initial_state: true
-    trigger:
-      - platform: time_pattern
-        minutes: '/3'
-    condition:
-      - condition: state
-        entity_id: switch.system_breather_auto_s
-        state: 'on'
-      - condition: not
-        conditions:
-          - condition: state
-            entity_id: switch.system_breather_s_last_toggle_by_user
-            state: 'on'
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: binary_sensor.0x00158d00025370d1_contact
-                state: 'off'
-              - condition: numeric_state
-                entity_id: sensor.esp32_node_s_co2
-                above: input_number.co2_high_limit
-              - condition: state
-                entity_id: binary_sensor.breather_s
-                state: 'off'
-              - condition: state
-                entity_id: switch.system_security_mode
-                state: 'off'
-              - condition: numeric_state
-                entity_id: sensor.0x00158d0001e6d85a_temperature
-                above: 20
-            sequence:
-              - service: fan.turn_on
-                entity_id: fan.breather_s
-              - condition: numeric_state
-                entity_id: sensor.esp32_node_s_co2
-                above: input_number.co2_high_limit
-              - condition: state
-                entity_id: switch.system_breather_auto_speed_s
-                state: 'on'
-              - service: fan.set_percentage
-                entity_id: fan.breather_s
-                data:
-                  percentage: "{{states('sensor.breather_set_speed_s')|int(0) }}"
+# # #####################################################################################
+# #
+# # SASHA - breather
+# #
+# # #####################################################################################
+# # Sasha- breather auto co2
+# # ##################################
+#   - alias: sasha_breather_auto_co2
+#     id: sasha_breather_auto_co2
+#     initial_state: true
+#     trigger:
+#       - platform: time_pattern
+#         minutes: '/3'
+#     condition:
+#       - condition: state
+#         entity_id: switch.system_breather_auto_s
+#         state: 'on'
+#       - condition: not
+#         conditions:
+#           - condition: state
+#             entity_id: switch.system_breather_s_last_toggle_by_user
+#             state: 'on'
+#     action:
+#       - choose:
+#           - conditions:
+#               - condition: state
+#                 entity_id: binary_sensor.0x00158d00025370d1_contact
+#                 state: 'off'
+#               - condition: numeric_state
+#                 entity_id: sensor.esp32_node_s_co2
+#                 above: input_number.co2_high_limit
+#               - condition: state
+#                 entity_id: binary_sensor.breather_s
+#                 state: 'off'
+#               - condition: state
+#                 entity_id: switch.system_security_mode
+#                 state: 'off'
+#               - condition: numeric_state
+#                 entity_id: sensor.0x00158d0001e6d85a_temperature
+#                 above: 20
+#             sequence:
+#               - service: fan.turn_on
+#                 entity_id: fan.breather_s
+#               - condition: numeric_state
+#                 entity_id: sensor.esp32_node_s_co2
+#                 above: input_number.co2_high_limit
+#               - condition: state
+#                 entity_id: switch.system_breather_auto_speed_s
+#                 state: 'on'
+#               - service: fan.set_percentage
+#                 entity_id: fan.breather_s
+#                 data:
+#                   percentage: "{{states('sensor.breather_set_speed_s')|int(0) }}"
 
-          - conditions:
-              - condition: state
-                entity_id: binary_sensor.0x00158d00025370d1_contact
-                state: 'off'
-              - condition: numeric_state
-                entity_id: sensor.esp32_node_s_co2
-                above: input_number.co2_high_limit
-              - condition: state
-                entity_id: binary_sensor.breather_s
-                state: 'on'
-              - condition: state
-                entity_id: switch.system_security_mode
-                state: 'off'
-              - condition: state
-                entity_id: switch.system_breather_auto_speed_s
-                state: 'on'
-              - condition: numeric_state
-                entity_id: sensor.breather_set_speed_s
-                above: 0
-            sequence:
-              - service: fan.set_percentage
-                entity_id: fan.breather_s
-                data:
-                  percentage: "{{states('sensor.breather_set_speed_s')|int(0) }}"
+#           - conditions:
+#               - condition: state
+#                 entity_id: binary_sensor.0x00158d00025370d1_contact
+#                 state: 'off'
+#               - condition: numeric_state
+#                 entity_id: sensor.esp32_node_s_co2
+#                 above: input_number.co2_high_limit
+#               - condition: state
+#                 entity_id: binary_sensor.breather_s
+#                 state: 'on'
+#               - condition: state
+#                 entity_id: switch.system_security_mode
+#                 state: 'off'
+#               - condition: state
+#                 entity_id: switch.system_breather_auto_speed_s
+#                 state: 'on'
+#               - condition: numeric_state
+#                 entity_id: sensor.breather_set_speed_s
+#                 above: 0
+#             sequence:
+#               - service: fan.set_percentage
+#                 entity_id: fan.breather_s
+#                 data:
+#                   percentage: "{{states('sensor.breather_set_speed_s')|int(0) }}"
 
-          - conditions:
-              - or: 
-                  - and: 
-                      - condition: state
-                        entity_id: binary_sensor.0x00158d00025370d1_contact
-                        state: 'off'
-                      - condition: numeric_state
-                        entity_id: sensor.esp32_node_s_co2
-                        below: input_number.co2_low_limit
-                      - condition: state
-                        entity_id: binary_sensor.breather_s
-                        state: 'on'
-                  - and:
-                      - or: 
-                          - condition: numeric_state
-                            entity_id: sensor.0x00158d0001e6d85a_temperature
-                            below: 20
-                          - condition: state
-                            entity_id: binary_sensor.0x00158d00025370d1_contact
-                            state: 'on'
-                      - condition: state
-                        entity_id: binary_sensor.breather_s
-                        state: 'on'
-            sequence:
-              - service: fan.turn_off
-                entity_id: fan.breather_s
+#           - conditions:
+#               - or: 
+#                   - and: 
+#                       - condition: state
+#                         entity_id: binary_sensor.0x00158d00025370d1_contact
+#                         state: 'off'
+#                       - condition: numeric_state
+#                         entity_id: sensor.esp32_node_s_co2
+#                         below: input_number.co2_low_limit
+#                       - condition: state
+#                         entity_id: binary_sensor.breather_s
+#                         state: 'on'
+#                   - and:
+#                       - or: 
+#                           - condition: numeric_state
+#                             entity_id: sensor.0x00158d0001e6d85a_temperature
+#                             below: 20
+#                           - condition: state
+#                             entity_id: binary_sensor.0x00158d00025370d1_contact
+#                             state: 'on'
+#                       - condition: state
+#                         entity_id: binary_sensor.breather_s
+#                         state: 'on'
+#             sequence:
+#               - service: fan.turn_off
+#                 entity_id: fan.breather_s
 
-# ##################################
-# Sasha - Breather Switches Interlock
-# ##################################
-  - alias: sasha_breather_switches_interlock
-    id: sasha_breather_switches_interlock
-    trigger:
-      - platform: state
-        entity_id:
-          - switch.system_breather_auto_s
-          - switch.system_breather_s_last_toggle_by_user
-    condition: 
-      - condition: template
-        value_template: "{{ trigger.to_state.state == 'on' }}"
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-    action:
-    - service: homeassistant.turn_off
-      target:
-        entity_id: >-
-          {% if trigger.from_state.entity_id == 'switch.system_breather_auto_s' %}
-          {{ 'switch.system_breather_s_last_toggle_by_user' }}
-          {% else %}
-          {{ 'switch.system_breather_auto_s' }}
-          {% endif %}
+# # ##################################
+# # Sasha - Breather Switches Interlock
+# # ##################################
+#   - alias: sasha_breather_switches_interlock
+#     id: sasha_breather_switches_interlock
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           - switch.system_breather_auto_s
+#           - switch.system_breather_s_last_toggle_by_user
+#     condition: 
+#       - condition: template
+#         value_template: "{{ trigger.to_state.state == 'on' }}"
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#     action:
+#     - service: homeassistant.turn_off
+#       target:
+#         entity_id: >-
+#           {% if trigger.from_state.entity_id == 'switch.system_breather_auto_s' %}
+#           {{ 'switch.system_breather_s_last_toggle_by_user' }}
+#           {% else %}
+#           {{ 'switch.system_breather_auto_s' }}
+#           {% endif %}
 
-# ##################################
-# Sasha - Breather Switches to default
-# ##################################
-  - alias: sasha_breather_switches_default
-    id: sasha_breather_switches_default
-    trigger:
-      - platform: template
-        value_template: "{{ is_state('switch.system_breather_auto_s','off') and
-                            is_state('switch.system_breather_s_last_toggle_by_user','off') }}"
-    condition: 
-      - condition: template
-        value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
-    action:
-    - service: switch.turn_on
-      entity_id: switch.system_breather_auto_s
+# # ##################################
+# # Sasha - Breather Switches to default
+# # ##################################
+#   - alias: sasha_breather_switches_default
+#     id: sasha_breather_switches_default
+#     trigger:
+#       - platform: template
+#         value_template: "{{ is_state('switch.system_breather_auto_s','off') and
+#                             is_state('switch.system_breather_s_last_toggle_by_user','off') }}"
+#     condition: 
+#       - condition: template
+#         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
+#     action:
+#     - service: switch.turn_on
+#       entity_id: switch.system_breather_auto_s

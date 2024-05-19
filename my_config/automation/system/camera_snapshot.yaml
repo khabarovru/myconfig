@@ -1,139 +1,139 @@
-# #####################################################################################
-#
-# SYSTEM - Snapshot
-#
-# #####################################################################################
-# System - Window Cam Snapshot on Motion
-# ##################################
-  - alias: system_snapshot_window
-    id: system_snapshot_window
-    initial_state: true
-    mode: single
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.g3_flex_window_motion
-        from: "off"
-        to: "on"
-    condition:
-      - condition: template
-        value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_window', 'last_triggered'))|int(0)) > 10 }}"
-    action:
-      - service: telegram_bot.send_photo
-        data:
-          url: !secret window_snap
-          caption: "\U0001f4f7 Window {{states('sensor.time')}} {{states('sensor.date')}}"
-          target: !secret tel_chat_id_cam
-          timeout: 180
-          #disable_notification: true
+# # #####################################################################################
+# #
+# # SYSTEM - Snapshot
+# #
+# # #####################################################################################
+# # System - Window Cam Snapshot on Motion
+# # ##################################
+#   - alias: system_snapshot_window
+#     id: system_snapshot_window
+#     initial_state: true
+#     mode: single
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.g3_flex_window_motion
+#         from: "off"
+#         to: "on"
+#     condition:
+#       - condition: template
+#         value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_window', 'last_triggered'))|int(0)) > 10 }}"
+#     action:
+#       - service: telegram_bot.send_photo
+#         data:
+#           url: !secret window_snap
+#           caption: "\U0001f4f7 Window {{states('sensor.time')}} {{states('sensor.date')}}"
+#           target: !secret tel_chat_id_cam
+#           timeout: 180
+#           #disable_notification: true
   
-# ##################################
-# System - Yard Cam Snapshot on Motion
-# ##################################
-  - alias: system_snapshot_yard
-    id: system_snapshot_yard
-    initial_state: true
-    mode: single
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.g3_flex_yard_motion
-        from: "off"
-        to: "on"
-    condition:
-      - condition: template
-        value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_yard', 'last_triggered'))|int(0)) > 10 }}"
-    action:
-      - service: telegram_bot.send_photo
-        data:
-          url: !secret yard_snap
-          caption: "\U0001f4f7 Yard {{states('sensor.time')}} {{states('sensor.date')}}"
-          target: !secret tel_chat_id_cam
-          timeout: 180
-          #disable_notification: true
+# # ##################################
+# # System - Yard Cam Snapshot on Motion
+# # ##################################
+#   - alias: system_snapshot_yard
+#     id: system_snapshot_yard
+#     initial_state: true
+#     mode: single
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.g3_flex_yard_motion
+#         from: "off"
+#         to: "on"
+#     condition:
+#       - condition: template
+#         value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_yard', 'last_triggered'))|int(0)) > 10 }}"
+#     action:
+#       - service: telegram_bot.send_photo
+#         data:
+#           url: !secret yard_snap
+#           caption: "\U0001f4f7 Yard {{states('sensor.time')}} {{states('sensor.date')}}"
+#           target: !secret tel_chat_id_cam
+#           timeout: 180
+#           #disable_notification: true
   
-# ##################################
-# System - Dixy Cam Snapshot on Motion
-# ##################################
-  - alias: system_snapshot_dixy
-    id: system_snapshot_dixy
-    initial_state: true
-    mode: single
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.g3_flex_dixy_motion
-        from: "off"
-        to: "on"
-    condition:
-      - condition: template
-        value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_dixy', 'last_triggered'))|int(0)) > 10 }}"
-    action:
-      - service: telegram_bot.send_photo
-        data:
-          url: !secret dixy_snap
-          caption: "\U0001f4f7 Dixy {{states('sensor.time')}} {{states('sensor.date')}}"
-          target: !secret tel_chat_id_cam
-          timeout: 180
-          #disable_notification: true
+# # ##################################
+# # System - Dixy Cam Snapshot on Motion
+# # ##################################
+#   - alias: system_snapshot_dixy
+#     id: system_snapshot_dixy
+#     initial_state: true
+#     mode: single
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.g3_flex_dixy_motion
+#         from: "off"
+#         to: "on"
+#     condition:
+#       - condition: template
+#         value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_dixy', 'last_triggered'))|int(0)) > 10 }}"
+#     action:
+#       - service: telegram_bot.send_photo
+#         data:
+#           url: !secret dixy_snap
+#           caption: "\U0001f4f7 Dixy {{states('sensor.time')}} {{states('sensor.date')}}"
+#           target: !secret tel_chat_id_cam
+#           timeout: 180
+#           #disable_notification: true
   
-# ##################################
-# System - Street Cam Snapshot on Motion
-# ##################################
-  - alias: system_snapshot_street
-    id: system_snapshot_street
-    initial_state: true
-    mode: single
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.g3_flex_street_motion
-        from: "off"
-        to: "on"
-    condition:
-      - condition: template
-        value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_street', 'last_triggered'))|int(0)) > 10 }}"
-    action:
-      - service: telegram_bot.send_photo
-        data:
-          url: !secret street_snap
-          caption: "\U0001f4f7 Street {{states('sensor.time')}} {{states('sensor.date')}}"
-          target: !secret tel_chat_id_cam
-          timeout: 180
-          #disable_notification: true
+# # ##################################
+# # System - Street Cam Snapshot on Motion
+# # ##################################
+#   - alias: system_snapshot_street
+#     id: system_snapshot_street
+#     initial_state: true
+#     mode: single
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.g3_flex_street_motion
+#         from: "off"
+#         to: "on"
+#     condition:
+#       - condition: template
+#         value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snapshot_street', 'last_triggered'))|int(0)) > 10 }}"
+#     action:
+#       - service: telegram_bot.send_photo
+#         data:
+#           url: !secret street_snap
+#           caption: "\U0001f4f7 Street {{states('sensor.time')}} {{states('sensor.date')}}"
+#           target: !secret tel_chat_id_cam
+#           timeout: 180
+#           #disable_notification: true
   
-# ##################################
-# System - Motion Outside
-# ##################################
-  - alias: system_snaphot_outside
-    id: system_snaphot_outside
-    initial_state: true
-    mode: single
-    max_exceeded: silent
-    trigger:
-      - platform: state
-        entity_id:
-          #- binary_sensor.esp32_domofon_motion
-          #- binary_sensor.pinhole_camera_motion
-          #- binary_sensor.pinhole_motion
-          - binary_sensor.g4_doorbell_motion
-        from: "off"
-        to: "on"
-    condition:
-      - condition: template
-        value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snaphot_outside', 'last_triggered'))|int(0)) > 15 }}"
-    action:
-      - service: telegram_bot.send_photo
-        data:
-          url: !secret doorbell_snap #door_snap
-          caption: "\U0001f4f7 Outside {{states('sensor.time')}} {{states('sensor.date')}}"
-          target: !secret tel_chat_id_cam
-          timeout: 180
-          #disable_notification: true
-      # - service: telegram_bot.send_photo
-      #   data:
-      #     url: !secret door_snap_go2rtc
-      #     caption: "\U0001f4f7 Outside go2rtc {{states('sensor.time')}} {{states('sensor.date')}}"
-      #     target: !secret tel_chat_id_cam
-      #     timeout: 180
-      #     #disable_notification: true
+# # ##################################
+# # System - Motion Outside
+# # ##################################
+#   - alias: system_snaphot_outside
+#     id: system_snaphot_outside
+#     initial_state: true
+#     mode: single
+#     max_exceeded: silent
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           #- binary_sensor.esp32_domofon_motion
+#           #- binary_sensor.pinhole_camera_motion
+#           #- binary_sensor.pinhole_motion
+#           - binary_sensor.g4_doorbell_motion
+#         from: "off"
+#         to: "on"
+#     condition:
+#       - condition: template
+#         value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.system_snaphot_outside', 'last_triggered'))|int(0)) > 15 }}"
+#     action:
+#       - service: telegram_bot.send_photo
+#         data:
+#           url: !secret doorbell_snap #door_snap
+#           caption: "\U0001f4f7 Outside {{states('sensor.time')}} {{states('sensor.date')}}"
+#           target: !secret tel_chat_id_cam
+#           timeout: 180
+#           #disable_notification: true
+#       # - service: telegram_bot.send_photo
+#       #   data:
+#       #     url: !secret door_snap_go2rtc
+#       #     caption: "\U0001f4f7 Outside go2rtc {{states('sensor.time')}} {{states('sensor.date')}}"
+#       #     target: !secret tel_chat_id_cam
+#       #     timeout: 180
+#       #     #disable_notification: true

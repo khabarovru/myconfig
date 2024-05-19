@@ -1,45 +1,45 @@
+# #   - trigger:
+# #       - platform: time_pattern
+# #         minutes: '/1'
+# #       - platform: homeassistant
+# #         event: start
+# #       - platform: event
+# #         event_type: automation_reloaded
 #   - trigger:
-#       - platform: time_pattern
-#         minutes: '/1'
+#       # - platform: time_pattern
+#       #   minutes: "/1"
+#       - platform: state
+#         entity_id: 
+#           - binary_sensor.workday_sensor
+#           - input_datetime.day_start_workday
+#           - input_datetime.day_start_holiday
+#           - input_datetime.day_end
 #       - platform: homeassistant
 #         event: start
 #       - platform: event
+#         event_type: event_template_reloaded
+#       - platform: event
 #         event_type: automation_reloaded
-  - trigger:
-      # - platform: time_pattern
-      #   minutes: "/1"
-      - platform: state
-        entity_id: 
-          - binary_sensor.workday_sensor
-          - input_datetime.day_start_workday
-          - input_datetime.day_start_holiday
-          - input_datetime.day_end
-      - platform: homeassistant
-        event: start
-      - platform: event
-        event_type: event_template_reloaded
-      - platform: event
-        event_type: automation_reloaded
-  - binary_sensor:
-      - name: Tod Day
-        unique_id: tod_day
-        state: >-
-          {%- if is_state('binary_sensor.workday_sensor','on')%}{{states('input_datetime.day_start_workday') <= states('sensor.time') < states('input_datetime.day_end') }}
-          {%- else %}{{states('input_datetime.day_start_holiday') <= states('sensor.time') < states('input_datetime.day_end') }}
-          {%- endif%}
-        icon: >
-          {% if is_state('binary_sensor.tod_day','on') %}
-          mdi:brightness-5
-          {% else %}
-          mdi:weather-night
-          {% endif %}
+#   - binary_sensor:
+#       - name: Tod Day
+#         unique_id: tod_day
+#         state: >-
+#           {%- if is_state('binary_sensor.workday_sensor','on')%}{{states('input_datetime.day_start_workday') <= states('sensor.time') < states('input_datetime.day_end') }}
+#           {%- else %}{{states('input_datetime.day_start_holiday') <= states('sensor.time') < states('input_datetime.day_end') }}
+#           {%- endif%}
+#         icon: >
+#           {% if is_state('binary_sensor.tod_day','on') %}
+#           mdi:brightness-5
+#           {% else %}
+#           mdi:weather-night
+#           {% endif %}
 
-#       - name: Tod Day Not Working
-#         #state: "{{ ((now().hour | int(0)) >= 10 and (now().hour | int(0)) < 20 ) }}"
-#         state: "{{ '10:00' <= states('sensor.time') < '20:00' }}"
+# #       - name: Tod Day Not Working
+# #         #state: "{{ ((now().hour | int(0)) >= 10 and (now().hour | int(0)) < 20 ) }}"
+# #         state: "{{ '10:00' <= states('sensor.time') < '20:00' }}"
 
-#       - name: Tariff T1
-#         state: "{{ '07:00' <= states('sensor.time') < '23:00' }}"
+# #       - name: Tariff T1
+# #         state: "{{ '07:00' <= states('sensor.time') < '23:00' }}"
 
-#       - name: Tariff T2
-#         state: "{{ '23:00' <= states('sensor.time') < '07:00' }}"
+# #       - name: Tariff T2
+# #         state: "{{ '23:00' <= states('sensor.time') < '07:00' }}"

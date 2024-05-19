@@ -1,222 +1,222 @@
   
-  - name: Home
-    latitude: !secret myhome_latitude
-    longitude: !secret myhome_longitude
-    radius: 75
-    icon: mdi:home
+#   - name: Home
+#     latitude: !secret myhome_latitude
+#     longitude: !secret myhome_longitude
+#     radius: 75
+#     icon: mdi:home
 
-  - name: Home Extended
-    latitude: !secret myhome_latitude
-    longitude: !secret myhome_longitude
-    radius: 150
-    icon: mdi:home
+#   - name: Home Extended
+#     latitude: !secret myhome_latitude
+#     longitude: !secret myhome_longitude
+#     radius: 150
+#     icon: mdi:home
 
-  - name: SLB
-    latitude: !secret work_latitude
-    longitude: !secret work_longitude
-    radius: 50
-    icon: mdi:office-building
+#   - name: SLB
+#     latitude: !secret work_latitude
+#     longitude: !secret work_longitude
+#     radius: 50
+#     icon: mdi:office-building
   
-  - name: Kindergarden Sasha
-    latitude: !secret kindergargen_latitude_sasha
-    longitude: !secret kindergarden_longitude_sasha
-    radius: 50
-    icon: mdi:baby-face-outline
+#   - name: Kindergarden Sasha
+#     latitude: !secret kindergargen_latitude_sasha
+#     longitude: !secret kindergarden_longitude_sasha
+#     radius: 50
+#     icon: mdi:baby-face-outline
   
-  - name: Dacha
-    latitude: !secret dacha_latitude
-    longitude: !secret dacha_longitude
-    radius: 100
-    icon: mdi:home-variant
+#   - name: Dacha
+#     latitude: !secret dacha_latitude
+#     longitude: !secret dacha_longitude
+#     radius: 100
+#     icon: mdi:home-variant
   
-  - name: Parents
-    latitude: !secret parents_latitude
-    longitude: !secret parents_longitude
-    radius: 150
-    icon: mdi:home-variant-outline
+#   - name: Parents
+#     latitude: !secret parents_latitude
+#     longitude: !secret parents_longitude
+#     radius: 150
+#     icon: mdi:home-variant-outline
   
-  - name: S_Parents
-    latitude: !secret s_parents_latitude
-    longitude: !secret s_parents_longitude
-    radius: 100
-    icon: mdi:home-circle
+#   - name: S_Parents
+#     latitude: !secret s_parents_latitude
+#     longitude: !secret s_parents_longitude
+#     radius: 100
+#     icon: mdi:home-circle
     
-  - name: Aviapark
-    latitude: 55.790381
-    longitude: 37.531244
-    radius: 304.8
-    icon: mdi:airplane
+#   - name: Aviapark
+#     latitude: 55.790381
+#     longitude: 37.531244
+#     radius: 304.8
+#     icon: mdi:airplane
 
-  - name: CDEK
-    latitude: 55.824199
-    longitude: 37.565962
-    radius: 75
-    icon: mdi:truck-delivery
+#   - name: CDEK
+#     latitude: 55.824199
+#     longitude: 37.565962
+#     radius: 75
+#     icon: mdi:truck-delivery
 
-  - name: CDEK New
-    latitude: 55.81467799682946
-    longitude: 37.56371498107911
-    radius: 50
-    icon: mdi:truck-delivery
+#   - name: CDEK New
+#     latitude: 55.81467799682946
+#     longitude: 37.56371498107911
+#     radius: 50
+#     icon: mdi:truck-delivery
 
-  - name: Chess school
-    latitude: 55.828553
-    longitude: 37.578392
-    radius: 75
-    icon: mdi:chess-rook
+#   - name: Chess school
+#     latitude: 55.828553
+#     longitude: 37.578392
+#     radius: 75
+#     icon: mdi:chess-rook
 
-  - name: Dentist
-    latitude: 55.715384
-    longitude: 37.621789
-    radius: 75
-    icon: mdi:doctor
+#   - name: Dentist
+#     latitude: 55.715384
+#     longitude: 37.621789
+#     radius: 75
+#     icon: mdi:doctor
 
-  - name: Dubki
-    latitude: 55.82073
-    longitude: 37.566011
-    radius: 167
-    icon: mdi:pine-tree
+#   - name: Dubki
+#     latitude: 55.82073
+#     longitude: 37.566011
+#     radius: 167
+#     icon: mdi:pine-tree
 
-  - name: English Lessons
-    latitude: 55.814992
-    longitude: 37.573785
-    radius: 75
-    icon: mdi:book-open-variant
+#   - name: English Lessons
+#     latitude: 55.814992
+#     longitude: 37.573785
+#     radius: 75
+#     icon: mdi:book-open-variant
 
-  - name: Metropolis
-    latitude: 55.823634911181394
-    longitude: 37.49685287475587
-    radius: 163
-    icon: mdi:shopping
+#   - name: Metropolis
+#     latitude: 55.823634911181394
+#     longitude: 37.49685287475587
+#     radius: 163
+#     icon: mdi:shopping
 
-#   - name: NovaFitness
-#     latitude: 55.82364244473003
-#     longitude: 37.502152919769294
-#     radius: 25
+# #   - name: NovaFitness
+# #     latitude: 55.82364244473003
+# #     longitude: 37.502152919769294
+# #     radius: 25
+# #     icon: mdi:dumbbell
+
+#   - name: SpiritFitness
+#     latitude: 55.82329740670696
+#     longitude: 37.50076889991761
+#     radius: 35
 #     icon: mdi:dumbbell
 
-  - name: SpiritFitness
-    latitude: 55.82329740670696
-    longitude: 37.50076889991761
-    radius: 35
-    icon: mdi:dumbbell
+#   - name: Iskra
+#     latitude: 55.81446
+#     longitude: 37.571139
+#     radius: 50
+#     icon: mdi:filmstrip
 
-  - name: Iskra
-    latitude: 55.81446
-    longitude: 37.571139
-    radius: 50
-    icon: mdi:filmstrip
+#   - name: Manfit
+#     latitude: 55.807359
+#     longitude: 37.588477
+#     radius: 76
+#     icon: mdi:dumbbell
 
-  - name: Manfit
-    latitude: 55.807359
-    longitude: 37.588477
-    radius: 76
-    icon: mdi:dumbbell
+#   - name: METRO
+#     latitude: 55.800704
+#     longitude: 37.594451
+#     radius: 102.59
+#     icon: mdi:shopping
 
-  - name: METRO
-    latitude: 55.800704
-    longitude: 37.594451
-    radius: 102.59
-    icon: mdi:shopping
+#   - name: School Big
+#     latitude: 55.813382
+#     longitude: 37.568983
+#     radius: 100
+#     icon: mdi:school
 
-  - name: School Big
-    latitude: 55.813382
-    longitude: 37.568983
-    radius: 100
-    icon: mdi:school
+#   - name: School Small
+#     latitude: 55.81264793844851
+#     longitude: 37.560528516769416
+#     radius: 75
+#     icon: mdi:school
 
-  - name: School Small
-    latitude: 55.81264793844851
-    longitude: 37.560528516769416
-    radius: 75
-    icon: mdi:school
+#   - name: XL
+#     latitude: 55.864009
+#     longitude: 37.545971
+#     radius: 89.293617248535
+#     icon: mdi:shopping
 
-  - name: XL
-    latitude: 55.864009
-    longitude: 37.545971
-    radius: 89.293617248535
-    icon: mdi:shopping
+# #  - name: PetraMare
+# #    latitude: 35.009669
+# #    longitude: 25.751360
+# #    radius: 100
+# #    icon: mdi:beach
 
-#  - name: PetraMare
-#    latitude: 35.009669
-#    longitude: 25.751360
-#    radius: 100
-#    icon: mdi:beach
+#   - name: SobolStation
+#     latitude: 55.835870
+#     longitude: 37.525672
+#     radius: 100
+#     icon: mdi:tram
 
-  - name: SobolStation
-    latitude: 55.835870
-    longitude: 37.525672
-    radius: 100
-    icon: mdi:tram
+#   - name: ChildClinic
+#     latitude: 55.81377375227764
+#     longitude: 37.57444381713868
+#     radius: 75
+#     icon: mdi:hospital
 
-  - name: ChildClinic
-    latitude: 55.81377375227764
-    longitude: 37.57444381713868
-    radius: 75
-    icon: mdi:hospital
-
-  - name: Kindergarden Vanya
-    latitude: !secret kindergargen_latitude_vanya
-    longitude: !secret kindergarden_longitude_vanya
-    radius: 100
-    icon: mdi:baby-face-outline
+#   - name: Kindergarden Vanya
+#     latitude: !secret kindergargen_latitude_vanya
+#     longitude: !secret kindergarden_longitude_vanya
+#     radius: 100
+#     icon: mdi:baby-face-outline
     
-  - name: Katya's Place
-    latitude: 55.80460955560995
-    longitude: 37.57309198379517
-    radius: 75
-    icon: mdi:face-woman
+#   - name: Katya's Place
+#     latitude: 55.80460955560995
+#     longitude: 37.57309198379517
+#     radius: 75
+#     icon: mdi:face-woman
     
-  - name: Child Library
-    latitude: 55.8114048
-    longitude: 37.5660817
-    radius: 75
-    icon: mdi:guitar-acoustic
+#   - name: Child Library
+#     latitude: 55.8114048
+#     longitude: 37.5660817
+#     radius: 75
+#     icon: mdi:guitar-acoustic
 
-  - name: MADI
-    latitude: 55.802517163470554
-    longitude: 37.529350519180305
-    radius: 450
-    icon: mdi:office-building-marker
+#   - name: MADI
+#     latitude: 55.802517163470554
+#     longitude: 37.529350519180305
+#     radius: 450
+#     icon: mdi:office-building-marker
 
-  - name: Beauty Salon
-    latitude: 55.826033519344534
-    longitude: 37.513589859008796
-    radius: 160
-    icon: mdi:hair-dryer
+#   - name: Beauty Salon
+#     latitude: 55.826033519344534
+#     longitude: 37.513589859008796
+#     radius: 160
+#     icon: mdi:hair-dryer
     
-  - name: Megapolis Fitness
-    latitude: 55.79714396423237
-    longitude: 37.5804090499878
-    radius: 100
-    icon: mdi:dumbbell
+#   - name: Megapolis Fitness
+#     latitude: 55.79714396423237
+#     longitude: 37.5804090499878
+#     radius: 100
+#     icon: mdi:dumbbell
 
-  - name: doTerra 
-    latitude: 55.78327032535697
-    longitude: 37.559809684753425
-    radius: 100
-    icon: mdi:bottle-tonic-outline
+#   - name: doTerra 
+#     latitude: 55.78327032535697
+#     longitude: 37.559809684753425
+#     radius: 100
+#     icon: mdi:bottle-tonic-outline
 
-  - name: Nastya's Place
-    latitude: 55.7608699
-    longitude: 37.8493121
-    radius: 75
-    icon: mdi:face-woman
+#   - name: Nastya's Place
+#     latitude: 55.7608699
+#     longitude: 37.8493121
+#     radius: 75
+#     icon: mdi:face-woman
 
-  - name: Oil class
-    latitude: 55.765716
-    longitude: 37.608652
-    radius: 75
-    icon: mdi:google-classroom
+#   - name: Oil class
+#     latitude: 55.765716
+#     longitude: 37.608652
+#     radius: 75
+#     icon: mdi:google-classroom
     
-  - name: Lider
-    latitude: 55.67726983865376
-    longitude: 37.53122806549073
-    radius: 100
-    icon: mdi:dumbbell
+#   - name: Lider
+#     latitude: 55.67726983865376
+#     longitude: 37.53122806549073
+#     radius: 100
+#     icon: mdi:dumbbell
 
-  - name: Nastya's Dacha
-    latitude: 55.9611261
-    longitude: 38.7142444
-    radius: 200
-    icon: mdi:greenhouse
+#   - name: Nastya's Dacha
+#     latitude: 55.9611261
+#     longitude: 38.7142444
+#     radius: 200
+#     icon: mdi:greenhouse

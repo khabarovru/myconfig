@@ -1,10 +1,10 @@
-  # sleep_omv: "/usr/bin/curl -X GET http://192.168.1.101:8585/?cmd=sleep"
+  # # sleep_omv: "/usr/bin/curl -X GET http://192.168.1.101:8585/?cmd=sleep"
 
 
-  # set_fans_to_30: "echo 20 > fans.txt"
-  # set_fans_to_50: "echo 32 > fans.txt"
-  # set_fans_to_75: "echo 48 > fans.txt"
-  # set_fans_to_100: "echo 64 > fans.txt"
+  # # set_fans_to_30: "echo 20 > fans.txt"
+  # # set_fans_to_50: "echo 32 > fans.txt"
+  # # set_fans_to_75: "echo 48 > fans.txt"
+  # # set_fans_to_100: "echo 64 > fans.txt"
   
-  restart_supervisor: 'curl -dsSL -H "Authorization: Bearer $SUPERVISOR_TOKEN" -X POST http://supervisor/supervisor/restart'
-  reload_supervisor: 'curl -dsSL -H "Authorization: Bearer $SUPERVISOR_TOKEN" -X POST http://supervisor/supervisor/reload'
+  # restart_supervisor: 'curl -dsSL -H "Authorization: Bearer $SUPERVISOR_TOKEN" -X POST http://supervisor/supervisor/restart'
+  # reload_supervisor: 'curl -dsSL -H "Authorization: Bearer $SUPERVISOR_TOKEN" -X POST http://supervisor/supervisor/reload'

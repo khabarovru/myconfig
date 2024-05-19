@@ -1,113 +1,113 @@
 
-  # - platform: mpd
-  #   host: 192.168.1.14
-  #   port: 6600
-  #   name: MPD
+#   # - platform: mpd
+#   #   host: 192.168.1.14
+#   #   port: 6600
+#   #   name: MPD
 
-  - platform: universal
-    name: TV K
-    commands:
-      turn_on:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_pwr
-      turn_off:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_pwr
-      volume_up:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_vol_up_3
-      volume_down:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_vol_down_3
-      volume_mute:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_mute
-      media_previous_track:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_prog_down
-      media_next_track:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_k_tv_prog_up
-    attributes:
-      state: binary_sensor.0x00158d0002a1a47a_contact
-    device_class: tv
+#   - platform: universal
+#     name: TV K
+#     commands:
+#       turn_on:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_pwr
+#       turn_off:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_pwr
+#       volume_up:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_vol_up_3
+#       volume_down:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_vol_down_3
+#       volume_mute:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_mute
+#       media_previous_track:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_prog_down
+#       media_next_track:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_k_tv_prog_up
+#     attributes:
+#       state: binary_sensor.0x00158d0002a1a47a_contact
+#     device_class: tv
 
-  - platform: universal
-    name: TV V
-    commands:
-      turn_on:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_pwr
-      turn_off:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_pwr
-      volume_up:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_vol_up
-      volume_down:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_vol_down
-      volume_mute:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_mute
-      media_previous_track:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_prog_down
-      media_next_track:
-        service: button.press
-        data:
-          entity_id: button.digma_ir_v_tv_prog_up
-    attributes:
-      state: binary_sensor.0x00158d000236fdc9_contact
-    device_class: tv
+#   - platform: universal
+#     name: TV V
+#     commands:
+#       turn_on:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_pwr
+#       turn_off:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_pwr
+#       volume_up:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_vol_up
+#       volume_down:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_vol_down
+#       volume_mute:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_mute
+#       media_previous_track:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_prog_down
+#       media_next_track:
+#         service: button.press
+#         data:
+#           entity_id: button.digma_ir_v_tv_prog_up
+#     attributes:
+#       state: binary_sensor.0x00158d000236fdc9_contact
+#     device_class: tv
 
 
 
-  # - platform: androidtv
-  #   name: adb_mi_box
-  #   host: 192.168.1.249
+#   # - platform: androidtv
+#   #   name: adb_mi_box
+#   #   host: 192.168.1.249
 
-#  - platform: mpd
-#    host: 192.168.1.57
-#    port: 6600
-#    name: MPD_RPI
+# #  - platform: mpd
+# #    host: 192.168.1.57
+# #    port: 6600
+# #    name: MPD_RPI
 
-#  - platform: mpd
-#    host: 192.168.1.60
-#    port: 6600
-#    name: MPD_j3455
+# #  - platform: mpd
+# #    host: 192.168.1.60
+# #    port: 6600
+# #    name: MPD_j3455
 
-#  - platform: kodi
-#    host: 192.168.1.38
-#    port: 8080
-#    name: Kodi_V
+# #  - platform: kodi
+# #    host: 192.168.1.38
+# #    port: 8080
+# #    name: Kodi_V
 
-#  - platform: kodi
-#    host: 192.168.1.29
-#    port: 8080
-#    name: Kodi_K
+# #  - platform: kodi
+# #    host: 192.168.1.29
+# #    port: 8080
+# #    name: Kodi_K
     
-#  - platform: kodi
-#    host: 192.168.1.85
-#    port: 8080
-#    name: h96_v
+# #  - platform: kodi
+# #    host: 192.168.1.85
+# #    port: 8080
+# #    name: h96_v
     
     
-  # - platform: androidtv
-  #   host: 192.168.1.82
-  #   name: "DigmaTab"
-  #   adb_server_ip: 127.0.0.1
-  #   adb_server_port: 5037
+#   # - platform: androidtv
+#   #   host: 192.168.1.82
+#   #   name: "DigmaTab"
+#   #   adb_server_ip: 127.0.0.1
+#   #   adb_server_port: 5037

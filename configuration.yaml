@@ -1,240 +1,240 @@
-homeassistant:
-  name: Dima's Home_Main Server
-  external_url: !secret main_external_url
-  internal_url: !secret main_internal_url
-  latitude: !secret lat
-  longitude: !secret long
-  elevation: 172
-  unit_system: metric
-  temperature_unit: C
-  currency: RUB
-  country: RU
-  time_zone: Europe/Moscow
-  customize: !include my_config/customize.yaml
-  customize_glob: !include my_config/customize_glob.yaml
-  auth_providers:
-    - type: trusted_networks
-      trusted_networks:
-        - 192.168.1.0/24
-      allow_bypass_login: true
-    - type: homeassistant
-  allowlist_external_dirs:
-    - /config
-    - /tmp
-    - /share
-  debug: true
+# homeassistant:
+#   name: Dima's Home_Main Server
+#   external_url: !secret main_external_url
+#   internal_url: !secret main_internal_url
+#   latitude: !secret lat
+#   longitude: !secret long
+#   elevation: 172
+#   unit_system: metric
+#   temperature_unit: C
+#   currency: RUB
+#   country: RU
+#   time_zone: Europe/Moscow
+#   customize: !include my_config/customize.yaml
+#   customize_glob: !include my_config/customize_glob.yaml
+#   auth_providers:
+#     - type: trusted_networks
+#       trusted_networks:
+#         - 192.168.1.0/24
+#       allow_bypass_login: true
+#     - type: homeassistant
+#   allowlist_external_dirs:
+#     - /config
+#     - /tmp
+#     - /share
+#   debug: true
 
-api:
+# api:
 
-stream:
-  ll_hls: true
-  part_duration: 0.75
-  segment_duration: 6
+# stream:
+#   ll_hls: true
+#   part_duration: 0.75
+#   segment_duration: 6
   
-energy:
+# energy:
 
-usb:
+# usb:
 
-assist_pipeline:
-media_source:
-conversation:
+# assist_pipeline:
+# media_source:
+# conversation:
 
-http: !include my_config/http.yaml
+# http: !include my_config/http.yaml
 
-automation: !include_dir_merge_list my_config/automation
-sensor: !include_dir_merge_list my_config/sensor
-switch: !include_dir_merge_list my_config/switch
-binary_sensor: !include_dir_merge_list my_config/bi-sensor
-command_line: !include_dir_merge_list my_config/command_line
+# automation: !include_dir_merge_list my_config/automation
+# sensor: !include_dir_merge_list my_config/sensor
+# switch: !include_dir_merge_list my_config/switch
+# binary_sensor: !include_dir_merge_list my_config/bi-sensor
+# command_line: !include_dir_merge_list my_config/command_line
 
-script: !include_dir_merge_named my_config/script
-group: !include_dir_merge_named my_config/group
-input_boolean: !include_dir_merge_named my_config/input_boolean
+# script: !include_dir_merge_named my_config/script
+# group: !include_dir_merge_named my_config/group
+# input_boolean: !include_dir_merge_named my_config/input_boolean
 
-lovelace: !include my_config/lovelace.yaml
-timer: !include my_config/timer.yaml
-device_tracker: !include my_config/device_tracker.yaml
-input_number: !include my_config/input_number.yaml
-input_text: !include my_config/input_text.yaml
-zone: !include my_config/zone.yaml
-counter: !include my_config/counter.yaml
-light: !include my_config/light.yaml
-yeelight: !include my_config/yeelight.yaml
-fan: !include my_config/fan.yaml
-person: !include my_config/person.yaml
-notify: !include my_config/notify.yaml
-#scene: !include my_config/scene.yaml
-shell_command: !include my_config/shell_command.yaml
+# lovelace: !include my_config/lovelace.yaml
+# timer: !include my_config/timer.yaml
+# device_tracker: !include my_config/device_tracker.yaml
+# input_number: !include my_config/input_number.yaml
+# input_text: !include my_config/input_text.yaml
+# zone: !include my_config/zone.yaml
+# counter: !include my_config/counter.yaml
+# light: !include my_config/light.yaml
+# yeelight: !include my_config/yeelight.yaml
+# fan: !include my_config/fan.yaml
+# person: !include my_config/person.yaml
+# notify: !include my_config/notify.yaml
+# #scene: !include my_config/scene.yaml
+# shell_command: !include my_config/shell_command.yaml
 
-recorder: !include my_config/recorder.yaml
-history: #!include my_config/history.yaml
-logbook: !include my_config/logbook.yaml
-#climate: !include my_config/climate.yaml
+# recorder: !include my_config/recorder.yaml
+# history: #!include my_config/history.yaml
+# logbook: !include my_config/logbook.yaml
+# #climate: !include my_config/climate.yaml
 
-telegram_bot: !include my_config/telegram_bot.yaml
-#weather: !include my_config/weather.yaml
-input_select: !include my_config/input_select.yaml
-input_datetime: !include my_config/input_datetime.yaml
-input_button: !include my_config/input_button.yaml
-tts: !include my_config/tts.yaml
-#remote: !include my_config/remote.yaml
-#proximity: !include my_config/proximity.yaml
+# telegram_bot: !include my_config/telegram_bot.yaml
+# #weather: !include my_config/weather.yaml
+# input_select: !include my_config/input_select.yaml
+# input_datetime: !include my_config/input_datetime.yaml
+# input_button: !include my_config/input_button.yaml
+# tts: !include my_config/tts.yaml
+# #remote: !include my_config/remote.yaml
+# #proximity: !include my_config/proximity.yaml
 
-#feedreader: !include my_config/feedreader.yaml
+# #feedreader: !include my_config/feedreader.yaml
 
-utility_meter: !include my_config/utility_meter.yaml
+# utility_meter: !include my_config/utility_meter.yaml
 
-#alert: !include my_config/alert.yaml
-#number: !include my_config/mqtt_number.yaml
+# #alert: !include my_config/alert.yaml
+# #number: !include my_config/mqtt_number.yaml
 
-template: !include_dir_merge_list my_config/template
+# template: !include_dir_merge_list my_config/template
 
-rest: !include my_config/rest.yaml
-#select: !include my_config/select.yaml
+# rest: !include my_config/rest.yaml
+# #select: !include my_config/select.yaml
 
-#generic_hygrostat: !include my_config/generic_hygrostat.yaml
+# #generic_hygrostat: !include my_config/generic_hygrostat.yaml
 
-#scrape: !include my_config/scrape.yaml
+# #scrape: !include my_config/scrape.yaml
 
-schedule: !include  my_config/schedule.yaml
+# schedule: !include  my_config/schedule.yaml
 
-zeroconf:
-ssdp:
-dhcp:
-network:
+# zeroconf:
+# ssdp:
+# dhcp:
+# network:
 
-# hacs:
-#   token: !secret github_access_token
-#   appdaemon: true
-#   experimental: false
-#   release_limit: 20
+# # hacs:
+# #   token: !secret github_access_token
+# #   appdaemon: true
+# #   experimental: false
+# #   release_limit: 20
 
-#cloud:
-mobile_app:
-system_health:
-config:
-hassio:
-wake_on_lan:
-#map:
-sun:
-ios:
-#bluetooth:
-homeassistant_alerts:
-hardware:
+# #cloud:
+# mobile_app:
+# system_health:
+# config:
+# hassio:
+# wake_on_lan:
+# #map:
+# sun:
+# ios:
+# #bluetooth:
+# homeassistant_alerts:
+# hardware:
 
-system_log:
-  fire_event: true
+# system_log:
+#   fire_event: true
 
-frontend:
-  themes: !include_dir_merge_named themes
-  # extra_module_url:
-  #   - /local/system/theme-override.js
+# frontend:
+#   themes: !include_dir_merge_named themes
+#   # extra_module_url:
+#   #   - /local/system/theme-override.js
 
-#media_source:
+# #media_source:
 
   
-my:
+# my:
 
-logger:
-  default: info
-  logs:
-    homeassistant.bootstrap: debug
-    homeassistant.setup: debug
-    homeassistant.loader: debug
-    homeassistant.config_entries: debug
-    #gcal_sync.auth: debug
-    charset_normalizer: error
-    homeassistant.components.automation.system_esphome_ble_advert: warning
-    homeassistant.components.automation.system_triggered_automations_counter: warning
-    homeassistant.components.automation.system_executed_scripts: warning
-    homeassistant.components.websocket_api.http.connection: info
-    #homeassistant.components.rest: debug
-    #homeassistant.components.webhook: debug
-    # custom_components.hacs: debug
-    # aiogithubapi: debug    
-    #homeassistant.components.mqtt: debug
-    # custom_components.xiaomi_gateway3: info
-    # custom_components.xiaomi_gateway3.gate: info
-    # custom_components.xiaomi_gateway3.mqtt: info
-    # custom_components.xiaomi_gateway3.gate.192.168.1.236: debug
-    # custom_components.xiaomi_gateway3.mqtt.192.168.1.236: debug    
-  filters:
-    aiounifi.models.message:
-      - "Unsupported message"
-    homeassistant.components.aiounifi:
-      - "Unsupported message"
-    homeassistant.components.xiaomi_miio:
-      - "Timeout fetching Purifier2S data"
-    homeassistant.components.recorder.db_schema:
-      - "State attributes for sensor.watchman_missing_entities exceed maximum size of 16384 bytes. This can cause database performance issues; Attributes will not be stored"
-    homeassistant.components.hassio.handler:
-      - "Client error on /addons/a0d7b954_ide/changelog request 0, message='Attempt to decode JSON with unexpected mimetype: application/octet-stream', url=URL('http://172.30.32.2/addons/a0d7b954_ide/changelog')"
-    homeassistant.components.hassio.data:
-      - "Could not fetch changelog for a0d7b954_ide:"
-  #   homeassistant.core: debug
-  #   custom_components.webrtc: debug
-  #   custom_components.unifiprotect: debug
-#  logs:
-#    homeassistant.components.sensor.rest: fatal
-#  logs:
-#    xiaomi_gateway: debug
+# logger:
+#   default: info
+#   logs:
+#     homeassistant.bootstrap: debug
+#     homeassistant.setup: debug
+#     homeassistant.loader: debug
+#     homeassistant.config_entries: debug
+#     #gcal_sync.auth: debug
+#     charset_normalizer: error
+#     homeassistant.components.automation.system_esphome_ble_advert: warning
+#     homeassistant.components.automation.system_triggered_automations_counter: warning
+#     homeassistant.components.automation.system_executed_scripts: warning
+#     homeassistant.components.websocket_api.http.connection: info
+#     #homeassistant.components.rest: debug
+#     #homeassistant.components.webhook: debug
+#     # custom_components.hacs: debug
+#     # aiogithubapi: debug    
+#     #homeassistant.components.mqtt: debug
+#     # custom_components.xiaomi_gateway3: info
+#     # custom_components.xiaomi_gateway3.gate: info
+#     # custom_components.xiaomi_gateway3.mqtt: info
+#     # custom_components.xiaomi_gateway3.gate.192.168.1.236: debug
+#     # custom_components.xiaomi_gateway3.mqtt.192.168.1.236: debug    
+#   filters:
+#     aiounifi.models.message:
+#       - "Unsupported message"
+#     homeassistant.components.aiounifi:
+#       - "Unsupported message"
+#     homeassistant.components.xiaomi_miio:
+#       - "Timeout fetching Purifier2S data"
+#     homeassistant.components.recorder.db_schema:
+#       - "State attributes for sensor.watchman_missing_entities exceed maximum size of 16384 bytes. This can cause database performance issues; Attributes will not be stored"
+#     homeassistant.components.hassio.handler:
+#       - "Client error on /addons/a0d7b954_ide/changelog request 0, message='Attempt to decode JSON with unexpected mimetype: application/octet-stream', url=URL('http://172.30.32.2/addons/a0d7b954_ide/changelog')"
+#     homeassistant.components.hassio.data:
+#       - "Could not fetch changelog for a0d7b954_ide:"
+#   #   homeassistant.core: debug
+#   #   custom_components.webrtc: debug
+#   #   custom_components.unifiprotect: debug
+# #  logs:
+# #    homeassistant.components.sensor.rest: fatal
+# #  logs:
+# #    xiaomi_gateway: debug
 
-#twilio:
-#  account_sid: !secret twilio_account_sid
-#  auth_token: !secret twilio_auth_token
+# #twilio:
+# #  account_sid: !secret twilio_account_sid
+# #  auth_token: !secret twilio_auth_token
 
-media_player: !include my_config/media_player.yaml
+# media_player: !include my_config/media_player.yaml
 
-#ffmpeg:
+# #ffmpeg:
   
-influxdb: !include my_config/influxdb.yaml
+# influxdb: !include my_config/influxdb.yaml
 
-# google:
-#   client_id: !secret google_client_id
-#   client_secret: !secret google_client_secret
+# # google:
+# #   client_id: !secret google_client_id
+# #   client_secret: !secret google_client_secret
 
-panel_custom: !include my_config/panel_custom.yaml
+# panel_custom: !include my_config/panel_custom.yaml
 
-trace:
+# trace:
 
-#zabbix: !include my_config/zabbix.yaml
+# #zabbix: !include my_config/zabbix.yaml
 
-##############################################
-# Custom Integrations
-##############################################
-# start_time:
+# ##############################################
+# # Custom Integrations
+# ##############################################
+# # start_time:
 
-# sonoff:
-#   username: !secret sonoff_user
-#   password: !secret sonoff_password
-#   reload: always
-# mode: local
-# devices:
-#   1000d03987:
-#     device_class: switch
-#     name: 5v relay
+# # sonoff:
+# #   username: !secret sonoff_user
+# #   password: !secret sonoff_password
+# #   reload: always
+# # mode: local
+# # devices:
+# #   1000d03987:
+# #     device_class: switch
+# #     name: 5v relay
 
-# mosportal:
-#   username: !secret mosportal_login
-#   password: !secret mosportal_passwd
-#   flats:
-#     - flat: !secret mosportal_flat
-#       paycode: !secret mosportal_paycode
+# # mosportal:
+# #   username: !secret mosportal_login
+# #   password: !secret mosportal_passwd
+# #   flats:
+# #     - flat: !secret mosportal_flat
+# #       paycode: !secret mosportal_paycode
 
-python_script:
-xiaomi_gateway3: !include my_config/xiaomi_gateway3.yaml
-yandex_smart_home: !include my_config/ya_smart_home.yaml
-yandex_station: !include my_config/yandex_station.yaml
-yandex_station_intents: !include my_config/yandex_station_intents.yaml
+# python_script:
+# xiaomi_gateway3: !include my_config/xiaomi_gateway3.yaml
+# yandex_smart_home: !include my_config/ya_smart_home.yaml
+# yandex_station: !include my_config/yandex_station.yaml
+# yandex_station_intents: !include my_config/yandex_station_intents.yaml
 
-#watchman: !include my_config/watchman.yaml
+# #watchman: !include my_config/watchman.yaml
 
-ble_monitor: !include my_config/ble_monitor.yaml
+# ble_monitor: !include my_config/ble_monitor.yaml
 
-#browser_mod: !include my_config/browser_mod.yaml
+# #browser_mod: !include my_config/browser_mod.yaml
 
-# xiaomi_miot:
-#   username: !secret mi_account
-#   password: !secret mi_password
+# # xiaomi_miot:
+# #   username: !secret mi_account
+# #   password: !secret mi_password
 
-#powercalc: !include my_config/powercalc.yaml
+# #powercalc: !include my_config/powercalc.yaml
