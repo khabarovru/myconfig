@@ -32,15 +32,15 @@
 #                     name: FCST
 #                   - entity: binary_sensor.tod_day
 #                     name: TOD
-#                   - entity: switch.system_dark_mode
+#                   - entity: input_boolean.system_dark_mode
 #                     name: Dark
 #                     tap_action:
 #                       action: toggle
-#                   - entity: switch.system_silent_mode
+#                   - entity: input_boolean.system_silent_mode
 #                     name: Zz
 #                     tap_action:
 #                       action: toggle
-#                   - entity: switch.system_guest_mode
+#                   - entity: input_boolean.system_guest_mode
 #                     name: Guest
 #                     tap_action:
 #                       action: toggle
@@ -1252,7 +1252,7 @@
 #           - type: glance
 #             state_color: true
 #             entities:
-#               - entity: switch.system_security_mode
+#               - entity: input_boolean.system_security_mode
 #                 name: Security
 #                 tap_action:
 #                   action: toggle
@@ -2764,7 +2764,7 @@
 #           - type: glance
 #             state_color: true
 #             entities:
-#               - entity: switch.system_security_mode
+#               - entity: input_boolean.system_security_mode
 #                 name: Security
 #                 tap_action:
 #                   action: toggle
@@ -3138,7 +3138,7 @@
 #                   - input_select.main_audio_out
 #                   - input_number.main_volume
 #                   - script.tts_test
-#                   - switch.system_silent_mode
+#                   - input_boolean.system_silent_mode
 #           # - type: glance
 #           #   columns: 8
 #           #   state_color: true

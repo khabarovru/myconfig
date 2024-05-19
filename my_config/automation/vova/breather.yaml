@@ -33,7 +33,7 @@
 #                 entity_id: binary_sensor.breather_v
 #                 state: 'off'
 #               - condition: state
-#                 entity_id: switch.system_security_mode
+#                 entity_id: input_boolean.system_security_mode
 #                 state: 'off'
 #             sequence:
 #               - service: fan.turn_on
@@ -60,7 +60,7 @@
 #                 entity_id: binary_sensor.breather_v
 #                 state: 'on'
 #               - condition: state
-#                 entity_id: switch.system_security_mode
+#                 entity_id: input_boolean.system_security_mode
 #                 state: 'off'
 #               - condition: state
 #                 entity_id: switch.system_breather_auto_speed_v
@@ -240,7 +240,7 @@
 #           #                       entity_id: sensor.0x00158d0001e58714_temperature
 #           #                       above: 18
 #           #                     - condition: state
-#           #                       entity_id: switch.system_security_mode
+#           #                       entity_id: input_boolean.system_security_mode
 #           #                       state: 'off'
 #           #                   sequence:
 #           #                     - service: fan.set_percentage
@@ -263,7 +263,7 @@
 #           #                   entity_id: switch.system_hourly_mode_breather_v
 #           #                   state: 'on'
 #           #                 - condition: state
-#           #                   entity_id: switch.system_security_mode
+#           #                   entity_id: input_boolean.system_security_mode
 #           #                   state: 'off'  
 #           #               then:
 #           #                 - service: fan.set_percentage
@@ -404,7 +404,7 @@
 #           seconds: 30
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #     action:
 #       - service: switch.turn_on

@@ -303,7 +303,7 @@
         - counter.executed_scripts
         # - counter.toilet_tank
     - service: switch.turn_off
-      entity_id: switch.system_dark_mode
+      entity_id: input_boolean.system_dark_mode
     # - service: tts.clear_cache
     # - service: input_select.select_next
     #   entity_id: input_select.dishwasher
@@ -692,28 +692,28 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: switch.system_silent_mode
+      entity_id: input_boolean.system_silent_mode
       from: "on"
       to: "off"
     - platform: state
-      entity_id: switch.system_silent_mode
+      entity_id: input_boolean.system_silent_mode
       from: "off"
       to: "on"
   action:
-    # - service: switch.turn_{{states('switch.system_silent_mode')}}
+    # - service: switch.turn_{{states('input_boolean.system_silent_mode')}}
     #   entity_id: switch.esp32_domofon_mute, switch.sonoff_mini_1_mute
     - service: input_number.set_value
       data:
         entity_id: input_number.main_volume
-        value: "{% if is_state('switch.system_silent_mode','on') %}0{%else%}0.4{%endif%}"
+        value: "{% if is_state('input_boolean.system_silent_mode','on') %}0{%else%}0.4{%endif%}"
     # - service: number.set_value
     #   data:
     #     entity_id: number.up_chime_volume
-    #     value: "{% if is_state('switch.system_silent_mode','on') %}0{%else%}80{%endif%}"
+    #     value: "{% if is_state('input_boolean.system_silent_mode','on') %}0{%else%}80{%endif%}"
     - service: notify.telegram
       data:
         message: >
-          {% if is_state('switch.system_silent_mode','on') %}
+          {% if is_state('input_boolean.system_silent_mode','on') %}
             {{'\U0001f515'}} Режим тишины включен!
           {%else%}
             {{'\U0001f514'}} Режим тишины выключен!
@@ -802,21 +802,21 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: switch.system_dark_mode
+      entity_id: input_boolean.system_dark_mode
   action:
     - service: notify.telegram
       data:
         message: >
-          {% if is_state('switch.system_dark_mode','on') %}
+          {% if is_state('input_boolean.system_dark_mode','on') %}
             {{'\U0001f318'}} Режим темноты включен
           {%else%}
             {{'\U00002600'}} Режим темноты выключен
           {%endif%}
     - condition: state
-      entity_id: switch.system_dark_mode
+      entity_id: input_boolean.system_dark_mode
       state: "off"
     - service: switch.turn_off
-      entity_id: switch.system_silent_mode
+      entity_id: input_boolean.system_silent_mode
 
 # # ##################################
 # # System - HACS New Repo
@@ -1683,7 +1683,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: switch.system_dark_mode
+      entity_id: input_boolean.system_dark_mode
       from: "off"
       to: "on"
   action:
@@ -2510,20 +2510,20 @@
 # ##################################
 # System - System Repair Sensor Update
 # ##################################
-- alias: system_repair_sensor_update
-  id: system_repair_sensor_update
-  mode: restart
-  trigger:
-    - platform: event
-      event_type: repairs_issue_registry_updated
-      event_data:
-        action: create
-    - platform: homeassistant
-      event: start
-  action:
-    - service: homeassistant.update_entity
-      data:
-        entity_id: sensor.repairs_state
+# - alias: system_repair_sensor_update
+#   id: system_repair_sensor_update
+#   mode: restart
+#   trigger:
+#     - platform: event
+#       event_type: repairs_issue_registry_updated
+#       event_data:
+#         action: create
+#     - platform: homeassistant
+#       event: start
+#   action:
+#     - service: homeassistant.update_entity
+#       data:
+#         entity_id: sensor.repairs_state
 
 # # ##################################
 # # System - Digma100 Cam Restart
@@ -2565,11 +2565,11 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: switch.system_security_mode
+      entity_id: input_boolean.system_security_mode
       state: 'off'
   action:
     - service: switch.turn_off
-      entity_id: switch.system_silent_mode
+      entity_id: input_boolean.system_silent_mode
       
       
 # # ##################################

@@ -31,7 +31,7 @@
 #       - condition: template
 #         value_template: "{{(as_timestamp(now()) - as_timestamp(state_attr('automation.kitchen_timer_restart', 'last_triggered'))|int(0)) > 5 }}"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: template
 #         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
@@ -122,7 +122,7 @@
 #         entity_id: binary_sensor.tod_day
 #         state: "on"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: state
 #         entity_id: group.lights_main_k
@@ -166,7 +166,7 @@
 #         entity_id: group.lights_main_k
 #         state: "off"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: template
 #         value_template: "{{as_timestamp(now())-as_timestamp(state_attr('automation.hall_small_auto_night_light', 'last_triggered')) < 600 }}"
@@ -458,7 +458,7 @@
 #       - condition: template
 #         value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.kitchen_led_strip_timer_restart', 'last_triggered'))|int(0)) > 5 }}"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #     action:
 #       - service: timer.cancel
@@ -479,7 +479,7 @@
 #         from: 'on'
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: state
 #         entity_id:

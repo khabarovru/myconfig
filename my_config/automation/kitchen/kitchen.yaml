@@ -241,7 +241,7 @@
 #         entity_id: switch.0x00158d0001e85086_plug
 #         state: "off"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #     action:
 #       - service: switch.turn_on
@@ -282,7 +282,7 @@
 #             entity_id: binary_sensor.tod_day
 #             state: "on"
 #           - condition: state
-#             entity_id: switch.system_dark_mode
+#             entity_id: input_boolean.system_dark_mode
 #             state: "off" 
 #         then:
 #           - service: media_player.volume_set
@@ -449,7 +449,7 @@
 #         id: 'on'
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #       - condition: template
 #         value_template: "{{ trigger.event.data.entity_id == 'media_player.yandex_k' }}"

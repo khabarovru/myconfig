@@ -464,8 +464,8 @@
 # switch.esp32_node_b_relay_2:
 #   friendly_name: Relay Water ON B
 #   icon: mdi:valve-open
-# fan.esp32_node_b_fan_b:
-#   friendly_name: Fan B
+fan.bathroom_light_l2:
+  friendly_name: Fan B
 # switch.esp32_node_b_relay_1:
 #   friendly_name: Relay Water OFF B
 #   icon: mdi:valve-closed

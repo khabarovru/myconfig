@@ -21,10 +21,10 @@
 #             entity_id: binary_sensor.tod_day
 #             state: "off"
 #           - condition: state
-#             entity_id: switch.system_dark_mode
+#             entity_id: input_boolean.system_dark_mode
 #             state: "on"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: state
 #         entity_id: group.lights_hb
@@ -60,13 +60,13 @@
 #         id: "fridge"
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: state
 #         entity_id: binary_sensor.tod_day
 #         state: "on"
 #       - condition: state
-#         entity_id: switch.system_dark_mode
+#         entity_id: input_boolean.system_dark_mode
 #         state: "off"
 #       - condition: state
 #         entity_id: group.lights_main_hb
@@ -103,7 +103,7 @@
 #         data:
 #           transition: 5
 #       - service: switch.turn_off
-#         entity_id: switch.system_dark_mode
+#         entity_id: input_boolean.system_dark_mode
   
 # # ##################################
 # # Hall Big - Auto Light On when door opened
@@ -194,7 +194,7 @@
 #                 entity_id: group.lights_main_hb
 #                 state: "off"
 #               - condition: state
-#                 entity_id: switch.system_security_mode
+#                 entity_id: input_boolean.system_security_mode
 #                 state: "off"
 #             sequence:
 #               - service: script.hall_big_led_strip_on

@@ -105,7 +105,7 @@
 
   #     - name: Bed Led Enable
   #       unique_id: bed_led_enable
-  #       state: "{{ states('sensor.0x04cf8cdf3c772824_illuminance')|int(0) <= states('input_number.inside_light_level')|int(5) and is_state('switch.system_security_mode','off') }}"
+  #       state: "{{ states('sensor.0x04cf8cdf3c772824_illuminance')|int(0) <= states('input_number.inside_light_level')|int(5) and is_state('input_boolean.system_security_mode','off') }}"
   #       icon: mdi:bed-king
   #       delay_off:
   #         seconds: 30
@@ -722,7 +722,7 @@
   #     - platform: state
   #       entity_id: 
   #         - binary_sensor.0x00158d0001ef2ffc_contact
-  #         - switch.system_security_mode
+  #         - input_boolean.system_security_mode
   #       to:
   #     - platform: homeassistant
   #       event: start
@@ -736,7 +736,7 @@
   #       icon: mdi:heat-wave
   #       state: >-
   #         {{ not (6>=now().hour|int(0) >=0 or 
-  #         is_state('switch.system_security_mode','on') or 
+  #         is_state('input_boolean.system_security_mode','on') or 
   #         (is_state('binary_sensor.0x00158d0001ef2ffc_contact','on') and (as_timestamp(now())-as_timestamp(states.binary_sensor['0x00158d0001ef2ffc_contact'].last_changed) > 10*60))) 
   #         }}
 

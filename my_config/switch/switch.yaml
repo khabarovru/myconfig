@@ -10,6 +10,18 @@
   #         - service: automation.turn_on
   #           entity_id: all
 
+  - platform: template
+    switches:
+      system_security_mode:
+        value_template: "{{ is_state('input_boolean.system_security_mode', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
   # # - platform: unifi_status
   # #   host: !secret udmp_host
   # #   username: !secret udmp_usr

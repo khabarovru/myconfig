@@ -248,7 +248,7 @@
 #                 entity_id: group.lights_b
 #                 state: "on"
 #               - condition: state
-#                 entity_id: switch.system_security_mode
+#                 entity_id: input_boolean.system_security_mode
 #                 state: "off"
 #               -   condition: not
 #                   conditions:
@@ -353,7 +353,7 @@
 #         entity_id: group.lights_b
 #         state: "off"
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: "off"
 #       - condition: template
 #         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
@@ -362,7 +362,7 @@
 #         data:
 #           entity_id: light.mirror_light_b
 #           scene: >-
-#             {{4 if (is_state('binary_sensor.tod_day','off') or is_state('switch.system_dark_mode','on')) else 1}}
+#             {{4 if (is_state('binary_sensor.tod_day','off') or is_state('input_boolean.system_dark_mode','on')) else 1}}
   
 # # ##################################
 # # Bathroom - Auto Light Off

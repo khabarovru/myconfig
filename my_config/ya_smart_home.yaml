@@ -7,7 +7,7 @@
 #   include_entities:
 #     - light.esp32_node_b_light
 #     - light.esp32_node_k_light
-#     - fan.esp32_node_b_fan_b
+#     - fan.bathroom_light_l2
 #     - fan.esp32_node_b_fan_t
 #     - fan.esp8266_hood_k_fan
 #     - light.esp8266_hood_k
@@ -52,7 +52,7 @@
 #     - fan.breather_s
 #     - fan.breather_v
 #     - light.esp32_node_s_led
-#     - switch.system_dark_mode
+#     - input_boolean.system_dark_mode
 #     - switch.esp32_domofon_open_manual
 #     - media_player.yandex_intents
 #     - light.square_led_v_nightlight
@@ -63,7 +63,7 @@
 #     - cover.1778456713918824448_motor
 
 # entity_config:
-#   switch.system_dark_mode:
+#   input_boolean.system_dark_mode:
 #     name: Режим темноты
 #     room: Коридор
 #     type: devices.types.switch
@@ -88,7 +88,7 @@
 #     room: Кухня
 #     type: devices.types.light.strip
 
-#   fan.esp32_node_b_fan_b:
+#   fan.bathroom_light_l2:
 #     name: Вытяжка
 #     room: Ванная
 

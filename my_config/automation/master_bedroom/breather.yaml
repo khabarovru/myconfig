@@ -33,7 +33,7 @@
 #                 entity_id: binary_sensor.breather_mb
 #                 state: 'off'
 #               - condition: state
-#                 entity_id: switch.system_security_mode
+#                 entity_id: input_boolean.system_security_mode
 #                 state: 'off'
 #               - condition: numeric_state
 #                 entity_id: sensor.0x00158d000222c746_temperature
@@ -63,7 +63,7 @@
 #                 entity_id: binary_sensor.breather_mb
 #                 state: 'on'
 #               - condition: state
-#                 entity_id: switch.system_security_mode
+#                 entity_id: input_boolean.system_security_mode
 #                 state: 'off'
 #               - condition: state
 #                 entity_id: switch.system_breather_auto_speed_mb

@@ -68,7 +68,7 @@
   #     - fan.esp32_node_b_fan_t
   #     - switch.0x00158d0002a36433_channel_2
   #     - switch.esp32_node_b_relay_2
-  #     - fan.esp32_node_b_fan_b
+  #     - fan.bathroom_light_l2
   #     - switch.esp32_node_b_relay_1
   #     - fan.sonoff_pow_r2_1_bottom_fan
   #     # Storage

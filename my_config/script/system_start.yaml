@@ -9,7 +9,7 @@
   #       entity_id: timer.main_light_k
   #     - service: timer.{{'start' if (is_state('switch.0x00158d0002a36433_channel_2','on') or is_state('light.mirror_light_b','on')) else 'cancel'}}
   #       entity_id: timer.main_light_b 
-  #     - service: timer.{{'start' if is_state('fan.esp32_node_b_fan_b','on') else 'cancel'}}
+  #     - service: timer.{{'start' if is_state('fan.bathroom_light_l2','on') else 'cancel'}}
   #       entity_id: timer.fan_b
   #     - service: timer.{{'start' if is_state('fan.sonoff_pow_r2_1_bottom_fan','on') else 'cancel'}}
   #       entity_id: timer.fan_bottom_b
@@ -46,7 +46,7 @@
   #     #           entity_id: timer.washing_machine_door
   #     - if:
   #         - condition: state
-  #           entity_id: switch.system_security_mode
+  #           entity_id: input_boolean.system_security_mode
   #           state: 'on'
   #       then:
   #         - service: script.turn_on

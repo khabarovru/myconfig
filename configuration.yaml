@@ -23,7 +23,7 @@ homeassistant:
     - /tmp
     - /share
   debug: true
-
+  packages: !include_dir_merge_named my_config/packages/
 api:
 
 stream:
@@ -53,18 +53,18 @@ input_boolean: !include_dir_merge_named my_config/input_boolean
 
 lovelace: !include my_config/lovelace.yaml
 timer: !include my_config/timer.yaml
-device_tracker: !include my_config/device_tracker.yaml
+# device_tracker: !include my_config/device_tracker.yaml
 input_number: !include my_config/input_number.yaml
-input_text: !include my_config/input_text.yaml
-zone: !include my_config/zone.yaml
+# input_text: !include my_config/input_text.yaml
+# zone: !include my_config/zone.yaml
 counter: !include my_config/counter.yaml
-light: !include my_config/light.yaml
-yeelight: !include my_config/yeelight.yaml
-fan: !include my_config/fan.yaml
+# light: !include my_config/light.yaml
+# yeelight: !include my_config/yeelight.yaml
+# fan: !include my_config/fan.yaml
 person: !include my_config/person.yaml
 notify: !include my_config/notify.yaml
 #scene: !include my_config/scene.yaml
-shell_command: !include my_config/shell_command.yaml
+# shell_command: !include my_config/shell_command.yaml
 
 recorder: !include my_config/recorder.yaml
 history: #!include my_config/history.yaml
@@ -227,7 +227,7 @@ schedule: !include  my_config/schedule.yaml
 # yandex_station: !include my_config/yandex_station.yaml
 # yandex_station_intents: !include my_config/yandex_station_intents.yaml
 
-# #watchman: !include my_config/watchman.yaml
+watchman: !include my_config/watchman.yaml
 
 # ble_monitor: !include my_config/ble_monitor.yaml
 
@@ -238,3 +238,4 @@ schedule: !include  my_config/schedule.yaml
 # #   password: !secret mi_password
 
 # #powercalc: !include my_config/powercalc.yaml
+

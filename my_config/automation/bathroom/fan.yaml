@@ -27,13 +27,13 @@
 #                   scene: 4
 #           - conditions:
 #               - condition: state
-#                 entity_id: fan.esp32_node_b_fan_b
+#                 entity_id: fan.bathroom_light_l2
 #                 state: 'off'
 #               - condition: state
 #                 entity_id: group.lights_b
 #                 state: 'on'
 #               - condition: state
-#                 entity_id: switch.esp32_node_b_fan_b_force_mode
+#                 entity_id: switch.bathroom_light_l2_force_mode
 #                 state: 'off'
 #             sequence:
 #               - service: fan.turn_off
@@ -41,22 +41,22 @@
 #               - service: timer.pause
 #                 entity_id: timer.fan_t
 #               - service: switch.turn_on
-#                 entity_id: switch.esp32_node_b_fan_b_manual_mode
+#                 entity_id: switch.bathroom_light_l2_manual_mode
 #           - conditions:
 #               - condition: state
-#                 entity_id: fan.esp32_node_b_fan_b
+#                 entity_id: fan.bathroom_light_l2
 #                 state: 'on'
 #               - condition: state
-#                 entity_id: switch.esp32_node_b_fan_b_force_mode
+#                 entity_id: switch.bathroom_light_l2_force_mode
 #                 state: 'off'
 #               # - condition: state
 #               #   entity_id: group.lights_b
 #               #   state: 'on'
 #             sequence:
 #               - service: switch.turn_off
-#                 entity_id: switch.esp32_node_b_fan_b_manual_mode
+#                 entity_id: switch.bathroom_light_l2_manual_mode
 #               - service: switch.turn_on
-#                 entity_id: switch.esp32_node_b_fan_b_auto_mode
+#                 entity_id: switch.bathroom_light_l2_auto_mode
   
 # # ##################################
 # # Bathroom Fan - On Manual Double
@@ -135,7 +135,7 @@
 # #       state: 'off'
 # #   action:
 # #     - service: fan.turn_off
-# #       entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+# #       entity_id: fan.bathroom_light_l2, fan.sonoff_pow_r2_1_bottom_fan
 
 # # ##################################
 # # Bathroom Fan - Auto On
@@ -170,7 +170,7 @@
 # #       entity_id: fan.esp32_node_b_fan_t
 # #       state: 'off'
 # #     - service: fan.turn_on
-# #       entity_id: fan.esp32_node_b_fan_b
+# #       entity_id: fan.bathroom_light_l2
 
 # # ##################################
 # # Bathroom Fan - Auto
@@ -200,7 +200,7 @@
 #   #             - condition: template
 #   #               value_template: "{{ not is_state('switch.0x00158d0002a36433_channel_2','on') }}"
 #   #             - condition: state
-#   #               entity_id: fan.esp32_node_b_fan_b
+#   #               entity_id: fan.bathroom_light_l2
 #   #               state: 'off'
 #   #           sequence:
 #   #             - service: fan.turn_on
@@ -209,7 +209,7 @@
 #   #               entity_id: fan.esp32_node_b_fan_t
 #   #               state: 'off'
 #   #             - service: fan.turn_on
-#   #               entity_id: fan.esp32_node_b_fan_b
+#   #               entity_id: fan.bathroom_light_l2
 #   #         - conditions:
 #   #             - condition: state
 #   #               entity_id: binary_sensor.high_humidity_b
@@ -217,13 +217,13 @@
 #   #               for:
 #   #                 seconds: 30
 #   #             - condition: state
-#   #               entity_id: switch.esp32_node_b_fan_b_manual_mode
+#   #               entity_id: switch.bathroom_light_l2_manual_mode
 #   #               state: 'off'
 #   #             - condition: template
-#   #               value_template: "{{ is_state('fan.esp32_node_b_fan_b','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on')  }}"
+#   #               value_template: "{{ is_state('fan.bathroom_light_l2','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on')  }}"
 #   #           sequence:
 #   #             - service: fan.turn_off
-#   #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#   #               entity_id: fan.bathroom_light_l2, fan.sonoff_pow_r2_1_bottom_fan
 
 
 # # ##################################
@@ -248,29 +248,29 @@
 #                 id: 'to_on'
 #             sequence:
 #               # - condition: template
-#               #   value_template: "{{ is_state('fan.esp32_node_b_fan_b','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on') }}"
+#               #   value_template: "{{ is_state('fan.bathroom_light_l2','on') or is_state('fan.sonoff_pow_r2_1_bottom_fan','on') }}"
 #               # - condition: state
-#               #   entity_id: switch.esp32_node_b_fan_b_manual_mode
+#               #   entity_id: switch.bathroom_light_l2_manual_mode
 #               #   state: 'off'
 #               # - condition: state
-#               #   entity_id: switch.esp32_node_b_fan_b_force_mode
+#               #   entity_id: switch.bathroom_light_l2_force_mode
 #               #   state: 'off'
 #               - service: switch.turn_off
-#                 entity_id: switch.esp32_node_b_fan_b_auto_mode
+#                 entity_id: switch.bathroom_light_l2_auto_mode
 #               - service: fan.turn_off
-#                 entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#                 entity_id: fan.bathroom_light_l2, fan.sonoff_pow_r2_1_bottom_fan
 #           - conditions:
 #               - condition: trigger
 #                 id: 'to_off'
 #             sequence:
 #               # - condition: state
-#               #   entity_id: switch.esp32_node_b_fan_b_manual_mode
+#               #   entity_id: switch.bathroom_light_l2_manual_mode
 #               #   state: 'off'
 #               # - condition: state
-#               #   entity_id: switch.esp32_node_b_fan_b_force_mode
+#               #   entity_id: switch.bathroom_light_l2_force_mode
 #               #   state: 'off'
 #               - service: switch.turn_on
-#                 entity_id: switch.esp32_node_b_fan_b_auto_mode
+#                 entity_id: switch.bathroom_light_l2_auto_mode
 
 # # ##################################
 # # Bathroom - Fan Night mode
@@ -283,10 +283,10 @@
 #         minutes: '/5'
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #       - condition: template
-#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#         value_template: "{{ states('fan.bathroom_light_l2') in ['on','off'] }}"
 #       - condition: template
 #         value_template: "{{ 1 <= now().hour < 6 }}"
 #     action:
@@ -327,10 +327,10 @@
 #         at: "06:20:00"
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #       - condition: template
-#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#         value_template: "{{ states('fan.bathroom_light_l2') in ['on','off'] }}"
 #       - condition: template
 #         value_template: "{{states('number.esp32_node_b_humidity_set')|int(0) < 50 }}"
 #     action:
@@ -340,7 +340,7 @@
 #         target:
 #           entity_id: number.esp32_node_b_humidity_set
 #       - service: switch.turn_off
-#         entity_id: switch.esp32_node_b_fan_b_force_mode
+#         entity_id: switch.bathroom_light_l2_force_mode
 
 
 # # ##################################
@@ -351,16 +351,16 @@
 #     initial_state: true
 #     trigger:
 #       - platform: state
-#         entity_id: fan.esp32_node_b_fan_b
+#         entity_id: fan.bathroom_light_l2
 #         to: 
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #       - condition: template
-#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#         value_template: "{{ states('fan.bathroom_light_l2') in ['on','off'] }}"
 #     action:
-#       - service: fan.turn_{{ states('fan.esp32_node_b_fan_b') }}
+#       - service: fan.turn_{{ states('fan.bathroom_light_l2') }}
 #         entity_id: fan.sonoff_pow_r2_1_bottom_fan
 
 # # ##################################
@@ -376,7 +376,7 @@
 #         at: '23:00:03'
 #     condition:
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #     action:
 #       - service: fan.turn_{%if states('binary_sensor.tod_day')%}off{%else%}on{%endif%}
@@ -396,10 +396,10 @@
 #         entity_id: binary_sensor.tod_day
 #         state: 'off'
 #       - condition: state
-#         entity_id: switch.system_security_mode
+#         entity_id: input_boolean.system_security_mode
 #         state: 'off'
 #       - condition: state
-#         entity_id: switch.esp32_node_b_fan_b_force_mode
+#         entity_id: switch.bathroom_light_l2_force_mode
 #         state: 'off'
 #     action:
 #       - condition: template
@@ -419,16 +419,16 @@
 #         event_data:
 #           entity_id: timer.fan_b
 #       # - platform: state
-#       #   entity_id: fan.esp32_node_b_fan_b
+#       #   entity_id: fan.bathroom_light_l2
 #       #   to: 'off'
 #     condition:
 #       - condition: template
 #         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
 #     action:
 #       - service: fan.turn_off
-#         entity_id: fan.esp32_node_b_fan_b
+#         entity_id: fan.bathroom_light_l2
 #       - service: switch.turn_off
-#         entity_id: switch.esp32_node_b_fan_b_manual_mode
+#         entity_id: switch.bathroom_light_l2_manual_mode
 #       - condition: state
 #         entity_id: timer.fan_t
 #         state: 'paused'
@@ -447,20 +447,20 @@
 #     initial_state: true
 #     trigger:
 #       - platform: state
-#         entity_id: fan.esp32_node_b_fan_b
+#         entity_id: fan.bathroom_light_l2
 #         to:
 #     condition:
 #       - condition: template
 #         value_template: "{{ is_state_attr(this.entity_id, 'current',0) }}"
 #       - condition: template
-#         value_template: "{{ states('fan.esp32_node_b_fan_b') in ['on','off'] }}"
+#         value_template: "{{ states('fan.bathroom_light_l2') in ['on','off'] }}"
 #       - condition: state
-#         entity_id: switch.esp32_node_b_fan_b_force_mode
+#         entity_id: switch.bathroom_light_l2_force_mode
 #         state: 'off'
 #     action:
 #       - if:
 #           - condition: state
-#             entity_id: fan.esp32_node_b_fan_b
+#             entity_id: fan.bathroom_light_l2
 #             state: 'on'
 #         then:
 #           - service: timer.start
@@ -497,17 +497,17 @@
 #   #             - service: fan.turn_off
 #   #               entity_id: fan.esp32_node_b_fan_t
 #   #             - service: fan.turn_on
-#   #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#   #               entity_id: fan.bathroom_light_l2, fan.sonoff_pow_r2_1_bottom_fan
 #   #             - service: switch.turn_on
-#   #               entity_id: switch.esp32_node_b_fan_b_force_mode
+#   #               entity_id: switch.bathroom_light_l2_force_mode
 #   #         - conditions:
 #   #             - condition: trigger
 #   #               id: "force_off"
 #   #           sequence:
 #   #             - service: fan.turn_off
-#   #               entity_id: fan.esp32_node_b_fan_b, fan.sonoff_pow_r2_1_bottom_fan
+#   #               entity_id: fan.bathroom_light_l2, fan.sonoff_pow_r2_1_bottom_fan
 #   #             - service: switch.turn_off
-#   #               entity_id: switch.esp32_node_b_fan_b_force_mode
+#   #               entity_id: switch.bathroom_light_l2_force_mode
 
 
 # # ##################################
@@ -537,7 +537,7 @@
 #   #       entity_id: binary_sensor.tod_day
 #   #       state: 'on'
 #   #     - condition: state
-#   #       entity_id: switch.system_dark_mode
+#   #       entity_id: input_boolean.system_dark_mode
 #   #       state: 'off'
 #   #     - condition: template
 #   #       value_template: "{{(as_timestamp(now())-as_timestamp(state_attr('automation.toilet_close_seat_notify', 'last_triggered'))|int(0)) > 15 }}"

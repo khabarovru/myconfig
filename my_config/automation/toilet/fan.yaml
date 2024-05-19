@@ -27,11 +27,11 @@
 #       entity_id: fan.esp32_node_b_fan_t
 #       state: "off"
 #     - condition: state
-#       entity_id: switch.esp32_node_b_fan_b_manual_mode
+#       entity_id: switch.bathroom_light_l2_manual_mode
 #       state: "off"
 #   action:
 #     - service: fan.turn_off
-#       entity_id: fan.esp32_node_b_fan_b
+#       entity_id: fan.bathroom_light_l2
 #     - service: fan.turn_on
 #       entity_id: fan.esp32_node_b_fan_t
 
@@ -153,7 +153,7 @@
 #       entity_id: input_boolean.auto_fan_t
 #       state: "on"
 #     - condition: state
-#       entity_id: switch.esp32_node_b_fan_b_manual_mode
+#       entity_id: switch.bathroom_light_l2_manual_mode
 #       state: "off"
 #     - condition: state
 #       entity_id: fan.esp32_node_b_fan_t
@@ -164,9 +164,9 @@
 #     - condition: template
 #       value_template: "{{(as_timestamp(now())|int(0) - as_timestamp(states.fan.esp32_node_b_fan_t.last_changed)|int(0) ) > 20*60 }}"
 #     - condition: template
-#       value_template: "{{not (6>=now().hour|int(0) >=0 or is_state('switch.system_security_mode','on') or (is_state('binary_sensor.0x00158d0001ef2ffc_contact','on') and (as_timestamp(now())-as_timestamp(states.binary_sensor['0x00158d0001ef2ffc_contact'].last_changed) > 10*60)))}}"
+#       value_template: "{{not (6>=now().hour|int(0) >=0 or is_state('input_boolean.system_security_mode','on') or (is_state('binary_sensor.0x00158d0001ef2ffc_contact','on') and (as_timestamp(now())-as_timestamp(states.binary_sensor['0x00158d0001ef2ffc_contact'].last_changed) > 10*60)))}}"
 #   action:
 #     - service: fan.turn_off
-#       entity_id: fan.esp32_node_b_fan_b
+#       entity_id: fan.bathroom_light_l2
 #     - service: fan.turn_on
 #       entity_id: fan.esp32_node_b_fan_t

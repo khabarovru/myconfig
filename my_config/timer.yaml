@@ -159,12 +159,34 @@
   #   icon: mdi:timer-outline
   #   restore: true
     
-  # security_delay:
-  #   name: Security Delay
-  #   duration: '00:10:00'
-  #   icon: mdi:timer-outline
-  #   restore: true
+  security_delay:
+    name: Security Delay
+    duration: '00:10:00'
+    icon: mdi:timer-outline
+    restore: true
+  led_strip_day_hb:
+    name: LED Strip Day HB
+    duration: '00:10:00'
+    icon: mdi:timer-outline
+    restore: true
     
+  led_strip_night_hb:
+    name: LED Strip Night HB
+    duration: '00:05:00'
+    icon: mdi:timer-outline
+    restore: true
+
+  led_strip_day_k:
+    name: LED Strip Day K
+    duration: '00:30:00'
+    icon: mdi:timer-outline
+    restore: true
+    
+  led_strip_night_k:
+    name: LED Strip Night K
+    duration: '00:10:00'
+    icon: mdi:timer-outline
+    restore: true
   # washer_working:
   #   name: Wasing Machine
   #   duration: '02:30:00'
